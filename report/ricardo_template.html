@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-design="cinema">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -541,8 +541,8 @@
 <header class="masthead wrap">
   <div class="masthead-tools">
     <div class="seg" role="group" aria-label="Report design">
-      <button class="seg-item is-on" type="button" data-design-set="classic" aria-pressed="true">Classic</button>
-      <button class="seg-item" type="button" data-design-set="cinema" aria-pressed="false">Cinema</button>
+      <button class="seg-item" type="button" data-design-set="classic" aria-pressed="false">Classic</button>
+      <button class="seg-item is-on" type="button" data-design-set="cinema" aria-pressed="true">Cinema</button>
       <button class="seg-item" type="button" data-design-set="notebook" aria-pressed="false">Notebook</button>
     </div>
     <div class="tools-pair">
@@ -1204,14 +1204,17 @@
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
   }
+  function syncLang(d){
+    var langLink = document.getElementById('lang-switch');
+    if (langLink) langLink.href = langLink.getAttribute('data-lang-target') + '?design=' + d + location.hash;
+  }
   function setDesign(d){
     root.setAttribute('data-design', d);
     paintDesign(d);
-    var langLink = document.getElementById('lang-switch');
-    if (langLink) langLink.href = langLink.getAttribute('data-lang-target') + '?design=' + d + location.hash;
+    syncLang(d);
     try {
       var u = new URL(location.href);
-      if (d === 'classic') { u.searchParams.delete('design'); } else { u.searchParams.set('design', d); }
+      u.searchParams.set('design', d);
       history.replaceState(null, '', u.href);
     } catch (e) {}
     try { localStorage.setItem('rf-design', d); } catch (e) {}
@@ -1221,8 +1224,9 @@
   var urlDesign = null;
   try { urlDesign = new URLSearchParams(location.search).get('design'); } catch (e) {}
   var initialDesign = (urlDesign === 'classic' || urlDesign === 'cinema' || urlDesign === 'notebook') ? urlDesign
-    : (storedDesign === 'cinema' || storedDesign === 'notebook' ? storedDesign : (root.getAttribute('data-design') || 'classic'));
+    : (storedDesign === 'classic' || storedDesign === 'cinema' || storedDesign === 'notebook' ? storedDesign : (root.getAttribute('data-design') || 'cinema'));
   paintDesign(initialDesign);
+  syncLang(initialDesign);
   designButtons.forEach(function(b){
     b.addEventListener('click', function(){
       setDesign(b.getAttribute('data-design-set'));
@@ -1304,7 +1308,7 @@
       allSections.forEach(function(s){
         if (s.getBoundingClientRect().top + window.scrollY <= y) current = '#' + s.id;
       });
-      lang.href = lang.getAttribute('data-lang-target') + '?design=' + (root.getAttribute('data-design') || 'classic') + current;
+      lang.href = lang.getAttribute('data-lang-target') + '?design=' + (root.getAttribute('data-design') || 'cinema') + current;
     }
   }
   function queueSpy(){
