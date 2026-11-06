@@ -25,6 +25,7 @@ TEMPLATES = {
     "pt": ROOT / "report/ricardo_template_pt.html",
     "en": ROOT / "report/ricardo_template.html",
 }
+DESIGN_CSS = (ROOT / "report/design_variants.css").read_text(encoding="utf-8")
 OUTPUTS = {
     "pt": ROOT / "report/ricardo-franzen.html",
     "en": ROOT / "report/ricardo-franzen-en.html",
@@ -101,7 +102,7 @@ def monthly_svg(kind):
                 else "Mediana de views por vídeo, por mês")
         band = "Sep–Nov" if LANG == "en" else "Set–Nov"
         tip_tpl = ("{m} · {c} videos · {v} median views" if LANG == "en"
-                   else "{m} · {c} vídeos · {v} views medianas")
+                   else "{m} · {c} vídeos · mediana de {v} views")
     else:
         values = [15.5, 17.1, 15.0, 14.4, 16.5, 16.8, 15.8, 13.1, 6.1, 5.4, 6.1]
         y_max, ticks = 20, [0, 5, 10, 15, 20]
@@ -111,7 +112,7 @@ def monthly_svg(kind):
                 else "Taxa de like mediana, por mês")
         band = "Sep–Nov" if LANG == "en" else "Set–Nov"
         tip_tpl = ("{m} · {c} videos · {v}% median like rate" if LANG == "en"
-                   else "{m} · {c} vídeos · {v}% de taxa de like mediana")
+                   else "{m} · {c} vídeos · mediana de {v}% de likes")
 
     def y(v):
         return T + PH - (v / y_max) * PH
@@ -199,13 +200,13 @@ def format_svg():
                      "and is liked least; the highest reach and highest engagement quadrant is empty."),
         },
         "pt": {
-            "essay": "Ensaio / manifesto", "gear": "Equipamento",
-            "vlog": "Vlog diário / outros", "lei": "Série LEI",
+            "essay": "Ensaio e manifesto", "gear": "Equipamento",
+            "vlog": "Vlog diário e outros", "lei": "Série LEI",
             "views_axis": "Mediana de views por vídeo", "like_axis": "Taxa de like (likes ÷ views)",
-            "tip": "{label} · {n} vídeos · {v} views medianas · {r}% de taxa de like",
+            "tip": "{label} · {n} vídeos · mediana de {v} views · {r}% de likes",
             "aria": ("Mapa dos formatos: mediana de views por taxa de like mediana, de janeiro a 24 de agosto. "
                      "O ensaio chega mais longe que o vlog diário com taxa de like parecida; o equipamento "
-                     "alcança mais e é o menos curtido; o quadrante de maior alcance e maior vínculo está vazio."),
+                     "alcança mais e é o menos curtido; nenhum formato combina mais alcance com mais vínculo."),
         },
     }[LANG]
     points = [
@@ -273,7 +274,7 @@ def format_svg():
 def format_legend():
     labels = {
         "en": ["Essay / manifesto", "Gear story", "Daily vlog / other", "LEI series"],
-        "pt": ["Ensaio / manifesto", "Equipamento", "Vlog diário / outros", "Série LEI"],
+        "pt": ["Ensaio e manifesto", "Equipamento", "Vlog diário e outros", "Série LEI"],
     }[LANG]
     items = [
         ("circle", "mark-essay", labels[0]),
@@ -312,7 +313,7 @@ def format_table():
     pre = [r for r in STATS if date.fromisoformat(r["date"]) < date(2026, 8, 25)]
     names = {
         "en": ["Gear story", "Essay / manifesto", "Daily vlog / other", "LEI series"],
-        "pt": ["Equipamento", "Ensaio / manifesto", "Vlog diário / outros", "Série LEI"],
+        "pt": ["Equipamento", "Ensaio e manifesto", "Vlog diário e outros", "Série LEI"],
     }[LANG]
     groups = [
         (names[0], [r for r in pre if r["fmt"] == "gear"]),
@@ -388,8 +389,8 @@ def bottom_table():
     label_names = {
         "en": {"Mood label": "Mood label", "Place label": "Place label", "Series": "Series",
                "Serial number": "Serial number", "Gear experiment": "Gear experiment", "Diary": "Diary"},
-        "pt": {"Mood label": "Rótulo de clima", "Place label": "Rótulo de lugar", "Series": "Série",
-               "Serial number": "Número de série", "Gear experiment": "Experimento de equipamento",
+        "pt": {"Mood label": "Título de clima", "Place label": "Título de lugar", "Series": "Série",
+               "Serial number": "Número da série", "Gear experiment": "Teste de equipamento",
                "Diary": "Diário"},
     }[LANG]
     for r in SAMPLE["bottom"]:
@@ -437,7 +438,7 @@ def frames(ids, prefix):
         },
     }[LANG]
     caption = ("{v} views · {r}× baseline · {d}" if LANG == "en"
-               else "{v} views · {r}× a base · {d}")
+               else "{v} views · {r}× a mediana · {d}")
     out = []
     for i, vid in enumerate(ids, 1):
         s = next(r for r in STATS if r["id"] == vid)
@@ -483,28 +484,16 @@ def kpi_row():
 
 
 def timeline():
-    if LANG == "en":
-        items = [
-            ("01 Jan", "The project begins", "“VLOG TODO DIA ATÉ 2026 ACABAR” — 500 videos, one a day."),
-            ("03 Jan", "The first door", "“PARE DE TENTAR CRIAR CONTEÚDO” — 66,965 views, the year's biggest film."),
-            ("27 Jan", "The essay finds its voice", "“o poder da insignificância” — 28,697 views and the year's longest comments."),
-            ("Feb", "The LEI workshop", "27 videos in one month. The channel's highest like rate (17.3%) and lowest reach (1,397 views)."),
-            ("23 Jul", "The object door", "“troquei meu MacBook PRO por um Air M5” — 32,789 views, 22.3× the previous median."),
-            ("25–26 Aug", "The turn", "Backpack + MacBook Air 30 days. Median views double; the like rate falls from 15.6% to 6.0%."),
-            ("01 Sep", "The essay returns", "“e se?” — 13,151 views. The format that balances reach and bond."),
-            ("06 Nov", "The current cut", "414 public videos, 56,000 subscribers, 1,380,696 views in 2026."),
-        ]
-    else:
-        items = [
-            ("01 Jan", "O projeto começa", "“VLOG TODO DIA ATÉ 2026 ACABAR” — 500 vídeos, um por dia."),
-            ("03 Jan", "A primeira porta", "“PARE DE TENTAR CRIAR CONTEÚDO” — 66.965 views, o maior vídeo do ano."),
-            ("27 Jan", "O ensaio encontra a voz", "“o poder da insignificância” — 28.697 views e os comentários mais longos do ano."),
-            ("Fev", "A oficina das LEI", "27 vídeos em um mês. A maior taxa de like do canal (17,3%) e o menor alcance (1.397 views)."),
-            ("23 Jul", "A porta do objeto", "“troquei meu MacBook PRO por um Air M5” — 32.789 views, 22,3× a mediana anterior."),
-            ("25–26 Ago", "A virada", "Mochila + MacBook Air 30 dias. A mediana de views dobra; a taxa de like cai de 15,6% para 6,0%."),
-            ("01 Set", "O ensaio volta", "“e se?” — 13.151 views. O formato que equilibra alcance e vínculo."),
-            ("06 Nov", "O corte atual", "414 vídeos públicos, 56.000 inscritos, 1.380.696 views em 2026."),
-        ]
+    items = [
+        ("01 Jan", "The project begins", "“VLOG TODO DIA ATÉ 2026 ACABAR” — 500 videos, one a day."),
+        ("03 Jan", "The first door", "“PARE DE TENTAR CRIAR CONTEÚDO” — 66,965 views, the year's biggest film."),
+        ("27 Jan", "The essay finds its voice", "“o poder da insignificância” — 28,697 views and the year's longest comments."),
+        ("Feb", "The LEI workshop", "27 videos in one month. The channel's highest like rate (17.3%) and lowest reach (1,397 views)."),
+        ("23 Jul", "The object door", "“troquei meu MacBook PRO por um Air M5” — 32,789 views, 22.3× the previous median."),
+        ("25–26 Aug", "The turn", "Backpack + MacBook Air 30 days. Median views double; the like rate falls from 15.6% to 6.0%."),
+        ("01 Sep", "The essay returns", "“e se?” — 13,151 views. The format that balances reach and bond."),
+        ("06 Nov", "The current cut", "414 public videos, 56,000 subscribers, 1,380,696 views in 2026."),
+    ]
     out = []
     for d, t, n in items:
         out.append(f'<li><span class="tl-date">{d}</span><div><strong>{t}</strong><p>{n}</p></div></li>')
@@ -516,6 +505,7 @@ def build(lang):
     LANG = lang
     template = TEMPLATES[lang].read_text(encoding="utf-8")
     replacements = {
+        "{{DESIGN_CSS}}": DESIGN_CSS,
         "{{HERO_STRIP}}": hero_strip(),
         "{{CHART_MONTHLY_VIEWS}}": monthly_svg("views"),
         "{{CHART_MONTHLY_LIKES}}": monthly_svg("likes"),
@@ -530,8 +520,9 @@ def build(lang):
         "{{BOTTOM_TABLE}}": bottom_table(),
         "{{BOTTOM_FRAMES}}": frames(["H6NBkGR3bWI", "E5xapLBlcHY", "xWeZaDEbZys",
                                     "Zgp8LDMIXvI", "BJpDGp1YY7k", "j7lRoGTu0V0"], "B"),
-        "{{TIMELINE}}": timeline(),
     }
+    if lang == "en":
+        replacements["{{TIMELINE}}"] = timeline()
     out = template
     for k, v in replacements.items():
         if k not in out:

@@ -7,9 +7,14 @@
 <meta name="description" content="A public-data study of Ricardo Franzen's 2026 videos: reach, formats, the August audience shift, and the next cut.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Archivo:wght@400..900&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300..700&display=swap" rel="stylesheet">
 <script>
-  try{var t=localStorage.getItem('rf-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}
+  try{var d=localStorage.getItem('rf-theme');if(d==='light'||d==='dark')document.documentElement.setAttribute('data-theme',d);}catch(e){}
+  try{
+    var q=new URLSearchParams(location.search).get('design');
+    var g=q||localStorage.getItem('rf-design');
+    if(g==='classic'||g==='cinema'||g==='notebook')document.documentElement.setAttribute('data-design',g);
+  }catch(e){}
 </script>
 <style>
   :root{
@@ -141,19 +146,24 @@
   }
   .top-nav a:hover{color:var(--ink);border-bottom-color:currentColor}
   .top-nav a.is-active{color:var(--ink);border-bottom-color:var(--accent-bright)}
-  .topbar-tools{display:flex;align-items:center;gap:8px;flex:none;margin-left:auto}
-  .lang-switch,.theme-toggle{
-    appearance:none;border:1px solid var(--line);background:var(--card);color:var(--ink);
-    font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
-    padding:6px 10px;border-radius:999px;cursor:pointer;line-height:1.2;
+  .masthead-tools{display:flex;justify-content:flex-end;align-items:center;gap:10px;flex-wrap:wrap}
+  .tools-pair{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .seg{display:inline-flex;align-items:stretch;border:1px solid var(--line);border-radius:3px;background:var(--card);overflow:hidden}
+  .seg-item{
+    appearance:none;border:0;background:transparent;color:var(--muted);
+    font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;
+    padding:5px 10px;line-height:1.3;cursor:pointer;text-decoration:none;
+    display:inline-flex;align-items:center;justify-content:center;min-height:26px;
   }
-  .lang-switch{border-bottom:1px solid var(--line);text-decoration:none}
-  .lang-switch:hover,.theme-toggle:hover{border-color:var(--axis);color:var(--ink);border-bottom-color:var(--axis)}
+  .seg-item + .seg-item{border-left:1px solid var(--line)}
+  .seg-item:hover{color:var(--ink)}
+  .seg-item.is-on{background:var(--ink);color:var(--paper);cursor:default}
+  .seg-item:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
   /* ---------- masthead ---------- */
-  .masthead{padding-top:clamp(26px,4vw,42px)}
+  .masthead{padding-top:clamp(18px,3vw,30px)}
   .kicker{
-    margin-top:clamp(38px,7vw,82px);
+    margin-top:clamp(30px,5vw,58px);
     font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
     color:var(--accent);display:flex;gap:10px;align-items:center;
   }
@@ -489,8 +499,9 @@
     .moves,.plan{grid-template-columns:1fr}
     .topbar-inner{gap:10px}
     .top-nav{gap:12px}
-    .lang-switch,.theme-toggle{padding:5px 8px;position:relative}
-    .lang-switch::after,.theme-toggle::after{content:"";position:absolute;inset:-11px -4px}
+    .masthead-tools{gap:8px}
+    .tools-pair{gap:8px}
+    .seg-item{min-height:36px;padding:7px 11px;font-size:10px}
     .deck{max-width:none}
     .prose{font-size:16px}
     table{min-width:480px}
@@ -499,8 +510,9 @@
     html{scroll-behavior:auto}
     *{transition:none!important;animation:none!important}
   }
+  {{DESIGN_CSS}}
   @media print{
-    .topbar,.lang-switch,.theme-toggle,.top-nav,#tip{display:none!important}
+    .topbar,.masthead-tools,.top-nav,#tip{display:none!important}
     section{scroll-margin-top:0}
     body{background:#fff;color:#000}
     section{padding-block:28px;break-inside:avoid}
@@ -508,7 +520,7 @@
   }
 </style>
 </head>
-<body data-ui-table="Table" data-ui-hide="Hide table" data-ui-dark="Dark" data-ui-light="Light" data-ui-aria-dark="Switch to light theme" data-ui-aria-light="Switch to dark theme">
+<body data-ui-table="Table" data-ui-hide="Hide table">
 
 <div class="topbar">
   <div class="topbar-inner wrap">
@@ -523,14 +535,27 @@
       <a href="#next">Next cut</a>
       <a href="#para">For Ricardo</a>
     </nav>
-    <div class="topbar-tools">
-      <a class="lang-switch" id="lang-switch" href="ricardo-franzen.html" hreflang="pt-BR" lang="pt-BR" data-lang-target="ricardo-franzen.html" title="Ler em português">PT</a>
-      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch theme">Dark</button>
-    </div>
   </div>
 </div>
 
 <header class="masthead wrap">
+  <div class="masthead-tools">
+    <div class="seg" role="group" aria-label="Report design">
+      <button class="seg-item is-on" type="button" data-design-set="classic" aria-pressed="true">Classic</button>
+      <button class="seg-item" type="button" data-design-set="cinema" aria-pressed="false">Cinema</button>
+      <button class="seg-item" type="button" data-design-set="notebook" aria-pressed="false">Notebook</button>
+    </div>
+    <div class="tools-pair">
+      <div class="seg" role="group" aria-label="Language">
+        <a class="seg-item" id="lang-switch" href="ricardo-franzen.html" hreflang="pt-BR" lang="pt-BR" data-lang-target="ricardo-franzen.html" title="Ler em português">PT</a>
+        <span class="seg-item is-on" aria-current="true">EN</span>
+      </div>
+      <div class="seg" role="group" aria-label="Theme">
+        <button class="seg-item" type="button" data-theme-set="light" aria-pressed="false">Light</button>
+        <button class="seg-item" type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+      </div>
+    </div>
+  </div>
   <p class="kicker">Ricardo Franzen · @ricardofranzenart</p>
   <h1>O Corte<br><em>do Diretor</em></h1>
   <p class="deck">414 public films. One identity. The daily vlog is not the problem — the door is.</p>
@@ -1138,23 +1163,23 @@
 (function(){
   var root = document.documentElement;
   var body = document.body;
-  var btn = document.getElementById('theme-toggle');
+  var themeButtons = Array.prototype.slice.call(document.querySelectorAll('[data-theme-set]'));
+  var designButtons = Array.prototype.slice.call(document.querySelectorAll('[data-design-set]'));
   var media = window.matchMedia('(prefers-color-scheme: dark)');
   var ui = {
     table: body.getAttribute('data-ui-table') || 'Table',
-    hide: body.getAttribute('data-ui-hide') || 'Hide table',
-    dark: body.getAttribute('data-ui-dark') || 'Dark',
-    light: body.getAttribute('data-ui-light') || 'Light',
-    ariaDark: body.getAttribute('data-ui-aria-dark') || 'Switch to light theme',
-    ariaLight: body.getAttribute('data-ui-aria-light') || 'Switch to dark theme'
+    hide: body.getAttribute('data-ui-hide') || 'Hide table'
   };
 
   function current(){
     return root.getAttribute('data-theme') || (media.matches ? 'dark' : 'light');
   }
   function paint(t){
-    btn.textContent = t === 'dark' ? ui.light : ui.dark;
-    btn.setAttribute('aria-label', t === 'dark' ? ui.ariaDark : ui.ariaLight);
+    themeButtons.forEach(function(b){
+      var on = b.getAttribute('data-theme-set') === t;
+      b.classList.toggle('is-on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
     updateFade();
   }
   function setTheme(t){
@@ -1166,8 +1191,42 @@
   var stored = null;
   try { stored = localStorage.getItem('rf-theme'); } catch (e) {}
   if (stored === 'light' || stored === 'dark') { setTheme(stored); } else { paint(current()); }
-  btn.addEventListener('click', function(){
-    setTheme(current() === 'dark' ? 'light' : 'dark');
+  themeButtons.forEach(function(b){
+    b.addEventListener('click', function(){
+      setTheme(b.getAttribute('data-theme-set'));
+    });
+  });
+
+  function paintDesign(d){
+    designButtons.forEach(function(b){
+      var on = b.getAttribute('data-design-set') === d;
+      b.classList.toggle('is-on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  function setDesign(d){
+    root.setAttribute('data-design', d);
+    paintDesign(d);
+    var langLink = document.getElementById('lang-switch');
+    if (langLink) langLink.href = langLink.getAttribute('data-lang-target') + '?design=' + d + location.hash;
+    try {
+      var u = new URL(location.href);
+      if (d === 'classic') { u.searchParams.delete('design'); } else { u.searchParams.set('design', d); }
+      history.replaceState(null, '', u.href);
+    } catch (e) {}
+    try { localStorage.setItem('rf-design', d); } catch (e) {}
+  }
+  var storedDesign = null;
+  try { storedDesign = localStorage.getItem('rf-design'); } catch (e) {}
+  var urlDesign = null;
+  try { urlDesign = new URLSearchParams(location.search).get('design'); } catch (e) {}
+  var initialDesign = (urlDesign === 'classic' || urlDesign === 'cinema' || urlDesign === 'notebook') ? urlDesign
+    : (storedDesign === 'cinema' || storedDesign === 'notebook' ? storedDesign : (root.getAttribute('data-design') || 'classic'));
+  paintDesign(initialDesign);
+  designButtons.forEach(function(b){
+    b.addEventListener('click', function(){
+      setDesign(b.getAttribute('data-design-set'));
+    });
   });
 
   document.querySelectorAll('[data-table]').forEach(function(b){
@@ -1245,7 +1304,7 @@
       allSections.forEach(function(s){
         if (s.getBoundingClientRect().top + window.scrollY <= y) current = '#' + s.id;
       });
-      lang.href = lang.getAttribute('data-lang-target') + current;
+      lang.href = lang.getAttribute('data-lang-target') + '?design=' + (root.getAttribute('data-design') || 'classic') + current;
     }
   }
   function queueSpy(){

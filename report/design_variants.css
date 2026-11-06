@@ -1,0 +1,454 @@
+/* ------------------------------------------------------------------
+   Report design variants
+   Selected with data-design="cinema" | "notebook" on <html>.
+   "classic" is the base stylesheet and needs no overrides.
+   ------------------------------------------------------------------ */
+
+/* ============================ CINEMA ============================== */
+
+:root[data-design="cinema"]{
+  color-scheme: light;
+  --paper:#F2EEE6;
+  --card:#FFFFFF;
+  --ink:#0F0E0C;
+  --muted:#5C564B;
+  --line:#D6CFC1;
+  --grid:#E4DED1;
+  --axis:#BFB6A4;
+  --wash:#E9E2D4;
+  --accent:#B23A0E;
+  --accent-bright:#E8590C;
+  --bar-accent:#FF9A62;
+  --bar-bg:#0F0E0C;
+  --bar-ink:#F2EEE6;
+  --strip-bg:#0F0E0C;
+  --strip-hole:#F2EEE6;
+  --serif:"Archivo","Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --radius:0px;
+  --measure:66ch;
+}
+@media (prefers-color-scheme: dark){
+  :root[data-design="cinema"]:not([data-theme="light"]){
+    color-scheme: dark;
+    --paper:#0D0C0B;
+    --card:#161513;
+    --ink:#F3EDE1;
+    --muted:#A69C8C;
+    --line:#2B2823;
+    --grid:#24211D;
+    --axis:#403A32;
+    --wash:#1B1916;
+    --accent:#FF8A4C;
+    --accent-bright:#FFA06B;
+    --bar-accent:#FF8A4C;
+    --bar-bg:#161513;
+    --bar-ink:#F3EDE1;
+    --strip-bg:#161513;
+    --strip-hole:#8C8478;
+  }
+}
+:root[data-design="cinema"][data-theme="dark"]{
+  color-scheme: dark;
+  --paper:#0D0C0B;
+  --card:#161513;
+  --ink:#F3EDE1;
+  --muted:#A69C8C;
+  --line:#2B2823;
+  --grid:#24211D;
+  --axis:#403A32;
+  --wash:#1B1916;
+  --accent:#FF8A4C;
+  --accent-bright:#FFA06B;
+  --bar-accent:#FF8A4C;
+  --bar-bg:#161513;
+  --bar-ink:#F3EDE1;
+  --strip-bg:#161513;
+  --strip-hole:#8C8478;
+}
+
+:root[data-design="cinema"] h1{
+  font-size:clamp(54px,10.6vw,130px);
+  line-height:.86;
+  letter-spacing:-.045em;
+  font-weight:800;
+  text-transform:uppercase;
+}
+:root[data-design="cinema"] h1 em{
+  font-style:normal;
+  color:var(--accent-bright);
+}
+:root[data-design="cinema"] h2{
+  font-size:clamp(31px,4.7vw,51px);
+  line-height:.98;
+  letter-spacing:-.032em;
+  font-weight:800;
+  text-transform:uppercase;
+}
+:root[data-design="cinema"] h3{
+  font-weight:700;
+  letter-spacing:-.012em;
+}
+:root[data-design="cinema"] .kicker{
+  letter-spacing:.2em;
+  font-size:10.5px;
+}
+:root[data-design="cinema"] .deck{
+  font-size:clamp(20px,2.4vw,27px);
+  line-height:1.3;
+  font-weight:500;
+}
+:root[data-design="cinema"] .lead{
+  font-weight:600;
+  letter-spacing:-.025em;
+}
+:root[data-design="cinema"] .lead em{
+  font-style:normal;
+}
+:root[data-design="cinema"] .byline{
+  letter-spacing:.09em;
+}
+
+/* Inverted bar, like a slate above the frame. */
+:root[data-design="cinema"] .topbar{
+  background:var(--bar-bg);
+  border-bottom:0;
+}
+:root[data-design="cinema"] .topbar .brand{
+  color:var(--bar-accent);
+}
+:root[data-design="cinema"] .top-nav a{
+  color:var(--bar-ink);
+  opacity:.6;
+}
+:root[data-design="cinema"] .top-nav a:hover,
+:root[data-design="cinema"] .top-nav a.is-active{
+  color:var(--bar-ink);
+  opacity:1;
+}
+:root[data-design="cinema"] .top-nav a:hover{
+  border-bottom-color:var(--bar-ink);
+}
+:root[data-design="cinema"] .top-nav a.is-active{
+  border-bottom-color:var(--bar-accent);
+}
+:root[data-design="cinema"] .topbar-inner{
+  min-height:46px;
+}
+
+/* Filmstrip: the six stills ride inside a strip of sprockets. */
+:root[data-design="cinema"] .hero-strip{
+  gap:2px;
+  border:0;
+  padding:16px 0;
+  background:var(--strip-bg);
+  position:relative;
+}
+:root[data-design="cinema"] .hero-strip::before,
+:root[data-design="cinema"] .hero-strip::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  height:6px;
+  background-image:repeating-linear-gradient(90deg,var(--strip-hole) 0 5px,transparent 5px 14px);
+  opacity:.85;
+  pointer-events:none;
+}
+:root[data-design="cinema"] .hero-strip::before{top:3px}
+:root[data-design="cinema"] .hero-strip::after{bottom:3px}
+:root[data-design="cinema"] .hero-frame{
+  border-radius:0;
+  background:var(--ink);
+  outline:1px solid var(--ink);
+}
+:root[data-design="cinema"] .factbar{
+  border-top:2px solid var(--ink);
+}
+:root[data-design="cinema"] .fact dt{
+  color:var(--accent);
+}
+:root[data-design="cinema"] .fact dd{
+  font-weight:600;
+}
+
+/* Section number as a slate tag. */
+:root[data-design="cinema"] .section-head{
+  border-bottom:2px solid var(--ink);
+  padding-bottom:16px;
+}
+:root[data-design="cinema"] .section-head .num{
+  display:inline-block;
+  justify-self:start;
+  height:max-content;
+  padding:3px 7px;
+  background:var(--accent);
+  color:var(--paper);
+  font-size:9px;
+  letter-spacing:.12em;
+  padding-top:4px;
+}
+:root[data-design="cinema"] .para .section-head{
+  border-bottom:2px solid var(--ink);
+}
+
+:root[data-design="cinema"] .card{
+  border-top:2px solid var(--ink);
+  border-radius:0;
+}
+:root[data-design="cinema"] .move{
+  border-radius:0;
+  border-top:3px solid var(--accent);
+}
+:root[data-design="cinema"] .kpis,
+:root[data-design="cinema"] .kpi{
+  border-radius:0;
+}
+:root[data-design="cinema"] .ghost,
+:root[data-design="cinema"] .seg,
+:root[data-design="cinema"] .seg-item{
+  border-radius:0;
+}
+:root[data-design="cinema"] .seg-item.is-on{
+  background:var(--accent);
+  color:var(--paper);
+}
+:root[data-design="cinema"] .frame-img{
+  border-radius:0;
+}
+:root[data-design="cinema"] .frame-no{
+  background:var(--accent);
+  color:var(--paper);
+  border-radius:0;
+  letter-spacing:.1em;
+}
+:root[data-design="cinema"] .chart-head h3{
+  font-size:19px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:-.01em;
+}
+:root[data-design="cinema"] .chart-card{
+  border-top-width:3px;
+}
+:root[data-design="cinema"] th{
+  background:var(--wash);
+}
+:root[data-design="cinema"] .pullquote{
+  border-top:2px solid var(--ink);
+}
+:root[data-design="cinema"] .summary-thesis{
+  font-weight:600;
+}
+:root[data-design="cinema"] .para{
+  border-left-width:1px;
+  border-left-color:var(--line);
+  border-top:3px solid var(--accent);
+}
+:root[data-design="cinema"] .guardrails{
+  border-left-width:1px;
+  border-top:2px solid var(--accent);
+}
+:root[data-design="cinema"] .aside-note{
+  border-left-width:1px;
+}
+:root[data-design="cinema"] .kc li::before,
+:root[data-design="cinema"] .tag i{
+  border-radius:0;
+}
+:root[data-design="cinema"] .quote-card blockquote,
+:root[data-design="cinema"] .pullquote blockquote{
+  font-weight:600;
+}
+:root[data-design="cinema"] .para .closing{
+  font-weight:700;
+}
+:root[data-design="cinema"] .move h3,
+:root[data-design="cinema"] .week h3{
+  font-weight:700;
+}
+:root[data-design="cinema"] .summary-jump a,
+:root[data-design="cinema"] .chart-caption a{
+  text-underline-offset:3px;
+}
+
+/* =========================== NOTEBOOK ============================ */
+
+:root[data-design="notebook"]{
+  color-scheme: light;
+  --paper:#EFF1E7;
+  --card:#F8F9F1;
+  --ink:#1C241D;
+  --muted:#566256;
+  --line:#CBD2C0;
+  --grid:#DCE1D1;
+  --axis:#B7BFA9;
+  --wash:#E4E8D8;
+  --accent:#2F5D46;
+  --accent-bright:#3F7A5B;
+  --graph:rgba(47,93,70,.055);
+  --photo-shadow:0 2px 6px rgba(28,36,29,.14);
+  --card-shadow:0 1px 3px rgba(28,36,29,.07);
+  --serif:"Newsreader","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --radius:0px;
+  --measure:65ch;
+}
+@media (prefers-color-scheme: dark){
+  :root[data-design="notebook"]:not([data-theme="light"]){
+    color-scheme: dark;
+    --paper:#12160F;
+    --card:#1A1F16;
+    --ink:#EAEDDD;
+    --muted:#9DA692;
+    --line:#2F362A;
+    --grid:#252B21;
+    --axis:#454D3D;
+    --wash:#1F251B;
+    --accent:#9CC6A8;
+    --accent-bright:#B6D8BF;
+    --graph:rgba(182,216,191,.05);
+    --photo-shadow:0 2px 8px rgba(0,0,0,.55);
+    --card-shadow:0 1px 3px rgba(0,0,0,.4);
+  }
+}
+:root[data-design="notebook"][data-theme="dark"]{
+  color-scheme: dark;
+  --paper:#12160F;
+  --card:#1A1F16;
+  --ink:#EAEDDD;
+  --muted:#9DA692;
+  --line:#2F362A;
+  --grid:#252B21;
+  --axis:#454D3D;
+  --wash:#1F251B;
+  --accent:#9CC6A8;
+  --accent-bright:#B6D8BF;
+  --graph:rgba(182,216,191,.05);
+  --photo-shadow:0 2px 8px rgba(0,0,0,.55);
+  --card-shadow:0 1px 3px rgba(0,0,0,.4);
+}
+
+/* Field-notebook paper: one ruled baseline grid, faint enough to read through. */
+:root[data-design="notebook"] body{
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--graph) 1px, transparent 1px);
+  background-size:100% 32px;
+  background-position:0 -1px;
+}
+:root[data-design="notebook"] h1{
+  font-size:clamp(50px,9.6vw,114px);
+  line-height:.95;
+  letter-spacing:-.035em;
+  font-weight:400;
+}
+:root[data-design="notebook"] h2{
+  font-size:clamp(33px,5vw,52px);
+  line-height:1.02;
+  letter-spacing:-.025em;
+  font-weight:400;
+}
+:root[data-design="notebook"] h3{
+  font-weight:600;
+}
+:root[data-design="notebook"] .deck{
+  font-weight:400;
+  font-size:clamp(20px,2.5vw,27px);
+}
+:root[data-design="notebook"] .lead{
+  font-weight:400;
+}
+:root[data-design="notebook"] .kicker{
+  letter-spacing:.14em;
+}
+:root[data-design="notebook"] .wrap{
+  max-width:1100px;
+}
+:root[data-design="notebook"] .section-head{
+  border-bottom:1px dashed var(--line);
+  padding-bottom:16px;
+}
+:root[data-design="notebook"] .section-head .num{
+  display:inline-block;
+  justify-self:start;
+  height:max-content;
+  padding:2px 7px;
+  border:1px solid var(--line);
+  background:var(--card);
+  font-size:9.5px;
+  letter-spacing:.06em;
+}
+:root[data-design="notebook"] .para .section-head{
+  border-bottom:1px dashed var(--line);
+}
+
+/* Stills mounted on paper. */
+:root[data-design="notebook"] .hero-strip{
+  gap:14px;
+  border-top:0;
+  padding-top:0;
+}
+:root[data-design="notebook"] .hero-frame{
+  border:5px solid var(--card);
+  border-radius:0;
+  background:var(--card);
+  box-shadow:var(--photo-shadow);
+  transform:rotate(-.55deg);
+}
+:root[data-design="notebook"] .hero-frame:nth-child(even){
+  transform:rotate(.6deg);
+}
+:root[data-design="notebook"] .card{
+  border-radius:0;
+  box-shadow:var(--card-shadow);
+}
+:root[data-design="notebook"] .move{
+  border-radius:0;
+  border-top:2px solid var(--accent);
+  box-shadow:var(--card-shadow);
+}
+:root[data-design="notebook"] .kpis,
+:root[data-design="notebook"] .kpi{
+  border-radius:0;
+}
+:root[data-design="notebook"] .ghost,
+:root[data-design="notebook"] .seg,
+:root[data-design="notebook"] .seg-item{
+  border-radius:0;
+}
+:root[data-design="notebook"] .frame-img{
+  border-radius:0;
+}
+:root[data-design="notebook"] .frame-no{
+  background:var(--card);
+  color:var(--ink);
+  border:1px solid var(--line);
+  border-radius:0;
+}
+:root[data-design="notebook"] th{
+  border-bottom:3px double var(--line);
+}
+:root[data-design="notebook"] .para{
+  border-left-width:1px;
+  border-left-color:var(--line);
+  border-top:2px solid var(--accent);
+  box-shadow:var(--card-shadow);
+}
+:root[data-design="notebook"] .guardrails{
+  border-left-width:1px;
+  border-top:2px solid var(--accent);
+}
+:root[data-design="notebook"] .aside-note{
+  border-left-width:1px;
+}
+:root[data-design="notebook"] .pullquote blockquote,
+:root[data-design="notebook"] .quote-card blockquote,
+:root[data-design="notebook"] .summary-thesis,
+:root[data-design="notebook"] .para .closing{
+  font-weight:400;
+}
+:root[data-design="notebook"] .chart-head h3{
+  font-weight:600;
+}
+:root[data-design="notebook"] .move h3,
+:root[data-design="notebook"] .week h3{
+  font-weight:600;
+}

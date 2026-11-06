@@ -7,9 +7,14 @@
 <meta name="description" content="Um estudo de dados públicos dos vídeos de Ricardo Franzen em 2026: alcance, formatos, a virada de público em agosto e o próximo corte.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Archivo:wght@400..900&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300..700&display=swap" rel="stylesheet">
 <script>
-  try{var t=localStorage.getItem('rf-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}
+  try{var d=localStorage.getItem('rf-theme');if(d==='light'||d==='dark')document.documentElement.setAttribute('data-theme',d);}catch(e){}
+  try{
+    var q=new URLSearchParams(location.search).get('design');
+    var g=q||localStorage.getItem('rf-design');
+    if(g==='classic'||g==='cinema'||g==='notebook')document.documentElement.setAttribute('data-design',g);
+  }catch(e){}
 </script>
 <style>
   :root{
@@ -141,19 +146,24 @@
   }
   .top-nav a:hover{color:var(--ink);border-bottom-color:currentColor}
   .top-nav a.is-active{color:var(--ink);border-bottom-color:var(--accent-bright)}
-  .topbar-tools{display:flex;align-items:center;gap:8px;flex:none;margin-left:auto}
-  .lang-switch,.theme-toggle{
-    appearance:none;border:1px solid var(--line);background:var(--card);color:var(--ink);
-    font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
-    padding:6px 10px;border-radius:999px;cursor:pointer;line-height:1.2;
+  .masthead-tools{display:flex;justify-content:flex-end;align-items:center;gap:10px;flex-wrap:wrap}
+  .tools-pair{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .seg{display:inline-flex;align-items:stretch;border:1px solid var(--line);border-radius:3px;background:var(--card);overflow:hidden}
+  .seg-item{
+    appearance:none;border:0;background:transparent;color:var(--muted);
+    font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;
+    padding:5px 10px;line-height:1.3;cursor:pointer;text-decoration:none;
+    display:inline-flex;align-items:center;justify-content:center;min-height:26px;
   }
-  .lang-switch{border-bottom:1px solid var(--line);text-decoration:none}
-  .lang-switch:hover,.theme-toggle:hover{border-color:var(--axis);color:var(--ink);border-bottom-color:var(--axis)}
+  .seg-item + .seg-item{border-left:1px solid var(--line)}
+  .seg-item:hover{color:var(--ink)}
+  .seg-item.is-on{background:var(--ink);color:var(--paper);cursor:default}
+  .seg-item:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
   /* ---------- masthead ---------- */
-  .masthead{padding-top:clamp(26px,4vw,42px)}
+  .masthead{padding-top:clamp(18px,3vw,30px)}
   .kicker{
-    margin-top:clamp(38px,7vw,82px);
+    margin-top:clamp(30px,5vw,58px);
     font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
     color:var(--accent);display:flex;gap:10px;align-items:center;
   }
@@ -489,8 +499,9 @@
     .moves,.plan{grid-template-columns:1fr}
     .topbar-inner{gap:10px}
     .top-nav{gap:12px}
-    .lang-switch,.theme-toggle{padding:5px 8px;position:relative}
-    .lang-switch::after,.theme-toggle::after{content:"";position:absolute;inset:-11px -4px}
+    .masthead-tools{gap:8px}
+    .tools-pair{gap:8px}
+    .seg-item{min-height:36px;padding:7px 11px;font-size:10px}
     .deck{max-width:none}
     .prose{font-size:16px}
     table{min-width:480px}
@@ -499,8 +510,9 @@
     html{scroll-behavior:auto}
     *{transition:none!important;animation:none!important}
   }
+  {{DESIGN_CSS}}
   @media print{
-    .topbar,.lang-switch,.theme-toggle,.top-nav,#tip{display:none!important}
+    .topbar,.masthead-tools,.top-nav,#tip{display:none!important}
     section{scroll-margin-top:0}
     body{background:#fff;color:#000}
     section{padding-block:28px;break-inside:avoid}
@@ -508,7 +520,7 @@
   }
 </style>
 </head>
-<body data-ui-table="Tabela" data-ui-hide="Ocultar tabela" data-ui-dark="Escuro" data-ui-light="Claro" data-ui-aria-dark="Mudar para o tema claro" data-ui-aria-light="Mudar para o tema escuro">
+<body data-ui-table="Tabela" data-ui-hide="Ocultar tabela">
 
 <div class="topbar">
   <div class="topbar-inner wrap">
@@ -523,18 +535,31 @@
       <a href="#next">Próximo corte</a>
       <a href="#para">Para o Ricardo</a>
     </nav>
-    <div class="topbar-tools">
-      <a class="lang-switch" id="lang-switch" href="ricardo-franzen-en.html" hreflang="en" lang="en" data-lang-target="ricardo-franzen-en.html" title="Read in English">EN</a>
-      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Mudar o tema">Escuro</button>
-    </div>
   </div>
 </div>
 
 <header class="masthead wrap">
+  <div class="masthead-tools">
+    <div class="seg" role="group" aria-label="Design do relatório">
+      <button class="seg-item is-on" type="button" data-design-set="classic" aria-pressed="true">Clássico</button>
+      <button class="seg-item" type="button" data-design-set="cinema" aria-pressed="false">Cinema</button>
+      <button class="seg-item" type="button" data-design-set="notebook" aria-pressed="false">Caderno</button>
+    </div>
+    <div class="tools-pair">
+      <div class="seg" role="group" aria-label="Idioma">
+        <span class="seg-item is-on" aria-current="true">PT</span>
+        <a class="seg-item" id="lang-switch" href="ricardo-franzen-en.html" hreflang="en" lang="en" data-lang-target="ricardo-franzen-en.html" title="Read in English">EN</a>
+      </div>
+      <div class="seg" role="group" aria-label="Tema">
+        <button class="seg-item" type="button" data-theme-set="light" aria-pressed="false">Claro</button>
+        <button class="seg-item" type="button" data-theme-set="dark" aria-pressed="false">Escuro</button>
+      </div>
+    </div>
+  </div>
   <p class="kicker">Ricardo Franzen · @ricardofranzenart</p>
   <h1>O Corte<br><em>do Diretor</em></h1>
-  <p class="deck">414 filmes públicos. Uma identidade. O vlog diário não é o problema — a porta é.</p>
-  <p class="dek-sub">Um estudo de dados públicos do trabalho de 2026: o que chegou a estranhos, o que aprofundou a relação, e o que pode mudar sem mudar quem ele é.</p>
+  <p class="deck">414 filmes públicos. Uma identidade. O vlog diário não é o problema — o que falta é uma porta.</p>
+  <p class="dek-sub">Um estudo dos dados públicos de 2026: o que alcançou gente nova, o que fortaleceu a relação com quem já acompanha, e o que pode mudar sem mudar quem ele é.</p>
   <div class="byline">
     <span>Preparado em 6 de novembro de 2026</span>
     <span>Somente dados públicos</span>
@@ -546,11 +571,11 @@
 
   <dl class="factbar">
     <div class="fact"><dt>Canal</dt><dd>Ricardo Franzen<span>cineasta · diário</span></dd></div>
-    <div class="fact"><dt>Inscritos</dt><dd>56.000<span>contagem pública</span></dd></div>
+    <div class="fact"><dt>Inscritos</dt><dd>56.000<span>número público</span></dd></div>
     <div class="fact"><dt>Vídeos públicos</dt><dd>414<span>só 2026</span></dd></div>
-    <div class="fact"><dt>Views em 2026</dt><dd>1.380.696<span>cumulativas</span></dd></div>
+    <div class="fact"><dt>Views em 2026</dt><dd>1.380.696<span>acumuladas</span></dd></div>
     <div class="fact"><dt>Vídeo mediano</dt><dd>2.406<span>views</span></dd></div>
-    <div class="fact"><dt>Amostra profunda</dt><dd>40 filmes<span>1.785 comentários</span></dd></div>
+    <div class="fact"><dt>Amostra detalhada</dt><dd>40 filmes<span>1.785 comentários</span></dd></div>
   </dl>
 </header>
 
@@ -562,7 +587,7 @@
       <span class="num">00</span>
       <div>
         <h2>O argumento inteiro, em uma página</h2>
-        <p class="standfirst">O que os dados mostram, o que eu recomendo, e onde cada parte é defendida. Leia isto primeiro; o resto é a evidência.</p>
+        <p class="standfirst">O que os dados mostram, o que eu recomendo e onde cada parte é explicada. Leia esta página primeiro; o resto é a evidência.</p>
       </div>
     </div>
 
@@ -570,10 +595,10 @@
       <div class="summary-findings">
         <p class="summary-label">Quatro achados</p>
         <ol>
-          <li><strong>O filme diário é o vínculo.</strong> 414 filmes públicos em 310 dias. Antes de 25 de agosto, o vlog diário tinha taxa de like de 16,4% — acima da mediana de 15,6% do canal — com 1.975 views.</li>
-          <li><strong>A porta é o pacote.</strong> Nenhum dos 14 filmes mais vistos tem título de entrada de diário: sete são filmes de ideia, seis de objeto, um é collab.</li>
-          <li><strong>Agosto mudou o público.</strong> A mediana de views subiu 55% depois de 25 de agosto, enquanto a taxa de like caiu de 15,6% para 6,0%. O alcance chegou; a familiaridade não.</li>
-          <li><strong>O canto superior direito está vazio.</strong> Nenhum formato combina alcance acima da mediana com vínculo acima da mediana. O ensaio é o mais próximo: 2.849 views e 14,4% antes da virada.</li>
+          <li><strong>O vlog diário é o que cria vínculo.</strong> 414 vídeos públicos em 310 dias. Antes de 25 de agosto, o vlog diário tinha 16,4% de taxa de like — acima da mediana do canal, 15,6% — e 1.975 views.</li>
+          <li><strong>O que abre a porta é a embalagem.</strong> Nenhum dos 14 vídeos mais vistos tem título de diário: sete são filmes de ideia, seis de equipamento e um é colaboração.</li>
+          <li><strong>Agosto trouxe gente nova.</strong> A mediana de views subiu 55% depois de 25 de agosto. A taxa de like caiu de 15,6% para 6,0%. O alcance chegou; a intimidade não.</li>
+          <li><strong>Nenhum formato faz as duas coisas.</strong> Nenhum combina alcance acima da mediana com vínculo acima da mediana. O ensaio chega mais perto: 2.849 views e 14,4% de likes antes da virada.</li>
         </ol>
       </div>
       <div class="summary-map">
@@ -581,14 +606,14 @@
         <ul>
           <li><span>01–02</span>O diagnóstico e o ano em números</li>
           <li><span>03–04</span>A virada de agosto e o mapa dos formatos</li>
-          <li><span>05–07</span>Os filmes que abriram portas, o padrão e os que não viajaram</li>
+          <li><span>05–07</span>Os filmes que abriram portas, o padrão e os que não alcançaram</li>
           <li><span>08–09</span>A linha que não pode mudar e o próximo corte — com um plano de 30 dias</li>
-          <li><span>10–13</span>Linha do tempo, limites, método e a carta ao Ricardo</li>
+          <li><span>10–11</span>Limites, método e a carta ao Ricardo</li>
         </ul>
       </div>
     </div>
 
-    <p class="summary-thesis">A tese em uma linha: <em>o vlog diário é o relacionamento; o ensaio é a porta.</em> A mudança está na moldura — título, miniatura, abertura, final —, não no filme.</p>
+    <p class="summary-thesis">Em uma linha: <em>o vlog diário constrói a relação; o ensaio abre a porta.</em> O que muda é a embalagem — título, miniatura, abertura e final —, não o filme.</p>
     <p class="summary-jump"><a href="#next">Ir direto para a recomendação →</a></p>
   </section>
 
@@ -598,22 +623,22 @@
       <span class="num">01</span>
       <div>
         <h2>O diário não é o problema</h2>
-        <p class="standfirst">Ele já filma todos os dias. O próximo passo é montar o filme — não para virar outra coisa, mas para virar algo em que um estranho consiga entrar.</p>
+        <p class="standfirst">Ele já filma todos os dias. O próximo passo é montar o filme de outro jeito — não para virar outra pessoa, mas para que um estranho consiga entrar.</p>
       </div>
     </div>
 
     <div class="split">
       <div class="prose">
-        <p class="lead">O vlog é o relacionamento. <em>O ensaio é a porta.</em></p>
-        <p>O canal do Ricardo nasceu de uma promessa rara: um filme por dia, feito de uma vida real. O vlog diário não é um formato que ele escolheu porque performa. É a prática. Dá a ele o material, a disciplina e a relação com as pessoas que acompanham. Em 2026, foram 414 vídeos públicos em 310 dias — mais de um por dia, na média — e 1,38 milhão de views.</p>
-        <p>O problema não é a frequência. É a moldura. A maioria dos uploads tem título e miniatura de diário: <em>“café”</em>, <em>“Cores em Movimento”</em>, <em>“287/365”</em>, <em>“VLOG 1019”</em>. Uma entrada de diário só é um convite para quem já conhece o autor. Para um estranho, é uma porta fechada.</p>
-        <p>Os 14 filmes que mais longe chegaram em 2026 fizeram algo diferente. Fizeram uma promessa antes do filme começar: uma tese, uma pergunta, um teste, um risco. O filme por dentro continuava dele — quente, em primeira pessoa, sem pressa. A diferença era a porta.</p>
-        <p>A oportunidade não é virar outro cineasta. É dar uma porta ao filme diário: um título que promete, um cartaz que mostra um rosto e um objeto, primeiros vinte segundos que começam no risco. O ensaio já faz quase tudo isso. É a ponte entre o diário e o estranho.</p>
+        <p class="lead">O vlog é a relação. <em>O ensaio é a porta.</em></p>
+        <p>O canal do Ricardo nasceu de uma promessa rara: um filme por dia, feito de uma vida real. O vlog diário não é um formato escolhido porque performa. É a prática que dá a ele o material, a disciplina e a relação com quem acompanha. Em 2026, foram 414 vídeos públicos em 310 dias — mais de um por dia, na média — e 1,38 milhão de views.</p>
+        <p>O problema não é a frequência. É a embalagem. A maioria dos vídeos tem título e miniatura de diário: <em>“café”</em>, <em>“Cores em Movimento”</em>, <em>“287/365”</em>, <em>“VLOG 1019”</em>. Para quem já acompanha, isso basta. Para quem não conhece, não há motivo para clicar.</p>
+        <p>Os 14 vídeos que mais longe chegaram em 2026 fizeram diferente: prometeram algo antes do filme começar. Uma tese, uma pergunta, um teste, um risco. Por dentro, o filme continuava dele — íntimo, em primeira pessoa, sem pressa. A diferença estava na porta.</p>
+        <p>A oportunidade não é virar outro cineasta. É dar uma porta ao filme diário: um título que promete, uma miniatura que mostra um rosto e um objeto, e primeiros vinte segundos que começam pelo risco. O ensaio já faz quase tudo isso. É a ponte entre o diário e quem chega de fora.</p>
       </div>
       <aside class="stack">
         <div class="card">
-          <p class="aside-note"><strong>O que este relatório é.</strong> Uma leitura da superfície pública do canal — títulos, miniaturas, durações, views, likes, comentários e 58 transcrições — focada só em 2026. É um diagnóstico da moldura, não um veredito sobre o trabalho.</p>
-          <p class="aside-note" style="margin-top:16px"><strong>O que ele não é.</strong> Um relatório do Estúdio. Impressões, taxa de cliques, tempo de exibição, fontes de tráfego e espectadores recorrentes não estão disponíveis. Toda afirmação causal aqui é uma hipótese, claramente marcada como tal.</p>
+          <p class="aside-note"><strong>O que este relatório é.</strong> Uma leitura dos dados públicos do canal — títulos, miniaturas, durações, views, likes, comentários e 58 transcrições — só de 2026. É um diagnóstico da embalagem, não um julgamento do trabalho.</p>
+          <p class="aside-note" style="margin-top:16px"><strong>O que ele não é.</strong> Um relatório do YouTube Studio. Não temos impressões, taxa de cliques (CTR), tempo de exibição, fontes de tráfego nem espectadores recorrentes. Toda relação de causa aqui é uma hipótese.</p>
         </div>
         <div class="pullquote">
           <blockquote>“Eu faço filmes sobre tudo aquilo que me inspira.”</blockquote>
@@ -629,13 +654,13 @@
       <span class="num">02</span>
       <div>
         <h2>O ano em um olhar</h2>
-        <p class="standfirst">Um platô na primavera, uma queda no verão, um salto em setembro. Depois, uma segunda história: a taxa de like cai pela metade.</p>
+        <p class="standfirst">A mediana de views ficou estável até agosto, subiu em setembro e outubro — e a taxa de like caiu pela metade. Duas histórias no mesmo ano.</p>
       </div>
     </div>
 
     <div class="prose">
-      <p>A mediana de views ficou entre 1.749 e 2.542 de fevereiro a agosto. Janeiro foi o ponto fora da curva, com 3.469, impulsionado pelo maior filme do ano. Setembro e outubro mais que dobraram a mediana do verão, com 3.491 e 3.614. Novembro está incompleto — 12 vídeos em seis dias, mediana de 2.762 — e deve ser lido como um número em andamento, não como um mês fechado.</p>
-      <p>O segundo painel é o alerta. A taxa de like mediana foi muito estável — entre 13,1% e 17,1% — nos primeiros oito meses. Em setembro, caiu para 6,1% e ficou perto de 5–6% em outubro e novembro. Mais views; uma fatia menor delas curtida. Em dados públicos, é assim que se parece um público maior e menos familiar.</p>
+      <p>De fevereiro a agosto, a mediana de views ficou entre 1.749 e 2.542. Janeiro foi a exceção: 3.469, puxada pelo maior vídeo do ano. Em setembro e outubro, a mediana mais que dobrou em relação ao verão: 3.491 e 3.614. Novembro ainda está incompleto — 12 vídeos em seis dias, mediana de 2.762 — e deve ser lido como número parcial.</p>
+      <p>O segundo gráfico é o alerta. A taxa de like mediana ficou entre 13,1% e 17,1% nos primeiros oito meses. Em setembro, caiu para 6,1% e seguiu perto de 5% a 6% em outubro e novembro. Mais views, mas uma fatia menor delas curtida. É o que um público maior e menos familiar costuma parecer nos dados públicos.</p>
     </div>
 
     <figure class="chart-card card">
@@ -656,11 +681,11 @@
           {{CHART_MONTHLY_LIKES}}
         </div>
       </div>
-      <figcaption class="chart-caption">Dois painéis, duas escalas — não um eixo duplo. A faixa sombreada marca setembro–novembro, os meses depois da mudança de público. Passe o mouse ou foque um ponto para ver a contagem e o valor do mês; a tabela traz todos os números.</figcaption>
+      <figcaption class="chart-caption">Dois painéis, duas escalas — não um eixo duplo. A faixa sombreada marca setembro a novembro. Passe o mouse ou toque em um ponto para ver o número do mês; a tabela traz todos os dados.</figcaption>
       <div class="table-wrap" id="tbl-year" hidden>
         <table>
           <caption>Medianas mensais, 2026</caption>
-          <thead><tr><th scope="col">Mês</th><th scope="col" class="num">Vídeos</th><th scope="col" class="num">Mediana de views</th><th scope="col" class="num">Taxa de like mediana</th><th scope="col" class="num">Fatia ≥ 5 mil</th></tr></thead>
+          <thead><tr><th scope="col">Mês</th><th scope="col" class="num">Vídeos</th><th scope="col" class="num">Mediana de views</th><th scope="col" class="num">Taxa de like mediana</th><th scope="col" class="num">≥ 5 mil views</th></tr></thead>
           <tbody>{{MONTHLY_TABLE}}</tbody>
         </table>
       </div>
@@ -673,26 +698,26 @@
       <span class="num">03</span>
       <div>
         <h2>A virada de agosto</h2>
-        <p class="standfirst">O alcance dobrou. O vínculo não. O evento mais útil do ano é o que mostra o que acontece quando uma história de equipamento abre a porta.</p>
+        <p class="standfirst">O alcance subiu. O vínculo caiu. Agosto mostra o que acontece quando um vídeo de equipamento abre a porta para gente nova.</p>
       </div>
     </div>
 
     <div class="prose">
-      <p>A ruptura não é o filme do MacBook em julho. A taxa de like mediana de julho ainda era 15,8%. A mudança começa com <em>“O QUE EU LEVO NA MOCHILA”</em>, de 25 de agosto (5.213 views, 5,9% de likes), e com <em>“Usei o MacBook Air M5 por 30 Dias”</em>, de 26 de agosto (19.771 views, 2,7%). A partir dali, o vídeo mediano do canal chegou a 3.416 views — 55% mais que a mediana de 2.208 anterior — enquanto a taxa de like mediana caiu de 15,6% para 6,0%, os comentários de 47 para 26, e a fatia de vídeos que passam de 5.000 views subiu de 7% para 26%.</p>
-      <p>Duas leituras são compatíveis com os dados públicos. Primeira: os filmes de equipamento trouxeram um público mais amplo, que ainda não tem relação com o Ricardo: assiste, mas não curte nem comenta no ritmo antigo. Segunda: o centro de gravidade do canal saiu do filme diário em direção ao filme de produto, e os filmes diários que vieram depois herdaram uma mistura diferente de público. As duas podem ser verdade. Sem dados de fontes de tráfego e de espectadores recorrentes, nenhuma pode ser provada.</p>
-      <p>O que está claro: <strong>há alcance disponível.</strong> A onda de agosto mostra que o canal consegue encontrar estranhos. A tarefa não é continuar perseguindo a onda; é converter os estranhos que a onda trouxe. Um filme de equipamento pode ser o primeiro filme que alguém vê. O próximo filme precisa fazer essa pessoa ficar.</p>
+      <p>A virada não começa com o vídeo do MacBook em julho: a taxa de like mediana daquele mês ainda era 15,8%. Começa em 25 de agosto, com <em>“O QUE EU LEVO NA MOCHILA”</em> (5.213 views, 5,9% de likes), e em 26 de agosto, com <em>“Usei o MacBook Air M5 por 30 Dias”</em> (19.771 views, 2,7%). Depois disso, o vídeo mediano passou a 3.416 views — 55% mais que os 2.208 anteriores —, a taxa de like caiu de 15,6% para 6,0%, os comentários caíram de 47 para 26 e a fatia de vídeos com 5.000 views ou mais subiu de 7% para 26%.</p>
+      <p>Há duas leituras possíveis. A primeira: os vídeos de equipamento trouxeram um público mais amplo, que ainda não conhece o Ricardo — assiste, mas não curte nem comenta como o público antigo. A segunda: o canal passou a ser puxado por vídeos de produto, e os diários que vieram depois receberam uma mistura diferente de gente. As duas podem ser verdade. Sem fontes de tráfego e espectadores recorrentes, não dá para provar nenhuma.</p>
+      <p>O que está claro: existe alcance disponível. Agosto mostrou que o canal consegue encontrar gente nova. A tarefa não é repetir agosto; é fazer essa gente ficar. Um vídeo de equipamento pode ser o primeiro que alguém vê. O próximo precisa dar a essa pessoa um motivo para voltar.</p>
     </div>
 
     <div class="kpis">{{KPI_ROW}}</div>
-    <p class="range-note">Vídeo mediano · antes de 25/08 (n=315) vs. depois (n=99) · retrato de 6 nov 2026</p>
+    <p class="range-note">Vídeo mediano · antes de 25/08 (n=315) e depois (n=99) · dados de 6 nov 2026</p>
 
     <div class="split" style="margin-top:38px">
       <div class="prose">
-        <p>Os 14 filmes mais vistos não são todos de equipamento. Sete são filmes de ideia — manifestos, ensaios, argumentos. Seis são filmes de objeto. Um é uma collab. Equipamento não é a única porta; é a porta mais confiável na embalagem atual, porque um produto no título e um produto na miniatura dizem a um estranho exatamente o que o filme vai fazer.</p>
-        <p>O risco é a porta virar a casa. Um canal que só abre com produtos será lido como um canal de produtos, e o filme diário — aquilo que constrói a relação — vai parecer preenchimento para o novo público. O próximo movimento é uma ponte, não um pivô.</p>
+        <p>Os 14 vídeos mais vistos não são todos de equipamento: sete são filmes de ideia (manifestos, ensaios, argumentos), seis são de equipamento e um é colaboração. Equipamento não é a única porta, mas é a mais confiável na embalagem atual: um produto no título e na miniatura diz a quem chega exatamente o que vai encontrar.</p>
+        <p>O risco é a porta virar a casa. Um canal que só abre com produtos passa a ser lido como um canal de produtos, e o vlog diário — o que constrói a relação — parece secundário para quem chegou agora. O próximo movimento é uma ponte, não uma mudança de identidade.</p>
       </div>
       <aside class="card">
-        <p class="aside-note"><strong>A ressalva honesta.</strong> A mudança de agosto também pode refletir uma mudança de recomendação, um efeito sazonal ou o transbordamento de um único vídeo. Os dados públicos não conseguem separar isso da história da embalagem. O padrão é compatível com um público mais amplo e mais frio; não prova que seja.</p>
+        <p class="aside-note"><strong>A ressalva honesta.</strong> A mudança de agosto também pode vir de uma mudança na recomendação do YouTube, de um efeito sazonal ou do efeito de um único vídeo. Os dados públicos não separam isso da embalagem. O padrão é compatível com um público mais amplo e menos próximo; não prova que seja.</p>
       </aside>
     </div>
   </section>
@@ -703,21 +728,21 @@
       <span class="num">04</span>
       <div>
         <h2>O portfólio de formatos</h2>
-        <p class="standfirst">Quatro jeitos de fazer um filme. Cada um compra algo diferente. Nenhum ainda compra tudo.</p>
+        <p class="standfirst">Quatro jeitos de fazer um filme. Cada um entrega algo diferente. Nenhum entrega tudo.</p>
       </div>
     </div>
 
     <div class="prose">
-      <p>Antes de 25 de agosto — para deixar a mudança de público fora da comparação — os quatro formatos se separavam com clareza. Equipamento chega mais longe (mediana de 3.696 views) e é o menos curtido (11,0%). O ensaio chega a 2.849 e sustenta 14,4% de likes, perto da mediana de 15,6% do canal antes de agosto. O vlog diário e os filmes de diário sem categoria, agrupados, chegam a 1.975 com 16,4% de likes. As LEI chegam menos longe (1.397) e são as mais curtidas (17,3%).</p>
-      <p>O quadrante superior direito — mais alcance e mais engajamento que a mediana do canal — está vazio. O ensaio é o mais próximo: supera a linha de alcance em 29% e fica só 1,2 ponto abaixo da linha de vínculo. Essa distância é o briefing criativo do próximo filme: <strong>um ensaio com a intimidade de um vlog.</strong></p>
-      <p>Depois de 25 de agosto, a mediana de equipamento subiu para 8.128 views em seis vídeos, com 4,1% de likes; os ensaios tiveram mediana de 3.342 em oito, com 6,1%. As amostras são pequenas, mas a direção combina com a história de agosto: equipamento escala alcance, não vínculo.</p>
+      <p>Para comparar sem a mudança de público de agosto, olhamos só os vídeos até 24 de agosto. Equipamento chega mais longe (mediana de 3.696 views) e é o menos curtido (11,0%). O ensaio chega a 2.849 views e 14,4% de likes, perto da mediana de 15,6% do canal. O vlog diário e os vídeos de diário sem categoria, juntos, chegam a 1.975 views e 16,4% de likes. A série LEI, sobre o ofício, chega menos longe (1.397 views) e é a mais curtida (17,3%).</p>
+      <p>Nenhum formato combina, ao mesmo tempo, alcance e vínculo acima da mediana do canal. O ensaio é o que chega mais perto: supera a linha de alcance em 29% e fica 1,2 ponto abaixo da linha de vínculo. É aí que está o próximo filme: um ensaio com a intimidade de um vlog.</p>
+      <p>Depois de 25 de agosto, a mediana de equipamento subiu para 8.128 views em seis vídeos, com 4,1% de likes. Os ensaios tiveram mediana de 3.342 em oito vídeos, com 6,1%. As amostras são pequenas, mas a direção confirma o padrão: equipamento aumenta o alcance, não o vínculo.</p>
     </div>
 
     <figure class="chart-card card">
       <div class="chart-head">
         <div>
-          <h3>Onde cada formato cai</h3>
-          <p>Mediana de views por taxa de like mediana, antes da mudança de público de agosto.</p>
+          <h3>Onde cada formato fica</h3>
+          <p>Mediana de views por taxa de like, antes de 25 de agosto.</p>
         </div>
         <button class="ghost" type="button" data-table="tbl-format" aria-controls="tbl-format" aria-expanded="false">Tabela</button>
       </div>
@@ -726,11 +751,11 @@
         <div class="format-chart">{{CHART_FORMAT}}</div>
         <div>
           <div class="legend" aria-label="Legenda dos formatos">{{FORMAT_LEGEND}}</div>
-          <p class="chart-caption" style="margin-top:18px">As linhas de quadrante marcam as medianas do canal antes de agosto (2.208 views, 15,6% de likes). O ponto cinza é o grupo vlog/outros (185 vídeos), não uma quarta série.</p>
+          <p class="chart-caption" style="margin-top:18px">As linhas marcam as medianas do canal antes de agosto (2.208 views, 15,6% de likes). O ponto cinza é o grupo vlog/outros (185 vídeos), não um formato à parte.</p>
           <p class="range-note">n = 36 equipamento · 27 ensaio · 185 vlog/outros · 27 LEI</p>
         </div>
       </div>
-      <figcaption class="chart-caption">O quadrante superior direito está vazio. Nenhum formato do corpus de 2026 combina alcance acima da mediana com vínculo acima da mediana. O ensaio é o mais próximo: supera a linha de alcance e fica logo abaixo da linha de vínculo.</figcaption>
+      <figcaption class="chart-caption">Nenhum formato de 2026 combina alcance e vínculo acima da mediana. O ensaio é o mais próximo: supera a linha de alcance e fica logo abaixo da linha de vínculo.</figcaption>
       <div class="table-wrap" id="tbl-format" hidden>
         <table>
           <caption>Medianas por formato, 1 jan – 24 ago 2026</caption>
@@ -740,7 +765,7 @@
       </div>
     </figure>
 
-    <aside class="aside-note" style="margin-top:22px;max-width:74ch">As atribuições de formato são por palavras-chave e aproximadas. “Vlog diário / outros” combina títulos VLOG explícitos com filmes de diário que o classificador não conseguiu posicionar; é um agrupamento, não um gênero.</aside>
+    <aside class="aside-note" style="margin-top:22px;max-width:74ch">A classificação por formato usa palavras-chave e é aproximada. “Vlog diário / outros” junta títulos com VLOG explícito e vídeos de diário que a regra não conseguiu classificar; é um agrupamento, não um gênero.</aside>
   </section>
 
   <!-- 05 DOORS -->
@@ -749,25 +774,25 @@
       <span class="num">05</span>
       <div>
         <h2>Os 14 filmes que abriram uma porta</h2>
-        <p class="standfirst">O trabalho mais visto do ano. Não é tudo equipamento, não é tudo ensaio — mas todos fazem uma promessa antes do filme começar.</p>
+        <p class="standfirst">Os vídeos mais vistos do ano. Não são todos de equipamento nem todos ensaios, mas todos prometem algo antes do filme começar.</p>
       </div>
     </div>
 
     <div class="prose">
-      <p>Sete são filmes de ideia — manifestos, ensaios, argumentos. Seis são filmes de objeto — uma troca de laptop, uma comparação de câmeras, um teste de 30 dias. Um é uma collab. Nenhum tem título de entrada de diário.</p>
-      <p>Os títulos fazem o mesmo trabalho em dialetos diferentes. Fazem uma afirmação (<em>“PARE DE TENTAR CRIAR CONTEÚDO”</em>, <em>“A VIDA É UM FILME”</em>), fazem uma pergunta (<em>“e se?”</em>, <em>“DJI Pocket 4 ou Câmera Profissional?”</em>), encenam um teste (<em>“Usei o MacBook Air M5 por 30 Dias”</em>) ou nomeiam um risco (<em>“troquei meu MacBook PRO por um Air M5”</em>). Um estranho entende do que o filme trata antes de clicar.</p>
-      <p>As miniaturas repetem a promessa em imagens: um rosto, um objeto e, muitas vezes, três palavras. A folha de contatos abaixo mostra seis delas. O padrão não é uma fórmula; é um hábito de mostrar o que está em jogo.</p>
-      <p>A duração não é a alavanca. Os 14 mais vistos têm mediana de 16,2 minutos; os 12 últimos da amostra profunda, 4,3. Mas um dos filmes do topo tem 8,7 minutos e outro, 60,1. O que os separa não é a duração; é ter ou não uma forma na qual um estranho consiga entrar.</p>
+      <p>Sete são filmes de ideia (manifestos, ensaios, argumentos), seis são de equipamento (uma troca de laptop, uma comparação de câmeras, um teste de 30 dias) e um é colaboração. Nenhum tem título de diário.</p>
+      <p>Os títulos fazem a mesma coisa de jeitos diferentes: afirmam (<em>“PARE DE TENTAR CRIAR CONTEÚDO”</em>, <em>“A VIDA É UM FILME”</em>), perguntam (<em>“e se?”</em>, <em>“DJI Pocket 4 ou Câmera Profissional?”</em>), propõem um teste (<em>“Usei o MacBook Air M5 por 30 Dias”</em>) ou nomeiam um risco (<em>“troquei meu MacBook PRO por um Air M5”</em>). Quem não conhece entende o que vai ver antes de clicar.</p>
+      <p>As miniaturas repetem a promessa: um rosto, um objeto e, muitas vezes, três palavras. As seis imagens abaixo mostram o padrão. Não é uma fórmula; é o hábito de mostrar o que está em jogo.</p>
+      <p>A duração não explica o sucesso. Os 14 mais vistos têm mediana de 16,2 minutos; os 12 de pior desempenho, 4,3. Mas há um vídeo de 8,7 minutos e outro de 60,1 entre os mais vistos. A diferença é ter, ou não, uma porta para quem chega de fora.</p>
     </div>
 
     <div class="table-wrap">
       <table>
         <caption>Os 14 vídeos públicos mais vistos de 2026</caption>
-        <thead><tr><th scope="col">Filme</th><th scope="col" class="num">Views</th><th scope="col" class="num">vs. base</th><th scope="col" class="num">Duração</th></tr></thead>
+        <thead><tr><th scope="col">Filme</th><th scope="col" class="num">Views</th><th scope="col" class="num">vs. mediana</th><th scope="col" class="num">Duração</th></tr></thead>
         <tbody>{{TOP_TABLE}}</tbody>
       </table>
     </div>
-    <p class="range-note">vs. base = views ÷ a mediana de views dos 20 uploads anteriores no momento da publicação. 1,0× significa “como o normal recente do canal”.</p>
+    <p class="range-note">vs. mediana = views ÷ mediana dos 20 vídeos anteriores no momento da publicação. 1,0× significa “no ritmo recente do canal”.</p>
 
     <div class="sheet">{{TOP_FRAMES}}</div>
   </section>
@@ -778,7 +803,7 @@
       <span class="num">06</span>
       <div>
         <h2>O que abre uma porta</h2>
-        <p class="standfirst">Cinco padrões compartilhados pelos filmes que viajaram. São decisões de embalagem, não decisões de identidade.</p>
+        <p class="standfirst">Cinco padrões dos vídeos que mais alcançaram. São decisões de embalagem, não de identidade.</p>
       </div>
     </div>
 
@@ -786,27 +811,27 @@
       <div class="move">
         <span class="n">01</span>
         <h3>Uma promessa, não um rótulo</h3>
-        <p>Um rótulo responde “o que é?”. Uma promessa responde “por que eu deveria assistir?”. Os títulos de baixo nomeiam um clima ou uma posição na série: <em>“café”</em>, <em>“Cores em Movimento”</em>, <em>“287/365”</em>. Os títulos do topo nomeiam uma crença, uma pergunta ou um risco.</p>
+        <p>Um rótulo diz o que é. Uma promessa diz por que assistir. <em>“café”</em> e <em>“287/365”</em> são rótulos; <em>“PARE DE TENTAR CRIAR CONTEÚDO”</em> é uma promessa.</p>
       </div>
       <div class="move">
         <span class="n">02</span>
         <h3>Um rosto e um objeto</h3>
-        <p>Na amostra do topo, 10 de 12 miniaturas têm um rosto em destaque e 8 trazem texto. Na amostra de baixo, 5 têm rosto e 3 trazem texto. O objeto dá um assunto ao rosto: um MacBook, uma câmera, uma caneca. É uma observação de amostra, não um teste controlado.</p>
+        <p>Entre as 12 miniaturas dos mais vistos, 10 têm um rosto em destaque e 8 têm texto. Entre as 12 dos menos vistos, 5 têm rosto e 3 têm texto. O objeto dá assunto ao rosto: um MacBook, uma câmera, uma caneca.</p>
       </div>
       <div class="move">
         <span class="n">03</span>
         <h3>Comece no risco</h3>
-        <p>Os filmes mais fortes abrem na decisão, no teste ou na pergunta — não na rotina da manhã. O filme diário pode continuar respirando; os primeiros vinte segundos só precisam dizer a um estranho o que está em jogo.</p>
+        <p>Os vídeos mais fortes começam na decisão, no teste ou na pergunta, não na rotina da manhã. O resto pode respirar; os primeiros 20 segundos só precisam dizer o que está em jogo.</p>
       </div>
       <div class="move">
         <span class="n">04</span>
         <h3>Três atos, não uma sequência</h3>
-        <p>Um filme precisa de uma virada: o motivo, o teste, o veredito; o antes, o dia, o depois; a crença, a dúvida, a prova. A cronologia do vlog é o material, não a estrutura.</p>
+        <p>Um filme precisa de uma virada: motivo, teste, veredito; antes, durante, depois. A cronologia do dia é o material, não a estrutura.</p>
       </div>
       <div class="move">
         <span class="n">05</span>
         <h3>Uma porta no final</h3>
-        <p>A assinatura é um ritual de relação; não é um próximo passo. Uma porta pode ser uma pergunta respondida no próximo filme, uma série que o espectador pode seguir, ou uma promessa feita na abertura e cumprida no final. O arquivo vira uma escada, não um fluxo.</p>
+        <p>A despedida é um ritual de retorno, não um próximo passo. Uma porta pode ser uma pergunta que o próximo vídeo responde, uma série que o espectador pode seguir ou uma promessa feita na abertura e cumprida no final. O arquivo vira uma sequência, não uma pilha de vídeos.</p>
       </div>
     </div>
 
@@ -824,7 +849,7 @@
         </div>
       </div>
     </div>
-    <p class="range-note">Comentários da amostra profunda de 40 filmes, ordenados por topo; 1.785 comentários em 40 vídeos. São evidência do que os espectadores mais engajados pedem, não uma pesquisa representativa.</p>
+    <p class="range-note">Comentários da amostra detalhada de 40 vídeos, ordenados pelos mais curtidos; 1.785 comentários. Mostram o que os fãs mais engajados pedem, não uma amostra representativa.</p>
   </section>
 
   <!-- 07 BOTTOM -->
@@ -832,21 +857,21 @@
     <div class="section-head">
       <span class="num">07</span>
       <div>
-        <h2>Os filmes que não viajaram</h2>
-        <p class="standfirst">Os 12 últimos da amostra profunda não são filmes ruins. São portas que ninguém abriu.</p>
+        <h2>Os filmes que não abriram porta</h2>
+        <p class="standfirst">Os 12 vídeos de pior desempenho não são ruins. Simplesmente não abrem uma porta para quem chega de fora.</p>
       </div>
     </div>
 
     <div class="prose">
-      <p>Seus títulos são rótulos de clima (<em>“Cores em Movimento”</em>, <em>“traga-me o horizonte”</em>), rótulos de lugar (<em>“Caminhos de Outono”</em>), números de série (<em>“287/365”</em>, <em>“VLOG 1019”</em>) ou rótulos de equipamento (<em>“vlog com Ray-Ban Meta Gen 2”</em>). As miniaturas muitas vezes são paisagens, costas, atmosferas: bonitas, mas sem rosto ou risco. Um estranho não tem motivo para clicar; os já convertidos não precisam de motivo.</p>
-      <p>Os comentários mostram o que acontece quando alguém está dentro. <em>“Dói saber que eu não terei mais o meu vlog infinito.”</em> O público lamenta o fim do vlog diário. <em>“Ricardo, dei iniciativa de registrar meu dia-dia hoje, por total inspiração dos seus filmes.”</em> O trabalho chega. O problema é o limiar.</p>
-      <p>Esses filmes também são a prova da identidade: o canal seria mais pobre sem eles. A recomendação não é parar de fazê-los. É dar uma porta aos que importam — e manter os filmes de diário como o chão do dia, não como o edifício inteiro.</p>
+      <p>São títulos de clima (<em>“Cores em Movimento”</em>, <em>“traga-me o horizonte”</em>), de lugar (<em>“Caminhos de Outono”</em>), números de série (<em>“287/365”</em>, <em>“VLOG 1019”</em>) ou de equipamento (<em>“vlog com Ray-Ban Meta Gen 2”</em>). As miniaturas são paisagens, costas, atmosferas: bonitas, mas sem rosto ou risco. Quem já acompanha não precisa de motivo para clicar. Quem não conhece não encontra um.</p>
+      <p>Os comentários mostram o que acontece com quem já está dentro: o público lamenta o fim do vlog diário e conta que começou a registrar o próprio dia por causa dos seus filmes. O trabalho chega. O problema é entrar.</p>
+      <p>Esses filmes também são a prova da identidade: o canal seria mais pobre sem eles. A recomendação não é parar de fazê-los. É dar uma porta aos que importam e manter o diário como base — não como o único formato.</p>
     </div>
 
     <div class="table-wrap">
       <table>
-        <caption>Os 12 últimos da amostra profunda</caption>
-        <thead><tr><th scope="col">Filme</th><th scope="col" class="num">Views</th><th scope="col" class="num">vs. base</th><th scope="col" class="num">Duração</th></tr></thead>
+        <caption>Os 12 de pior desempenho da amostra detalhada</caption>
+        <thead><tr><th scope="col">Filme</th><th scope="col" class="num">Views</th><th scope="col" class="num">vs. mediana</th><th scope="col" class="num">Duração</th></tr></thead>
         <tbody>{{BOTTOM_TABLE}}</tbody>
       </table>
     </div>
@@ -871,7 +896,7 @@
       <span class="num">08</span>
       <div>
         <h2>A linha que não pode se mover</h2>
-        <p class="standfirst">A identidade não é o problema. É o ativo. A mudança está na moldura ao redor do filme, não no filme.</p>
+        <p class="standfirst">A identidade não é o problema. É o que ele tem de mais forte. A mudança é na embalagem, não no filme.</p>
       </div>
     </div>
 
@@ -889,8 +914,8 @@
       </div>
       <div>
         <div class="card">
-          <p class="aside-note"><strong>Duas frases para manter na parede.</strong> “Eu viro uma câmera.” “Cena conforto.” Descrevem um modo de olhar, não uma estratégia de conteúdo. Qualquer recomendação que exija que ele deixe de olhar assim é a recomendação errada.</p>
-          <p class="aside-note" style="margin-top:16px"><strong>A assinatura.</strong> “Eu sou Ricardo Franzen, muito obrigado, voltem sempre, voltem amanhã porque amanhã tem mais.” É um ritual de retorno. O próximo corte não deve substituí-lo; deve dar ao espectador mais um motivo para aceitá-lo.</p>
+          <p class="aside-note"><strong>Duas frases para manter na parede.</strong> “Eu viro uma câmera.” “Cena conforto.” São um modo de olhar, não uma estratégia de conteúdo. Qualquer recomendação que peça para ele deixar de olhar assim está errada.</p>
+          <p class="aside-note" style="margin-top:16px"><strong>A despedida.</strong> “Eu sou Ricardo Franzen, muito obrigado, voltem sempre, voltem amanhã porque amanhã tem mais.” É um ritual de retorno. O próximo corte não deve substituí-lo; deve dar mais um motivo para o espectador aceitá-lo.</p>
         </div>
       </div>
     </div>
@@ -899,21 +924,21 @@
       <div class="kc">
         <h3>Manter</h3>
         <ul>
-          <li>O filme diário<span>500 é disciplina, não façanha. A frequência é a prática.</span></li>
-          <li>A primeira pessoa<span>Ele é a câmera, não um apresentador. Os filmes são diários, não episódios.</span></li>
-          <li>O calor<span>Café, cozinhas, amigos, luz, a volta para casa. A textura é a identidade.</span></li>
-          <li>A assinatura<span>“Voltem amanhã” é a relação. Fica.</span></li>
-          <li>A recusa a competir<span>Nenhuma tendência pela tendência. Nenhuma cópia da gramática atual de miniaturas só porque funciona.</span></li>
-          <li>A oficina das LEI<span>A série de ofício é o chão da prática. Pode ser pequena.</span></li>
+          <li>O vlog diário<span>500 vídeos é disciplina, não façanha. A frequência é a base.</span></li>
+          <li>A primeira pessoa<span>Ele é a câmera, não um apresentador. São diários, não episódios.</span></li>
+          <li>A intimidade<span>Café, cozinha, amigos, luz, a volta para casa. A textura é a identidade.</span></li>
+          <li>A despedida<span>“Voltem amanhã” é a relação. Fica.</span></li>
+          <li>A recusa a competir<span>Nenhuma tendência pela tendência, nenhuma cópia de miniatura só porque funciona.</span></li>
+          <li>A série LEI<span>Os vídeos sobre o ofício são a base da prática. Podem ser pequenos.</span></li>
         </ul>
       </div>
       <div class="kc change">
         <h3>Mudar</h3>
         <ul>
-          <li>A moldura<span>Título, miniatura, abertura, final. São decisões sobre como um estranho encontra o filme.</span></li>
-          <li>A forma de lançar<span>Um filme principal por semana, no lugar de um vídeo diário. Não é adicionar trabalho; é mudar qual dia carrega a porta.</span></li>
-          <li>A série<span>Dê uma escada ao arquivo: ensaios, histórias de objeto com risco, LEI. Cada filme aponta para o próximo.</span></li>
-          <li>A medição<span>Use os substitutos públicos: views vs. mediana móvel, taxa de like, taxa de comentários, novos comentaristas.</span></li>
+          <li>A embalagem<span>Título, miniatura, abertura e final. São as decisões sobre como alguém encontra o filme.</span></li>
+          <li>A forma de publicar<span>Um filme de destaque por semana, no lugar de um vídeo diário. Não é adicionar trabalho; é escolher qual dia carrega a porta.</span></li>
+          <li>A série<span>Dê uma sequência ao arquivo: ensaios, histórias de equipamento com risco, LEI. Cada filme aponta para o próximo.</span></li>
+          <li>A medição<span>Use os sinais públicos: views comparadas à mediana recente, taxa de like, taxa de comentários e número de novos comentaristas.</span></li>
         </ul>
       </div>
     </div>
@@ -925,48 +950,48 @@
       <span class="num">09</span>
       <div>
         <h2>O próximo corte</h2>
-        <p class="standfirst">Cinco movimentos, um mês, nenhuma mudança na promessa diária. Um filme principal substitui um espaço; não acrescenta outro.</p>
+        <p class="standfirst">Cinco movimentos, um mês, nenhuma mudança na promessa diária. Um filme de destaque ocupa o lugar de um vlog; não soma a ele.</p>
       </div>
     </div>
 
     <div class="moves">
       <div class="move">
         <span class="n">01</span>
-        <h3>Um filme principal por semana</h3>
-        <p>Substitua um espaço diário por um filme de 10–20 minutos construído em torno de uma ideia. Os outros seis dias continuam diários. A meta de 500 vídeos não muda.</p>
+        <h3>Um filme de destaque por semana</h3>
+        <p>Troque um dos sete vlogs da semana por um filme de 10 a 20 minutos construído em torno de uma ideia. Os outros seis dias continuam diários. A meta de 500 vídeos não muda.</p>
       </div>
       <div class="move">
         <span class="n">02</span>
         <h3>Escreva o título antes de gravar</h3>
-        <p>Uma afirmação, uma pergunta ou um risco. Se o título for um rótulo — um lugar, um clima, um número — o filme ainda não tem porta. Guarde o título poético para o cartão de capítulo na tela.</p>
+        <p>Uma afirmação, uma pergunta ou um risco. Se o título for um rótulo — um lugar, um clima, um número —, o filme ainda não tem porta. Guarde o título poético para o cartão dentro do vídeo.</p>
       </div>
       <div class="move">
         <span class="n">03</span>
         <h3>Fotografe o cartaz</h3>
-        <p>Um quadro com um rosto, um objeto e três palavras. A miniatura é um cartaz do filme, não um frame extraído. Não precisa de careta; precisa de assunto.</p>
+        <p>Uma imagem com um rosto, um objeto e três palavras. A miniatura é o cartaz do filme, não um quadro extraído. Não precisa de careta; precisa de assunto.</p>
       </div>
       <div class="move">
         <span class="n">04</span>
         <h3>Abra no risco</h3>
-        <p>Os primeiros vinte segundos declaram a pergunta, a troca, o teste ou o medo. Depois disso, o filme pode respirar no ritmo que já tem.</p>
+        <p>Os primeiros 20 segundos dizem qual é a pergunta, a troca, o teste ou o medo. Depois, o filme pode respirar no ritmo que já tem.</p>
       </div>
       <div class="move">
         <span class="n">05</span>
-        <h3>Construa uma escada</h3>
-        <p>Três séries: ensaios sobre documentar a vida, histórias de objeto com risco real e LEI. Cada filme principal termina na próxima pergunta, não só na assinatura.</p>
+        <h3>Construa uma sequência</h3>
+        <p>Três linhas: ensaios sobre documentar a vida, histórias de equipamento com risco real e a série LEI. Cada filme de destaque termina na próxima pergunta, não só na despedida.</p>
       </div>
     </div>
 
-    <h3 style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:42px 0 0;font-weight:500">Um plano de trabalho de 30 dias · títulos de trabalho, não roteiros</h3>
+    <h3 style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:42px 0 0;font-weight:500">Um plano de trabalho de 30 dias · títulos provisórios, não roteiros</h3>
     <div class="plan">
       <div class="week">
         <span class="wk">Semana 1</span>
         <h3>“Como documentar a vida sem parar de viver”</h3>
         <dl>
-          <dt>Promessa</dt><dd>Um método, não um manifesto: como manter um registro sem transformar a vida em conteúdo.</dd>
+          <dt>Promessa</dt><dd>Um método, não um manifesto: como registrar a vida sem transformá-la em conteúdo.</dd>
           <dt>Cartaz</dt><dd>Rosto + câmera + uma fotografia impressa.</dd>
-          <dt>Abertura</dt><dd>O custo de não documentar — uma memória que não tem imagem.</dd>
-          <dt>Porta</dt><dd>Peça uma fotografia aos espectadores; responda às melhores na semana 2.</dd>
+          <dt>Abertura</dt><dd>O custo de não documentar: uma memória que não tem imagem.</dd>
+          <dt>Porta</dt><dd>Peça uma foto aos espectadores e responda às melhores na semana 2.</dd>
         </dl>
       </div>
       <div class="week">
@@ -993,7 +1018,7 @@
         <span class="wk">Semana 4</span>
         <h3>“Um dia com…”</h3>
         <dl>
-          <dt>Promessa</dt><dd>A vida de outra pessoa pela lente dele; uma collab com uma pessoa real, não um adereço.</dd>
+          <dt>Promessa</dt><dd>A vida de outra pessoa pela lente dele: uma colaboração com alguém real, não um adereço.</dd>
           <dt>Cartaz</dt><dd>Dois rostos + um objeto compartilhado.</dd>
           <dt>Abertura</dt><dd>A primeira fala da outra pessoa.</dd>
           <dt>Porta</dt><dd>A próxima collab, nomeada no final.</dd>
@@ -1002,119 +1027,85 @@
     </div>
 
     <div class="guardrails">
-      <strong>Balizas.</strong> Mantenha o upload diário e a assinatura. Sem áudio de tendência, sem caretas, sem formato de desafio que não seja já verdadeiro. Um filme principal por semana, não quatro. Meça com views ÷ mediana móvel, taxa de like, taxa de comentários e número de novos comentaristas; trate os quatro como sinais, não veredictos. Depois de 30 dias, se um filme principal performar abaixo, mude a porta primeiro — não a identidade.
+      <strong>Balizas.</strong> Mantenha o upload diário e a despedida. Nada de áudio de tendência, caretas ou desafio que não seja verdadeiro. Um filme de destaque por semana, não quatro. Meça com views ÷ mediana recente, taxa de like, taxa de comentários e novos comentaristas; são sinais, não veredictos. Depois de 30 dias, se um filme de destaque não funcionar, mude a porta primeiro — não a identidade.
     </div>
   </section>
 
-  <!-- 10 TIMELINE -->
-  <section id="timeline">
+  <!-- 10 LIMITS + METHOD -->
+  <section id="limits">
     <div class="section-head">
       <span class="num">10</span>
       <div>
-        <h2>O ano, em oito cortes</h2>
-        <p class="standfirst">Os momentos que explicam a forma dos dados — e as duas portas que mudaram o público.</p>
-      </div>
-    </div>
-    <ol class="timeline">{{TIMELINE}}</ol>
-  </section>
-
-  <!-- 11 LIMITS -->
-  <section id="limits">
-    <div class="section-head">
-      <span class="num">11</span>
-      <div>
-        <h2>O que estes dados não podem provar</h2>
-        <p class="standfirst">Os limites fazem parte do achado. Sem o Estúdio, o relatório pode descrever a superfície e propor uma hipótese; não pode arbitrá-la.</p>
+        <h2>O que os dados não provam</h2>
+        <p class="standfirst">Os limites fazem parte do resultado. Sem o YouTube Studio, o relatório pode descrever a superfície e propor hipóteses; não pode prová-las.</p>
       </div>
     </div>
     <div class="limits">
-      <div class="limit"><strong>Sem impressões ou CTR</strong><p>Não sabemos se um vídeo foi mostrado a mais gente, clicado mais vezes, ou as duas coisas. Uma view é o fim de um funil que não vemos.</p></div>
-      <div class="limit"><strong>Sem tempo de exibição ou retenção</strong><p>Não vemos onde os espectadores saem, se o filme de 60 minutos segura, ou se os filmes curtos são vistos até o fim.</p></div>
-      <div class="limit"><strong>Sem fontes de tráfego</strong><p>A mudança de agosto é compatível com uma onda de público puxada por produto. Também pode ser uma mudança de recomendação ou um efeito sazonal. Os dados públicos não separam.</p></div>
-      <div class="limit"><strong>Sem espectadores recorrentes</strong><p>O colapso da taxa de like sugere um público menos familiar, mas também pode refletir uma mudança no contexto de exibição ou nos próprios vídeos.</p></div>
-      <div class="limit"><strong>Views cumulativas</strong><p>Views são um retrato. Vídeos mais antigos tiveram mais tempo. A base móvel controla os 20 uploads anteriores, não a idade perfeitamente.</p></div>
-      <div class="limit"><strong>Uma amostra de 40 filmes</strong><p>Comentários, transcrições e revisão de miniaturas vêm de 40 de 414 vídeos. A amostra é deliberadamente estratificada, não aleatória.</p></div>
-      <div class="limit"><strong>Comentários ordenados por topo</strong><p>1.785 comentários, ordenados por topo, não uma pesquisa representativa. O YouTube pode esconder spam e comentários de baixa qualidade; a amostra reflete o que está visível.</p></div>
-      <div class="limit"><strong>58 transcrições</strong><p>Só 58 vídeos têm transcrição no corpus. O filme de 66.965 views não tem. Sua leitura depende de título, miniatura, métricas e comentários.</p></div>
-      <div class="limit"><strong>Formatos aproximados</strong><p>O classificador é por palavras-chave. “Outros” é um resíduo, não um gênero. Alguns ensaios são contados como outros, e alguns filmes de equipamento são contados como vlogs.</p></div>
-      <div class="limit"><strong>24 vídeos só para membros</strong><p>Eles ficam fora dos 414. Podem conter parte do público mais engajado, e a ausência pode enviesar as médias de engajamento.</p></div>
+      <div class="limit"><strong>Sem impressões ou CTR</strong><p>Não sabemos se um vídeo foi mostrado a mais gente, clicado mais vezes ou as duas coisas. Uma view é o fim de um funil que não vemos.</p></div>
+      <div class="limit"><strong>Sem retenção ou tempo de exibição</strong><p>Não vemos onde as pessoas saem nem se o filme de 60 minutos segura a atenção.</p></div>
+      <div class="limit"><strong>Sem fontes de tráfego ou espectadores recorrentes</strong><p>A mudança de agosto pode ser uma onda de público trazida por produto, uma mudança de recomendação ou um efeito sazonal. O colapso da taxa de like sugere um público menos familiar, mas também pode vir do contexto de exibição. Os dados públicos não separam.</p></div>
+      <div class="limit"><strong>Views acumuladas</strong><p>Views são um retrato do momento. Vídeos mais antigos tiveram mais tempo para acumular. A mediana recente controla os 20 vídeos anteriores, não a idade.</p></div>
+      <div class="limit"><strong>Amostra de 40 vídeos</strong><p>Comentários, transcrições e miniaturas vêm de 40 dos 414 vídeos. A amostra foi escolhida de propósito, não sorteada.</p></div>
+      <div class="limit"><strong>Comentários e transcrições parciais</strong><p>1.785 comentários ordenados pelos mais curtidos não são uma amostra representativa; o YouTube pode esconder spam. Só 58 vídeos têm transcrição, e o maior vídeo do ano não está entre eles.</p></div>
+      <div class="limit"><strong>Formatos aproximados e vídeos para membros</strong><p>A classificação por palavra-chave é uma aproximação; “outros” é a sobra. E 24 vídeos só para membros ficaram fora dos 414, o que pode enviesar o engajamento.</p></div>
     </div>
+
+    <h3 style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:38px 0 0;font-weight:500">Como os números foram calculados</h3>
+    <div class="method-grid">
+      <div class="method-item">
+        <strong>Conjunto analisado</strong>
+        <p>Aba Vídeos de <a href="https://www.youtube.com/@ricardofranzenart" target="_blank" rel="noopener">@ricardofranzenart</a>, filtrada para 2026. 438 entradas; 24 só para membros excluídas; 414 vídeos públicos de 1º de janeiro a 6 de novembro de 2026. Dados coletados em 6 de novembro de 2026.</p>
+      </div>
+      <div class="method-item">
+        <strong>Base móvel</strong>
+        <p><code>ratio = views ÷ mediana(views dos 20 vídeos anteriores)</code>, calculada no momento da publicação. Controla o crescimento do canal e o tempo de acumulação. As listas de mais e menos vistos incluem só vídeos com pelo menos 14 dias.</p>
+      </div>
+      <div class="method-item">
+        <strong>Amostra detalhada</strong>
+        <p>40 vídeos: 12 destaques, 12 de baixo desempenho, 8 medianos (um por mês) e 8 recentes. Usada para comentários, miniaturas e transcrições.</p>
+      </div>
+      <div class="method-item">
+        <strong>Comentários</strong>
+        <p>1.785 comentários em 40 vídeos; 789 autores únicos. Até 60 comentários principais e 20 respostas por vídeo, ordenados pelos mais curtidos. Ricardo respondeu 191 vezes.</p>
+      </div>
+      <div class="method-item">
+        <strong>Transcrições</strong>
+        <p>58 transcrições automáticas em português, obtidas com <code>youtube-transcript-api</code>. São geradas por máquina e contêm erros. O vídeo de 66.965 views não tem transcrição.</p>
+      </div>
+      <div class="method-item">
+        <strong>Classificação de formato</strong>
+        <p>Regra por palavra-chave: LEI → Q&amp;A → equipamento → ensaio → viagem → foto → VLOG → outros. É uma aproximação, não uma classificação manual dos 414 vídeos.</p>
+      </div>
+    </div>
+    <p class="range-note" style="margin-top:18px">Público: views, likes, comentários, títulos, descrições, durações, datas, miniaturas e texto dos comentários. Fora: impressões, CTR, retenção, fontes de tráfego e espectadores recorrentes.</p>
+    <p class="range-note" style="margin-top:10px">Dados: <code>data/ricardo/video_stats.json</code> · <code>data/ricardo/sample.json</code> · <code>data/ricardo/comments/</code> · <code>data/ricardo/thumbs/</code>. Relatório HTML autônomo.</p>
   </section>
 
-  <!-- 12 PARA -->
+  <!-- 11 PARA -->
   <section id="para" lang="pt-BR">
     <div class="para">
       <div class="section-head">
-        <span class="num">12</span>
+        <span class="num">11</span>
         <div>
           <h2>Para o Ricardo</h2>
-          <p class="standfirst">O que os números públicos dizem — e o que eu faria no próximo corte. Sem mudar quem você é.</p>
+          <p class="standfirst">O que os números públicos dizem e o que eu faria no próximo corte. Sem mudar quem você é.</p>
         </div>
       </div>
 
       <ol>
-        <li><strong>O vlog diário não é o problema. É o chão.</strong> Os filmes que mais criaram vínculo em 2026 foram os que deixaram a vida entrar. Os comentários provam: tem gente que começou a registrar o próprio dia por causa dos seus filmes.</li>
-        <li><strong>A porta é o pacote.</strong> A maioria dos vídeos é intitulada como diário: “café”, “Cores em Movimento”, “VLOG 1019”, “287/365”. Quem já te acompanha abre. Quem não te conhece, passa.</li>
-        <li><strong>Os 14 filmes que mais viajaram fizeram uma promessa antes de começar:</strong> uma tese, uma pergunta, um teste, uma troca. Não é clickbait; é clareza. O título diz a que o filme veio.</li>
+        <li><strong>O vlog diário não é o problema. É a base.</strong> Os vídeos que mais criaram vínculo em 2026 deixaram a vida entrar. Os comentários provam: tem gente que começou a registrar o próprio dia por causa dos seus filmes.</li>
+        <li><strong>A porta é a embalagem.</strong> A maioria dos títulos só faz sentido para quem já te conhece: “café”, “Cores em Movimento”, “VLOG 1019”, “287/365”. Quem acompanha abre. Quem não conhece, passa.</li>
+        <li><strong>Os 14 vídeos que mais longe chegaram fizeram uma promessa antes de começar:</strong> uma tese, uma pergunta, um teste, uma troca. Não é clickbait; é clareza. O título diz a que o filme veio.</li>
         <li><strong>O ensaio é o formato que melhor equilibra alcance e vínculo.</strong> Antes de 25 de agosto, o ensaio tinha mediana de 2.849 views e 14,4% de likes; o vlog diário, 1.975 e 16,4%; o equipamento, 3.696 e 11,0%. O ensaio chega mais longe sem perder a intimidade.</li>
-        <li><strong>O canto superior do mapa está vazio.</strong> Nenhum formato combina, ao mesmo tempo, mais alcance e mais vínculo que a mediana do canal. Esse espaço é o próximo filme: um ensaio com a intimidade de um vlog.</li>
-        <li><strong>A onda de agosto provou que há alcance. Também mostrou o custo.</strong> A taxa de like caiu de 15,6% para 6,0%, e os comentários de 47 para 26 por vídeo. O novo público chegou; ele ainda não te conhece. A tarefa é se apresentar, não perseguir o algoritmo.</li>
-        <li><strong>Um filme principal por semana, no lugar de um vídeo diário.</strong> Mantenha os 500. Não acrescente trabalho; troque a moldura de um dia. Um filme de 10–20 minutos, uma ideia, uma promessa.</li>
-        <li><strong>Escreva o título antes de gravar.</strong> Se o título for um rótulo, o filme ainda não tem porta. Guarde o título poético para o cartão de abertura.</li>
-        <li><strong>A miniatura é um cartaz:</strong> rosto + objeto + três palavras. Não precisa ser careta; precisa ser honesta. O objeto dá um assunto ao rosto.</li>
-        <li><strong>Abra no risco.</strong> Nos primeiros 20 segundos, diga por que este filme existe. Depois deixe o dia respirar no ritmo que ele já tem.</li>
-        <li><strong>Termine com uma porta:</strong> uma pergunta que o próximo filme responde, uma série que o espectador pode seguir, uma promessa que a abertura fez e o final cumpre.</li>
-        <li><strong>O que não muda:</strong> a primeira pessoa, o calor, a assinatura, o “voltem amanhã”, a recusa a copiar tendência, a oficina das LEI. Muda a moldura, não o filme.</li>
+        <li><strong>Nenhum formato ainda faz as duas coisas.</strong> Nenhum combina mais alcance e mais vínculo que a mediana do canal. Esse espaço é o próximo filme: um ensaio com a intimidade de um vlog.</li>
+        <li><strong>Agosto provou que existe alcance — e mostrou o custo.</strong> A taxa de like caiu de 15,6% para 6,0%, e os comentários de 47 para 26 por vídeo. O público novo chegou, mas ainda não te conhece. A tarefa é se apresentar, não perseguir o algoritmo.</li>
+        <li><strong>Um filme de destaque por semana, sem aumentar o trabalho.</strong> Mantenha os 500 vídeos. Troque a embalagem de um dia: um filme de 10 a 20 minutos, uma ideia, uma promessa.</li>
+        <li><strong>Título antes de gravar; miniatura de cartaz; abertura no risco; final com uma porta.</strong> Se o título for um rótulo, o filme ainda não tem porta. A miniatura precisa de rosto, objeto e três palavras. Os primeiros 20 segundos dizem por que o filme existe. O final aponta para o próximo.</li>
+        <li><strong>O que não muda:</strong> a primeira pessoa, a intimidade, a despedida, a recusa a copiar tendência e a série LEI. Muda a embalagem, não o filme.</li>
       </ol>
 
       <p class="closing">Você já filma todos os dias. O próximo corte é dar ao filme que já existe <em>uma porta para quem ainda não te conhece.</em></p>
     </div>
-  </section>
-
-  <!-- 13 METHOD -->
-  <section id="method">
-    <div class="section-head">
-      <span class="num">13</span>
-      <div>
-        <h2>Método e fontes</h2>
-        <p class="standfirst">Detalhe suficiente para reproduzir os números, e ressalvas suficientes para mantê-los honestos.</p>
-      </div>
-    </div>
-    <div class="method-grid">
-      <div class="method-item">
-        <strong>Corpus</strong>
-        <p>Aba Vídeos de <a href="https://www.youtube.com/@ricardofranzenart" target="_blank" rel="noopener">@ricardofranzenart</a>, filtrada para 2026. 438 entradas; 24 só para membros excluídas; 414 vídeos públicos publicados de 1º de janeiro a 6 de novembro de 2026. Retrato dos metadados: 6 de novembro de 2026.</p>
-      </div>
-      <div class="method-item">
-        <strong>Base móvel</strong>
-        <p><code>ratio = views ÷ mediana(views dos 20 uploads anteriores)</code>, calculada por vídeo no momento da publicação. Controla o crescimento do canal e o fato de vídeos mais antigos terem tido mais tempo para acumular views. As listas de topo e de baixo incluem só vídeos com pelo menos 14 dias.</p>
-      </div>
-      <div class="method-item">
-        <strong>Amostra profunda</strong>
-        <p>40 vídeos: 12 outliers móveis do topo, 12 de baixo, 8 de desempenho mediano (um por mês) e 8 uploads recentes. Usada para comentários, miniaturas e transcrições. A amostra é estratificada por desenho, não aleatória.</p>
-      </div>
-      <div class="method-item">
-        <strong>Comentários</strong>
-        <p>1.785 comentários em 40/40 vídeos; 789 autores únicos. Até 60 comentários principais e 20 respostas por vídeo, ordenados por topo. Os 10 comentaristas mais frequentes escreveram 17,9% da amostra; um frequente apareceu em 38 dos 40 vídeos. Ricardo respondeu 191 vezes.</p>
-      </div>
-      <div class="method-item">
-        <strong>Transcrições</strong>
-        <p>58 transcrições automáticas em português, obtidas com <code>youtube-transcript-api</code>. As legendas são geradas por máquina e contêm erros. O filme de 66.965 views não tem transcrição no corpus.</p>
-      </div>
-      <div class="method-item">
-        <strong>Miniaturas</strong>
-        <p>40 miniaturas baixadas na maior resolução disponível e revisadas em folhas de contatos rotuladas. As contagens de “rosto / texto / objeto” são uma revisão visual de 24 imagens (12 do topo, 12 de baixo), não um teste controlado.</p>
-      </div>
-      <div class="method-item">
-        <strong>Classificador de formato</strong>
-        <p>Prioridade por palavra-chave: LEI → Q&amp;A → equipamento → ensaio → viagem → foto → VLOG → outros. É uma heurística, não uma codificação manual dos 414 vídeos. “Outros” absorve filmes de diário que não batem com nenhuma palavra-chave.</p>
-      </div>
-      <div class="method-item">
-        <strong>O que é público</strong>
-        <p>Views, likes, comentários, títulos, descrições, durações, datas de publicação, miniaturas e texto visível dos comentários. Sem impressões, CTR, tempo de exibição, fontes de tráfego, espectadores recorrentes ou fontes de inscritos.</p>
-      </div>
-    </div>
-    <p class="range-note" style="margin-top:18px">Arquivos de dados: <code>data/ricardo/video_stats.json</code> · <code>data/ricardo/sample.json</code> · <code>data/ricardo/comments/</code> · <code>data/ricardo/thumbs/</code>. Construído como um relatório HTML local e autônomo.</p>
   </section>
 </main>
 
@@ -1131,23 +1122,23 @@
 (function(){
   var root = document.documentElement;
   var body = document.body;
-  var btn = document.getElementById('theme-toggle');
+  var themeButtons = Array.prototype.slice.call(document.querySelectorAll('[data-theme-set]'));
+  var designButtons = Array.prototype.slice.call(document.querySelectorAll('[data-design-set]'));
   var media = window.matchMedia('(prefers-color-scheme: dark)');
   var ui = {
     table: body.getAttribute('data-ui-table') || 'Table',
-    hide: body.getAttribute('data-ui-hide') || 'Hide table',
-    dark: body.getAttribute('data-ui-dark') || 'Dark',
-    light: body.getAttribute('data-ui-light') || 'Light',
-    ariaDark: body.getAttribute('data-ui-aria-dark') || 'Switch to light theme',
-    ariaLight: body.getAttribute('data-ui-aria-light') || 'Switch to dark theme'
+    hide: body.getAttribute('data-ui-hide') || 'Hide table'
   };
 
   function current(){
     return root.getAttribute('data-theme') || (media.matches ? 'dark' : 'light');
   }
   function paint(t){
-    btn.textContent = t === 'dark' ? ui.light : ui.dark;
-    btn.setAttribute('aria-label', t === 'dark' ? ui.ariaDark : ui.ariaLight);
+    themeButtons.forEach(function(b){
+      var on = b.getAttribute('data-theme-set') === t;
+      b.classList.toggle('is-on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
     updateFade();
   }
   function setTheme(t){
@@ -1159,8 +1150,42 @@
   var stored = null;
   try { stored = localStorage.getItem('rf-theme'); } catch (e) {}
   if (stored === 'light' || stored === 'dark') { setTheme(stored); } else { paint(current()); }
-  btn.addEventListener('click', function(){
-    setTheme(current() === 'dark' ? 'light' : 'dark');
+  themeButtons.forEach(function(b){
+    b.addEventListener('click', function(){
+      setTheme(b.getAttribute('data-theme-set'));
+    });
+  });
+
+  function paintDesign(d){
+    designButtons.forEach(function(b){
+      var on = b.getAttribute('data-design-set') === d;
+      b.classList.toggle('is-on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  function setDesign(d){
+    root.setAttribute('data-design', d);
+    paintDesign(d);
+    var langLink = document.getElementById('lang-switch');
+    if (langLink) langLink.href = langLink.getAttribute('data-lang-target') + '?design=' + d + location.hash;
+    try {
+      var u = new URL(location.href);
+      if (d === 'classic') { u.searchParams.delete('design'); } else { u.searchParams.set('design', d); }
+      history.replaceState(null, '', u.href);
+    } catch (e) {}
+    try { localStorage.setItem('rf-design', d); } catch (e) {}
+  }
+  var storedDesign = null;
+  try { storedDesign = localStorage.getItem('rf-design'); } catch (e) {}
+  var urlDesign = null;
+  try { urlDesign = new URLSearchParams(location.search).get('design'); } catch (e) {}
+  var initialDesign = (urlDesign === 'classic' || urlDesign === 'cinema' || urlDesign === 'notebook') ? urlDesign
+    : (storedDesign === 'cinema' || storedDesign === 'notebook' ? storedDesign : (root.getAttribute('data-design') || 'classic'));
+  paintDesign(initialDesign);
+  designButtons.forEach(function(b){
+    b.addEventListener('click', function(){
+      setDesign(b.getAttribute('data-design-set'));
+    });
   });
 
   document.querySelectorAll('[data-table]').forEach(function(b){
@@ -1238,7 +1263,7 @@
       allSections.forEach(function(s){
         if (s.getBoundingClientRect().top + window.scrollY <= y) current = '#' + s.id;
       });
-      lang.href = lang.getAttribute('data-lang-target') + current;
+      lang.href = lang.getAttribute('data-lang-target') + '?design=' + (root.getAttribute('data-design') || 'classic') + current;
     }
   }
   function queueSpy(){
