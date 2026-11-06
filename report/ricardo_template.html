@@ -1,0 +1,1304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O Corte do Diretor · Ricardo Franzen 2026</title>
+<meta name="description" content="A public-data study of Ricardo Franzen's 2026 videos: reach, formats, the August audience shift, and the next cut.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+<script>
+  try{var t=localStorage.getItem('rf-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}
+</script>
+<style>
+  :root{
+    color-scheme: light;
+    --paper:#F3EEE4;
+    --card:#FBF8F1;
+    --ink:#171512;
+    --muted:#6E6458;
+    --line:#D9D0C1;
+    --grid:#E4DCCD;
+    --axis:#C9BFAE;
+    --wash:#EDE4D2;
+    --accent:#B6471E;
+    --accent-bright:#E4612F;
+    --series-gear:#2a78d6;
+    --series-essay:#eb6834;
+    --series-lei:#1baf7a;
+    --series-vlog:#7D7568;
+    --good:#2F7D4F;
+    --bad:#B5482F;
+    --sans:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --serif:"Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    --mono:"IBM Plex Mono", "Cascadia Mono", Consolas, monospace;
+    --measure:68ch;
+    --radius:4px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --paper:#12100D;
+      --card:#1A1713;
+      --ink:#EFE7D9;
+      --muted:#A79B89;
+      --line:#332D25;
+      --grid:#2A251E;
+      --axis:#453C31;
+      --wash:#221D17;
+      --accent:#F08A5C;
+      --accent-bright:#F07A45;
+      --series-gear:#3987e5;
+      --series-essay:#d95926;
+      --series-lei:#199e70;
+      --series-vlog:#9A9183;
+      --good:#7FC79A;
+      --bad:#E3927C;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --paper:#12100D;
+    --card:#1A1713;
+    --ink:#EFE7D9;
+    --muted:#A79B89;
+    --line:#332D25;
+    --grid:#2A251E;
+    --axis:#453C31;
+    --wash:#221D17;
+    --accent:#F08A5C;
+    --accent-bright:#F07A45;
+    --series-gear:#3987e5;
+    --series-essay:#d95926;
+    --series-lei:#199e70;
+    --series-vlog:#9A9183;
+    --good:#7FC79A;
+    --bad:#E3927C;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0 0 auto 0;
+    height:3px;
+    background:var(--accent-bright);
+    z-index:20;
+    pointer-events:none;
+  }
+  ::selection{background:var(--ink);color:var(--paper)}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:currentColor}
+  a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  img{max-width:100%;display:block}
+  [hidden]{display:none!important}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;margin:0}
+  p{margin:0}
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding-left:max(20px, env(safe-area-inset-left, 0px));
+    padding-right:max(20px, env(safe-area-inset-right, 0px));
+  }
+
+  /* ---------- sticky topbar ---------- */
+  .topbar{
+    position:sticky;top:3px;z-index:40;
+    background:var(--paper);border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    display:flex;align-items:center;gap:20px;
+    min-height:44px;padding-block:7px;
+  }
+  .topbar .brand{
+    flex:none;font-family:var(--mono);font-size:10px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--accent);white-space:nowrap;
+  }
+  .top-nav{
+    display:flex;gap:16px;flex:1;min-width:0;
+    overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;
+    font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  }
+  .top-nav::-webkit-scrollbar{display:none}
+  .top-nav[data-fade~="right"]{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent 100%);mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent 100%)}
+  .top-nav[data-fade~="left"]{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px);mask-image:linear-gradient(90deg,transparent 0,#000 16px)}
+  .top-nav[data-fade~="left"][data-fade~="right"]{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 26px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 26px),transparent 100%)}
+  .top-nav a{
+    color:var(--muted);border-bottom:1px solid transparent;white-space:nowrap;
+    padding-block:3px;
+  }
+  .top-nav a:hover{color:var(--ink);border-bottom-color:currentColor}
+  .top-nav a.is-active{color:var(--ink);border-bottom-color:var(--accent-bright)}
+  .topbar-tools{display:flex;align-items:center;gap:8px;flex:none;margin-left:auto}
+  .lang-switch,.theme-toggle{
+    appearance:none;border:1px solid var(--line);background:var(--card);color:var(--ink);
+    font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+    padding:6px 10px;border-radius:999px;cursor:pointer;line-height:1.2;
+  }
+  .lang-switch{border-bottom:1px solid var(--line);text-decoration:none}
+  .lang-switch:hover,.theme-toggle:hover{border-color:var(--axis);color:var(--ink);border-bottom-color:var(--axis)}
+
+  /* ---------- masthead ---------- */
+  .masthead{padding-top:clamp(26px,4vw,42px)}
+  .kicker{
+    margin-top:clamp(38px,7vw,82px);
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);display:flex;gap:10px;align-items:center;
+  }
+  .kicker::before{content:"";width:34px;height:1px;background:var(--accent)}
+  h1{
+    font-size:clamp(54px,10.6vw,126px);
+    line-height:.92;
+    margin:18px 0 0;
+    letter-spacing:-.035em;
+  }
+  h1 em{font-style:italic;color:var(--accent-bright)}
+  .deck{
+    font-family:var(--serif);
+    font-size:clamp(20px,2.6vw,28px);
+    line-height:1.35;
+    max-width:34ch;
+    margin-top:26px;
+    letter-spacing:-.01em;
+  }
+  .dek-sub{
+    max-width:62ch;margin-top:18px;color:var(--muted);font-size:16px;line-height:1.6;
+  }
+  .byline{
+    display:flex;flex-wrap:wrap;gap:8px 22px;
+    margin-top:22px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .hero-strip{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:6px;
+    margin-top:clamp(34px,5vw,54px);
+    border-top:1px solid var(--line);padding-top:10px;
+  }
+  .hero-frame{aspect-ratio:16/9;overflow:hidden;background:var(--wash);border-radius:2px}
+  .hero-frame img{width:100%;height:100%;object-fit:cover}
+  .factbar{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:0;
+    margin:26px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .fact{padding:13px 14px 12px;border-right:1px solid var(--line);min-width:0}
+  .fact:last-child{border-right:0}
+  .fact dt{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .fact dd{margin:3px 0 0;font-size:13px;line-height:1.35;font-weight:500}
+  .fact dd span{display:block;font-weight:400;font-size:10px;color:var(--muted);font-family:var(--mono);margin-top:2px}
+
+  /* ---------- sections ---------- */
+  main{padding-bottom:20px}
+  section{padding-block:clamp(54px,8vw,92px);border-top:1px solid var(--line);scroll-margin-top:64px}
+  section > *{margin-left:94px}
+  section > .section-head{margin-left:0}
+  section#para > .para{margin-left:0}
+  .section-head{
+    display:grid;grid-template-columns:74px minmax(0,1fr);gap:20px;
+    margin-bottom:clamp(28px,4vw,44px);
+  }
+  .section-head .num{
+    font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--accent);
+    padding-top:12px;
+  }
+  h2{font-size:clamp(34px,5.2vw,54px);line-height:1.03;letter-spacing:-.03em;margin:0 0 14px}
+  .standfirst{font-size:17px;line-height:1.6;color:var(--muted);max-width:60ch}
+  .prose{max-width:var(--measure);font-size:16.5px;line-height:1.75}
+  .prose p + p{margin-top:1.05em}
+  .prose strong{font-weight:600}
+  .lead{
+    font-family:var(--serif);font-size:clamp(25px,3.3vw,34px);line-height:1.3;
+    letter-spacing:-.02em;max-width:28ch;margin-bottom:26px;
+  }
+  .lead em{font-style:italic;color:var(--accent-bright)}
+  .split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,64px);align-items:start}
+  .stack{display:grid;gap:22px}
+  .aside-note{
+    border-left:2px solid var(--accent-bright);padding:2px 0 2px 16px;
+    font-size:13.5px;line-height:1.6;color:var(--muted);max-width:42ch;
+  }
+  .aside-note strong{color:var(--ink);font-weight:600}
+
+  /* ---------- cards & charts ---------- */
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:clamp(18px,3vw,28px);min-width:0;
+  }
+  .chart-card{margin-top:34px}
+  .chart-head{
+    display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;
+    gap:14px;margin-bottom:20px;
+  }
+  .chart-head h3{font-size:21px;line-height:1.2;letter-spacing:-.015em}
+  .chart-head p{margin-top:4px;font-size:13px;color:var(--muted);max-width:58ch;line-height:1.5}
+  .ghost{
+    appearance:none;background:transparent;border:1px solid var(--line);border-radius:999px;
+    color:var(--muted);font-family:var(--mono);font-size:9px;letter-spacing:.08em;
+    text-transform:uppercase;padding:6px 10px;cursor:pointer;white-space:nowrap;
+  }
+  .ghost:hover{border-color:var(--axis);color:var(--ink)}
+  .chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,34px)}
+  .panel h4{
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 8px;font-weight:500;
+  }
+  .chart-svg{display:block;width:100%;height:auto;overflow:visible}
+  .chart-svg text{font-family:var(--mono)}
+  .chart-svg .tick{fill:var(--muted);font-size:9px}
+  .chart-svg .val{fill:var(--ink);font-size:9px}
+  .chart-svg .band-label{fill:var(--muted);font-size:8.5px}
+  .chart-svg .val-label{fill:var(--ink);font-family:var(--sans);font-size:10px}
+  .chart-svg .axis-title{fill:var(--muted);font-family:var(--sans);font-size:10px}
+  .chart-svg .gridline{stroke:var(--grid);stroke-width:1}
+  .chart-svg .gridline.quad{stroke:var(--axis);opacity:.9}
+  .chart-svg .gridline.faint{opacity:.55}
+  .chart-svg .axisline{stroke:var(--axis);stroke-width:1}
+  .chart-svg .wash{fill:var(--wash);opacity:.55}
+  .mark-gear{fill:var(--series-gear)}
+  .mark-essay{fill:var(--series-essay)}
+  .mark-lei{fill:var(--series-lei)}
+  .mark-vlog{fill:var(--series-vlog)}
+  .line-essay{fill:none;stroke:var(--series-essay);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+  .ring{stroke:var(--card);stroke-width:2}
+  .ring-thick{stroke:var(--card);stroke-width:2.5}
+  .hit{cursor:default}
+  .hit .hit-shape{fill:transparent;pointer-events:all}
+  .hit:hover .hit-shape,.hit:focus .hit-shape{stroke:var(--ink);stroke-width:1.5}
+  .hit:focus{outline:none}
+  figcaption{font-size:12px;line-height:1.5;color:var(--muted)}
+  .chart-caption{margin-top:16px;max-width:74ch;font-size:13px;line-height:1.6;color:var(--muted)}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:16px;font-size:12px;color:var(--muted)}
+  .key{display:inline-flex;align-items:center;gap:7px}
+  .key svg{width:14px;height:14px;flex:none}
+  .format-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(20px,4vw,44px);align-items:start}
+  .format-chart{min-width:0}
+  .range-note{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+  .scroll-hint{display:none;font-family:var(--mono);font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin:0 0 4px}
+
+  /* ---------- summary ---------- */
+  .summary-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,54px);align-items:start}
+  .summary-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-bottom:8px;border-bottom:1px solid var(--line);margin:0}
+  .summary-findings ol{list-style:none;counter-reset:find;margin:0;padding:0}
+  .summary-findings li{counter-increment:find;position:relative;padding:13px 0 13px 34px;border-bottom:1px solid var(--line);font-size:14.5px;line-height:1.6;color:var(--muted)}
+  .summary-findings li:last-child{border-bottom:0}
+  .summary-findings li::before{content:counter(find,decimal-leading-zero);position:absolute;left:0;top:15px;font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--accent)}
+  .summary-findings strong{color:var(--ink);font-weight:600}
+  .summary-map ul{list-style:none;margin:0;padding:0}
+  .summary-map li{display:grid;grid-template-columns:54px minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.5;color:var(--muted)}
+  .summary-map li:last-child{border-bottom:0}
+  .summary-map li span{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--accent);padding-top:2px}
+  .summary-thesis{margin-top:clamp(22px,3vw,34px);border-top:1px solid var(--line);padding-top:18px;font-family:var(--serif);font-size:clamp(20px,2.6vw,26px);line-height:1.35;letter-spacing:-.015em;max-width:64ch}
+  .summary-thesis em{font-style:italic;color:var(--accent)}
+  .summary-jump{margin-top:16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase}
+  .summary-jump a{border-bottom:1px solid currentColor}
+
+  /* ---------- KPIs ---------- */
+  .kpis{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);margin-top:30px;
+  }
+  .kpi{background:var(--card);padding:18px 16px 16px;min-width:0}
+  .kpi-label{font-family:var(--mono);font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  .kpi-values{display:flex;align-items:baseline;gap:7px;font-size:clamp(21px,2.6vw,28px);font-weight:600;letter-spacing:-.03em;line-height:1.1;margin-top:8px}
+  .kpi-values i{font-style:normal;color:var(--muted);font-size:15px;font-weight:400}
+  .kpi-delta{display:inline-block;margin-top:4px;font-family:var(--mono);font-size:10.5px;letter-spacing:.02em}
+  .kpi-delta.up{color:var(--good)}
+  .kpi-delta.down{color:var(--bad)}
+
+  /* ---------- tables ---------- */
+  .table-wrap{overflow-x:auto;margin-top:18px;border-top:1px solid var(--line);-webkit-overflow-scrolling:touch;scroll-margin-top:70px}
+  table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+  caption{text-align:left;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:9px 8px 8px}
+  th{
+    font-family:var(--mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--muted);font-weight:500;text-align:left;padding:9px 8px;
+    border-bottom:1px solid var(--line);white-space:nowrap;
+  }
+  td{padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th.num,td.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .tcell{min-width:250px}
+  .tcell strong{display:block;font-weight:500;line-height:1.35;font-size:13px}
+  .tcell a{color:inherit;border-bottom:0}
+  .tcell a:hover{color:var(--accent)}
+  .sub{display:block;margin-top:3px;font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.02em}
+  .tag{
+    display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:8.5px;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;
+  }
+  .tag i{width:6px;height:6px;border-radius:50%;display:inline-block;flex:none}
+  .tag-idea i{background:var(--series-essay)}
+  .tag-object i{background:var(--series-gear)}
+  .tag-collab i{background:var(--series-lei)}
+  .tag-label i{background:var(--series-vlog)}
+
+  /* ---------- frames ---------- */
+  .sheet{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+  .frame{margin:0;min-width:0}
+  .frame-img{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:3px;background:var(--wash)}
+  .frame-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .frame-img a:hover img{transform:scale(1.025)}
+  .frame-no{
+    position:absolute;top:6px;left:6px;z-index:2;
+    font-family:var(--mono);font-size:9px;letter-spacing:.06em;
+    background:rgba(16,13,10,.72);color:#fff;padding:2px 5px;border-radius:2px;
+  }
+  .frame figcaption{margin-top:8px;font-size:12px;line-height:1.4}
+  .frame figcaption strong{display:block;color:var(--ink);font-weight:500;font-size:12.5px;line-height:1.35}
+  .frame figcaption span{display:block;margin-top:3px;font-family:var(--mono);font-size:9px;color:var(--muted)}
+
+  /* ---------- quotes ---------- */
+  .quote-card{border-top:1px solid var(--line);padding-top:18px;margin-top:18px}
+  .quote-card:first-child{border-top:0;padding-top:0;margin-top:0}
+  .quote-card blockquote{margin:0;font-family:var(--serif);font-size:clamp(20px,2.4vw,26px);line-height:1.35;letter-spacing:-.01em}
+  .quote-card .translation{display:block;margin-top:9px;font-family:var(--sans);font-size:13px;line-height:1.6;color:var(--muted);letter-spacing:0}
+  .quote-card .attribution{display:block;margin-top:8px;font-family:var(--mono);font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+  .pullquote{margin:34px 0 0;padding:26px 0 0;border-top:1px solid var(--line)}
+  .pullquote blockquote{margin:0;font-family:var(--serif);font-size:clamp(27px,3.6vw,42px);line-height:1.22;letter-spacing:-.025em;max-width:24ch}
+  .pullquote blockquote em{font-style:italic;color:var(--accent-bright)}
+  .pullquote .translation{display:block;margin-top:12px;font-family:var(--sans);font-size:14px;line-height:1.6;color:var(--muted);max-width:52ch;letter-spacing:0}
+  .pullquote .attribution{display:block;margin-top:8px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+  /* ---------- timeline ---------- */
+  .timeline{list-style:none;margin:10px 0 0;padding:0;position:relative;max-width:820px}
+  .timeline::before{content:"";position:absolute;left:77px;top:10px;bottom:12px;width:1px;background:var(--line)}
+  .timeline li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:28px;padding:0 0 24px;position:relative}
+  .timeline li:last-child{padding-bottom:0}
+  .timeline li::before{content:"";position:absolute;left:73px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--accent-bright);box-shadow:0 0 0 4px var(--paper)}
+  .tl-date{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--muted);text-align:right;text-transform:uppercase;padding-top:2px}
+  .timeline strong{display:block;font-size:14px;font-weight:600;line-height:1.35}
+  .timeline p{margin-top:3px;font-size:13px;line-height:1.55;color:var(--muted);max-width:56ch}
+
+  /* ---------- lists / moves / plan ---------- */
+  .keep-change{display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,4vw,48px);margin-top:28px}
+  .kc h3{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .kc ul{list-style:none;margin:12px 0 0;padding:0}
+  .kc li{position:relative;padding-left:16px;margin-bottom:10px;font-size:14px;line-height:1.55}
+  .kc li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--accent-bright)}
+  .kc.change li::before{background:var(--series-gear)}
+  .kc li span{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+
+  .moves{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:30px}
+  .move{background:var(--card);border:1px solid var(--line);border-top:2px solid var(--accent-bright);padding:16px 14px 15px;min-width:0}
+  .move .n{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--accent)}
+  .move h3{font-size:17px;line-height:1.22;margin:7px 0 7px;letter-spacing:-.015em}
+  .move p{font-size:12.5px;line-height:1.55;color:var(--muted)}
+
+  .plan{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:28px}
+  .week{border-top:1px solid var(--line);padding-top:13px;min-width:0}
+  .week .wk{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+  .week h3{font-size:16px;line-height:1.25;margin:6px 0 10px;letter-spacing:-.01em}
+  .week dl{margin:0;font-size:12px;line-height:1.5;color:var(--muted)}
+  .week dt{font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-top:9px}
+  .week dt:first-child{margin-top:0}
+  .week dd{margin:2px 0 0}
+
+  .guardrails{margin-top:26px;padding:18px 20px;background:var(--wash);border-left:2px solid var(--accent-bright);font-size:13.5px;line-height:1.65;color:var(--muted);max-width:78ch}
+  .guardrails strong{color:var(--ink)}
+
+  /* ---------- limits / method ---------- */
+  .limits{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;margin-top:8px}
+  .limit{border-top:1px solid var(--line);padding:13px 0 14px;min-width:0}
+  .limit strong{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:500}
+  .limit p{font-size:13.5px;line-height:1.6;color:var(--muted)}
+  .method-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;margin-top:6px}
+  .method-item{border-top:1px solid var(--line);padding:13px 0 14px}
+  .method-item strong{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;font-weight:500}
+  .method-item p{font-size:13px;line-height:1.6;color:var(--muted)}
+  code{font-family:var(--mono);font-size:.9em;background:var(--wash);padding:2px 5px;border-radius:2px}
+
+  /* ---------- Portuguese ---------- */
+  .para{
+    background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent-bright);
+    padding:clamp(24px,4vw,46px);margin-top:8px;
+  }
+  .para .section-head{grid-template-columns:1fr;margin-bottom:26px}
+  .para h2{font-size:clamp(34px,5vw,50px)}
+  .para .standfirst{max-width:64ch}
+  .para ol{list-style:none;counter-reset:para;margin:0;padding:0;max-width:76ch}
+  .para li{counter-increment:para;position:relative;padding:16px 0 16px 44px;border-top:1px solid var(--line);font-size:15.5px;line-height:1.7}
+  .para li::before{
+    content:counter(para,decimal-leading-zero);position:absolute;left:0;top:17px;
+    font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.04em;
+  }
+  .para li strong{font-weight:600}
+  .para .closing{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--serif);font-size:clamp(22px,2.8vw,30px);line-height:1.35;letter-spacing:-.015em;max-width:30ch}
+  .para .closing em{font-style:italic;color:var(--accent-bright)}
+
+  footer{border-top:1px solid var(--line);padding:26px 0 40px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:space-between;text-transform:uppercase}
+
+  /* tooltip */
+  #tip{
+    position:fixed;top:0;left:0;z-index:60;pointer-events:none;
+    background:var(--ink);color:var(--card);font-family:var(--mono);font-size:10px;
+    line-height:1.4;padding:6px 8px;border-radius:3px;max-width:240px;
+    box-shadow:0 6px 18px rgba(0,0,0,.18);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .topbar .brand{display:none}
+    .topbar-inner{gap:14px}
+    .factbar{grid-template-columns:repeat(3,1fr)}
+    .fact:nth-child(3n){border-right:0}
+    .fact:nth-child(-n+3){border-bottom:1px solid var(--line)}
+    .moves{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .plan{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .format-layout{grid-template-columns:1fr}
+    .format-chart{overflow-x:auto;padding-bottom:4px;overscroll-behavior-x:contain}
+    .format-chart .chart-svg{min-width:500px}
+    .scroll-hint{display:block!important}
+    .chart-svg .tick,.chart-svg .val{font-size:10.5px}
+    .chart-svg .band-label{font-size:9.5px}
+    .chart-svg .val-label,.chart-svg .axis-title{font-size:11px}
+  }
+  @media (max-width:760px){
+    section > *{margin-left:0}
+    section{scroll-margin-top:60px}
+    .summary-grid{grid-template-columns:1fr}
+    .hero-strip{grid-template-columns:repeat(3,1fr)}
+    .split{grid-template-columns:1fr}
+    .chart-grid{grid-template-columns:1fr}
+    .sheet{grid-template-columns:repeat(2,1fr)}
+    .keep-change{grid-template-columns:1fr}
+    .limits,.method-grid{grid-template-columns:1fr}
+    .section-head{grid-template-columns:1fr;gap:8px}
+    .section-head .num{padding-top:0}
+    .timeline::before{left:63px}
+    .timeline li{grid-template-columns:58px minmax(0,1fr);gap:18px}
+    .timeline li::before{left:59px}
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .factbar{grid-template-columns:repeat(2,1fr)}
+    .fact:nth-child(3n){border-right:1px solid var(--line)}
+    .fact:nth-child(2n){border-right:0}
+    .fact:nth-child(-n+4){border-bottom:1px solid var(--line)}
+    .fact:nth-child(n+5){border-bottom:0}
+  }
+  @media (max-width:520px){
+    .sheet{grid-template-columns:1fr}
+    .moves,.plan{grid-template-columns:1fr}
+    .topbar-inner{gap:10px}
+    .top-nav{gap:12px}
+    .lang-switch,.theme-toggle{padding:5px 8px;position:relative}
+    .lang-switch::after,.theme-toggle::after{content:"";position:absolute;inset:-11px -4px}
+    .deck{max-width:none}
+    .prose{font-size:16px}
+    table{min-width:480px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{transition:none!important;animation:none!important}
+  }
+  @media print{
+    .topbar,.lang-switch,.theme-toggle,.top-nav,#tip{display:none!important}
+    section{scroll-margin-top:0}
+    body{background:#fff;color:#000}
+    section{padding-block:28px;break-inside:avoid}
+    .card{break-inside:avoid}
+  }
+</style>
+</head>
+<body data-ui-table="Table" data-ui-hide="Hide table" data-ui-dark="Dark" data-ui-light="Light" data-ui-aria-dark="Switch to light theme" data-ui-aria-light="Switch to dark theme">
+
+<div class="topbar">
+  <div class="topbar-inner wrap">
+    <span class="brand">Channel study · 2026</span>
+    <nav class="top-nav" aria-label="Sections">
+      <a href="#summary">Summary</a>
+      <a href="#thesis">Thesis</a>
+      <a href="#year">Year</a>
+      <a href="#august">August</a>
+      <a href="#formats">Formats</a>
+      <a href="#doors">Doors</a>
+      <a href="#next">Next cut</a>
+      <a href="#para">For Ricardo</a>
+    </nav>
+    <div class="topbar-tools">
+      <a class="lang-switch" id="lang-switch" href="ricardo-franzen.html" hreflang="pt-BR" lang="pt-BR" data-lang-target="ricardo-franzen.html" title="Ler em português">PT</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch theme">Dark</button>
+    </div>
+  </div>
+</div>
+
+<header class="masthead wrap">
+  <p class="kicker">Ricardo Franzen · @ricardofranzenart</p>
+  <h1>O Corte<br><em>do Diretor</em></h1>
+  <p class="deck">414 public films. One identity. The daily vlog is not the problem — the door is.</p>
+  <p class="dek-sub">A public-data study of the 2026 work: what reached strangers, what deepened the relationship, and what can change without changing who he is.</p>
+  <div class="byline">
+    <span>Prepared 6 November 2026</span>
+    <span>Public data only</span>
+    <span>1 Jan – 6 Nov 2026</span>
+    <span>No Studio access</span>
+  </div>
+
+  <div class="hero-strip" aria-hidden="true">{{HERO_STRIP}}</div>
+
+  <dl class="factbar">
+    <div class="fact"><dt>Channel</dt><dd>Ricardo Franzen<span>filmmaker · daily</span></dd></div>
+    <div class="fact"><dt>Subscribers</dt><dd>56,000<span>public count</span></dd></div>
+    <div class="fact"><dt>Public videos</dt><dd>414<span>2026 only</span></dd></div>
+    <div class="fact"><dt>2026 views</dt><dd>1,380,696<span>cumulative</span></dd></div>
+    <div class="fact"><dt>Median video</dt><dd>2,406<span>views</span></dd></div>
+    <div class="fact"><dt>Deep sample</dt><dd>40 films<span>1,785 comments</span></dd></div>
+  </dl>
+</header>
+
+<main class="wrap">
+
+  <!-- 00 SUMMARY -->
+  <section id="summary">
+    <div class="section-head">
+      <span class="num">00</span>
+      <div>
+        <h2>The whole argument, on one page</h2>
+        <p class="standfirst">What the data shows, what I recommend, and where each part is argued. Read this first; the rest is the evidence.</p>
+      </div>
+    </div>
+
+    <div class="summary-grid">
+      <div class="summary-findings">
+        <p class="summary-label">Four findings</p>
+        <ol>
+          <li><strong>The daily film is the bond.</strong> 414 public films in 310 days. Before 25 August, the daily vlog carried a 16.4% like rate — above the channel's 15.6% median — on 1,975 views.</li>
+          <li><strong>The door is the package.</strong> None of the 14 most-watched films is titled like a diary entry: seven are idea films, six are object films, one is a collab.</li>
+          <li><strong>August changed the audience.</strong> Median views rose 55% after 25 August, while the like rate fell from 15.6% to 6.0%. Reach arrived; familiarity did not.</li>
+          <li><strong>The top-right corner is empty.</strong> No format combines above-median reach with above-median affinity. The essay is closest: 2,849 views and 14.4% before the shift.</li>
+        </ol>
+      </div>
+      <div class="summary-map">
+        <p class="summary-label">The route</p>
+        <ul>
+          <li><span>01–02</span>The diagnosis, and the year in numbers</li>
+          <li><span>03–04</span>The August turn, and the map of formats</li>
+          <li><span>05–07</span>The films that opened doors, the pattern, and the ones that didn't travel</li>
+          <li><span>08–09</span>The line that must not move, and the next cut — with a 30-day plan</li>
+          <li><span>10–13</span>Timeline, limits, method, and the letter to Ricardo</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="summary-thesis">The thesis in one line: <em>the daily vlog is the relationship; the essay is the door.</em> The change is in the frame — title, thumbnail, cold open, ending — not in the film.</p>
+    <p class="summary-jump"><a href="#next">Skip to the recommendation →</a></p>
+  </section>
+
+  <!-- 01 THESIS -->
+  <section id="thesis">
+    <div class="section-head">
+      <span class="num">01</span>
+      <div>
+        <h2>The diary is not the problem</h2>
+        <p class="standfirst">He already shoots the film every day. The next step is to cut it — not into something else, but into something a stranger can enter.</p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="prose">
+        <p class="lead">The vlog is the relationship. <em>The essay is the door.</em></p>
+        <p>Ricardo's channel is built on a rare promise: a film a day, made from a real life. The daily vlog is not a format he chose because it performs. It is the practice. It gives him the footage, the discipline, and the relationship with the people who follow along. In 2026 he published 414 public videos in 310 days — more than one a day on average — and they drew 1.38 million views.</p>
+        <p>The problem is not the frequency. It is the frame. Most uploads are titled and thumbnailed like diary entries: <em>“café”</em>, <em>“Cores em Movimento”</em>, <em>“287/365”</em>, <em>“VLOG 1019”</em>. A diary entry is an invitation only if you already know the diarist. For a stranger, it is a closed door.</p>
+        <p>The 14 films that travelled furthest in 2026 did something different. They made a promise before the film began: a claim, a question, a test, a stake. The film inside was still his — warm, first-person, unhurried. The difference was the door.</p>
+        <p>The opportunity is not to become a different filmmaker. It is to give the daily film a door: a title that promises, a poster that shows a face and an object, a first twenty seconds that starts at the stake. The essay already does most of this. It is the bridge between the diary and the stranger.</p>
+      </div>
+      <aside class="stack">
+        <div class="card">
+          <p class="aside-note"><strong>What this report is.</strong> A reading of the channel's public surface — titles, thumbnails, lengths, views, likes, comments, and 58 transcripts — focused only on 2026. It is a diagnosis of the frame, not a verdict on the work.</p>
+          <p class="aside-note" style="margin-top:16px"><strong>What it is not.</strong> A Studio report. Impressions, click-through rate, watch time, traffic sources, and returning viewers are not available. Every causal claim here is a hypothesis, clearly marked as one.</p>
+        </div>
+        <div class="pullquote">
+          <blockquote>“Eu faço filmes sobre tudo aquilo que me inspira.”</blockquote>
+          <span class="translation">“I make films about everything that inspires me.”</span>
+          <span class="attribution">Channel description</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 02 YEAR -->
+  <section id="year">
+    <div class="section-head">
+      <span class="num">02</span>
+      <div>
+        <h2>The year in one look</h2>
+        <p class="standfirst">A spring plateau, a summer dip, a September jump. Then a second story: the like rate halves.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Median views hovered between 1,749 and 2,542 from February through August. January was the outlier at 3,469, powered by the year's biggest film. September and October more than doubled the summer median, at 3,491 and 3,614. November is partial — 12 videos in six days, median 2,762 — and should be read as a running number, not a finished month.</p>
+      <p>The second panel is the warning. The median like rate was remarkably stable — between 13.1% and 17.1% — for the first eight months. In September it fell to 6.1%, and it stayed near 5–6% in October and November. More views; a smaller share of them liked. In public data, that is what a larger and less familiar audience looks like.</p>
+    </div>
+
+    <figure class="chart-card card">
+      <div class="chart-head">
+        <div>
+          <h3>Monthly medians, January–November</h3>
+          <p>Each point is the median video of that month, not the average. November covers only the first six days.</p>
+        </div>
+        <button class="ghost" type="button" data-table="tbl-year" aria-controls="tbl-year" aria-expanded="false">Table</button>
+      </div>
+      <div class="chart-grid">
+        <div class="panel">
+          <h4>Median views per video</h4>
+          {{CHART_MONTHLY_VIEWS}}
+        </div>
+        <div class="panel">
+          <h4>Median like rate</h4>
+          {{CHART_MONTHLY_LIKES}}
+        </div>
+      </div>
+      <figcaption class="chart-caption">Two panels, two scales — not a dual axis. The shaded band marks September–November, the months after the audience shift. Hover or focus a mark for the month's count and value; the table carries every number.</figcaption>
+      <div class="table-wrap" id="tbl-year" hidden>
+        <table>
+          <caption>Monthly medians, 2026</caption>
+          <thead><tr><th scope="col">Month</th><th scope="col" class="num">Videos</th><th scope="col" class="num">Median views</th><th scope="col" class="num">Median like rate</th><th scope="col" class="num">Share ≥ 5k</th></tr></thead>
+          <tbody>{{MONTHLY_TABLE}}</tbody>
+        </table>
+      </div>
+    </figure>
+  </section>
+
+  <!-- 03 AUGUST -->
+  <section id="august">
+    <div class="section-head">
+      <span class="num">03</span>
+      <div>
+        <h2>The August turn</h2>
+        <p class="standfirst">Reach doubled. Affinity did not. The most useful event of the year is the one that shows what happens when a gear story opens the door.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>The break is not July's MacBook film. July's median like rate was still 15.8%. The shift begins with the 25 August <em>“O QUE EU LEVO NA MOCHILA”</em> (5,213 views, 5.9% likes) and the 26 August <em>“Usei o MacBook Air M5 por 30 Dias”</em> (19,771 views, 2.7%). From that point, the channel's median video reached 3,416 views — 55% more than the 2,208 median before — while the median like rate fell from 15.6% to 6.0%, comments from 47 to 26, and the share of videos crossing 5,000 views rose from 7% to 26%.</p>
+      <p>Two readings are consistent with the public data. First, the gear films brought in a broader audience that does not yet have a relationship with Ricardo: they watch, but they do not like or comment at the old rate. Second, the channel's centre of gravity moved from the daily film toward the product film, and the daily films that followed inherited a different audience mix. Both can be true. Without traffic-source and returning-viewer data, neither can be proven.</p>
+      <p>What is clear: <strong>reach is available.</strong> The August wave shows the channel can find strangers. The task is not to keep chasing the wave; it is to convert the strangers the wave brought. A gear film can be the first film someone sees. The next film has to make them stay.</p>
+    </div>
+
+    <div class="kpis">{{KPI_ROW}}</div>
+    <p class="range-note">Median video · before 25 Aug (n=315) vs. after (n=99) · snapshot 6 Nov 2026</p>
+
+    <div class="split" style="margin-top:38px">
+      <div class="prose">
+        <p>The top 14 films are not all gear. Seven are idea films — manifestos, essays, arguments. Six are object films. One is a collab. Gear is not the only door; it is the most reliable door in the current packaging, because a product in the title and a product in the thumbnail tell a stranger exactly what the film will do.</p>
+        <p>The risk is that the door becomes the house. A channel that only opens with products will be read as a product channel, and the daily film — the thing that makes the relationship — will look like filler to the new audience. The next move is a bridge, not a pivot.</p>
+      </div>
+      <aside class="card">
+        <p class="aside-note"><strong>The honest caveat.</strong> The August shift could also reflect a recommendation change, a seasonal effect, or a single video's spillover. The public data cannot separate those from the packaging story. The pattern is consistent with a broader, cooler audience; it does not prove one.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 04 FORMATS -->
+  <section id="formats">
+    <div class="section-head">
+      <span class="num">04</span>
+      <div>
+        <h2>The format portfolio</h2>
+        <p class="standfirst">Four ways of making a film. Each buys something different. None yet buys everything.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Before 25 August — to keep the audience shift out of the comparison — the four formats split cleanly. Gear reaches furthest (median 3,696 views) and is liked least (11.0%). The essay reaches 2,849 and holds a 14.4% like rate, close to the channel's 15.6% pre-August median. The daily vlog and the uncategorised diary films, grouped, reach 1,975 with a 16.4% like rate. LEI reaches least (1,397) and is liked most (17.3%).</p>
+      <p>The upper-right quadrant — more reach and more engagement than the channel median — is empty. The essay is the closest thing to it: it clears the reach line by 29% and sits only 1.2 points below the affinity line. That gap is the creative brief for the next film: <strong>an essay with the intimacy of a vlog.</strong></p>
+      <p>After 25 August, gear's median rose to 8,128 views across six videos, with a 4.1% like rate; essays had a median of 3,342 across eight, with 6.1%. The samples are small, but the direction matches the August story: gear scales reach, not affinity.</p>
+    </div>
+
+    <figure class="chart-card card">
+      <div class="chart-head">
+        <div>
+          <h3>Where each format lands</h3>
+          <p>Median views against median like rate, before the August audience shift.</p>
+        </div>
+        <button class="ghost" type="button" data-table="tbl-format" aria-controls="tbl-format" aria-expanded="false">Table</button>
+      </div>
+      <p class="scroll-hint">Swipe the chart to see all four formats →</p>
+      <div class="format-layout">
+        <div class="format-chart">{{CHART_FORMAT}}</div>
+        <div>
+          <div class="legend" aria-label="Format legend">{{FORMAT_LEGEND}}</div>
+          <p class="chart-caption" style="margin-top:18px">Quadrant lines mark the channel's pre-August medians (2,208 views, 15.6% likes). The grey point is the combined vlog/other bucket (185 videos), not a fourth series.</p>
+          <p class="range-note">n = 36 gear · 27 essay · 185 vlog/other · 27 LEI</p>
+        </div>
+      </div>
+      <figcaption class="chart-caption">The upper-right quadrant is empty. No format in the 2026 corpus combines above-median reach with above-median affinity. The essay is nearest: it clears the reach line and sits just below the affinity line.</figcaption>
+      <div class="table-wrap" id="tbl-format" hidden>
+        <table>
+          <caption>Format medians, 1 Jan – 24 Aug 2026</caption>
+          <thead><tr><th scope="col">Format</th><th scope="col" class="num">Videos</th><th scope="col" class="num">Median views</th><th scope="col" class="num">Median like rate</th></tr></thead>
+          <tbody>{{FORMAT_TABLE}}</tbody>
+        </table>
+      </div>
+    </figure>
+
+    <aside class="aside-note" style="margin-top:22px;max-width:74ch">Format assignments are keyword-based and approximate. “Daily vlog / other” combines explicit VLOG titles with diary films the classifier could not place; it is a bucket, not a genre.</aside>
+  </section>
+
+  <!-- 05 DOORS -->
+  <section id="doors">
+    <div class="section-head">
+      <span class="num">05</span>
+      <div>
+        <h2>The 14 films that opened a door</h2>
+        <p class="standfirst">The year's most-watched work. Not all gear, not all essays — but all of them make a promise before the film begins.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Seven are idea films — manifestos, essays, arguments. Six are object films — a laptop swap, a camera comparison, a 30-day test. One is a collab. None is titled like a diary entry.</p>
+      <p>The titles do the same job in different dialects. They make a claim (<em>“PARE DE TENTAR CRIAR CONTEÚDO”</em>, <em>“A VIDA É UM FILME”</em>), ask a question (<em>“e se?”</em>, <em>“DJI Pocket 4 ou Câmera Profissional?”</em>), stage a test (<em>“Usei o MacBook Air M5 por 30 Dias”</em>), or name a stake (<em>“troquei meu MacBook PRO por um Air M5”</em>). A stranger can tell what the film is about before clicking.</p>
+      <p>The thumbnails repeat the promise in pictures: a face, an object, and often three words. The contact sheet below shows six of them. The pattern is not a formula; it is a habit of showing the stakes.</p>
+      <p>Length is not the lever. The top 14 have a median length of 16.2 minutes; the bottom 12 of the deep sample, 4.3. But one top film runs 8.7 minutes and another 60.1. What separates them is not duration; it is whether the film has a shape a stranger can enter.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <caption>The 14 most-viewed public videos of 2026</caption>
+        <thead><tr><th scope="col">Film</th><th scope="col" class="num">Views</th><th scope="col" class="num">vs. baseline</th><th scope="col" class="num">Length</th></tr></thead>
+        <tbody>{{TOP_TABLE}}</tbody>
+      </table>
+    </div>
+    <p class="range-note">vs. baseline = views ÷ the median views of the previous 20 uploads at publish time. 1.0× means “like the channel's recent normal.”</p>
+
+    <div class="sheet">{{TOP_FRAMES}}</div>
+  </section>
+
+  <!-- 06 PATTERN -->
+  <section id="pattern">
+    <div class="section-head">
+      <span class="num">06</span>
+      <div>
+        <h2>What opens a door</h2>
+        <p class="standfirst">Five patterns shared by the films that travelled. They are packaging decisions, not identity decisions.</p>
+      </div>
+    </div>
+
+    <div class="moves">
+      <div class="move">
+        <span class="n">01</span>
+        <h3>A promise, not a label</h3>
+        <p>A label answers “what is it?” A promise answers “why should I watch?” The bottom titles name a mood or a series position: <em>“café”</em>, <em>“Cores em Movimento”</em>, <em>“287/365”</em>. The top titles name a belief, a question, or a stake.</p>
+      </div>
+      <div class="move">
+        <span class="n">02</span>
+        <h3>A face and an object</h3>
+        <p>In the top sample, 10 of 12 thumbnails have a prominent face and 8 carry text. In the bottom sample, 5 have a face and 3 carry text. The object gives the face a subject: a MacBook, a camera, a mug. This is a sample observation, not a controlled test.</p>
+      </div>
+      <div class="move">
+        <span class="n">03</span>
+        <h3>Start at the stake</h3>
+        <p>The strongest films open on the decision, the test, or the question — not on the morning routine. The daily film can still breathe; the first twenty seconds just need to tell a stranger what is at stake.</p>
+      </div>
+      <div class="move">
+        <span class="n">04</span>
+        <h3>Three acts, not a sequence</h3>
+        <p>A film needs a turn: the reason, the test, the verdict; the before, the day, the after; the belief, the doubt, the proof. The vlog's chronology is the material, not the structure.</p>
+      </div>
+      <div class="move">
+        <span class="n">05</span>
+        <h3>A door at the end</h3>
+        <p>The sign-off is a relationship ritual; it is not a next step. A door can be a question answered in the next film, a series the viewer can follow, or a promise made in the cold open and paid off at the end. The archive becomes a ladder, not a stream.</p>
+      </div>
+    </div>
+
+    <div class="split" style="margin-top:44px">
+      <div>
+        <div class="quote-card">
+          <blockquote>“O YouTube finalmente fez um bom trabalho, te recomendou pra mim, sua filosofia de documentação da vida me ajudou muito… você não imagina o tanto que fez por mim!”</blockquote>
+          <span class="translation">“YouTube finally did a good job and recommended you to me. Your philosophy of documenting life helped me a lot… you can't imagine how much you did for me.”</span>
+          <span class="attribution">@olimacDJ · 67 likes · on “PARE DE TENTAR CRIAR CONTEÚDO”</span>
+        </div>
+      </div>
+      <div>
+        <div class="quote-card">
+          <blockquote>“PORRA, FAÇAM ISSO MAIS E MAIS. Vídeos ensaios são essenciais hoje em dia…”</blockquote>
+          <span class="translation">“Damn, do this more and more. Essay videos are essential today…”</span>
+          <span class="attribution">@israelsfreitas · 62 likes · on the same film</span>
+        </div>
+      </div>
+    </div>
+    <p class="range-note">Comments are from the 40-film deep sample, top-sorted; 1,785 comments across 40 videos. They are evidence of what the most engaged viewers ask for, not a representative poll.</p>
+  </section>
+
+  <!-- 07 BOTTOM -->
+  <section id="bottom">
+    <div class="section-head">
+      <span class="num">07</span>
+      <div>
+        <h2>The films that didn't travel</h2>
+        <p class="standfirst">The bottom 12 of the deep sample are not bad films. They are unopened doors.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Their titles are mood labels (<em>“Cores em Movimento”</em>, <em>“traga-me o horizonte”</em>), place labels (<em>“Caminhos de Outono”</em>), serial numbers (<em>“287/365”</em>, <em>“VLOG 1019”</em>), or gear labels (<em>“vlog com Ray-Ban Meta Gen 2”</em>). Their thumbnails are often landscapes, backs, or atmospheres: beautiful, but without a face or a stake. A stranger has no reason to click; the already-converted need no reason.</p>
+      <p>The comments show what happens once someone is inside. <em>“Dói saber que eu não terei mais o meu vlog infinito.”</em> The audience mourns the end of the daily vlog. <em>“Ricardo, dei iniciativa de registrar meu dia-dia hoje, por total inspiração dos seus filmes.”</em> The work lands. The threshold is the problem.</p>
+      <p>These films are also the proof of identity: the channel would be poorer without them. The recommendation is not to stop making them. It is to give the ones that matter a door — and to keep the diary films as the daily floor, not the whole building.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <caption>Bottom 12 of the deep sample</caption>
+        <thead><tr><th scope="col">Film</th><th scope="col" class="num">Views</th><th scope="col" class="num">vs. baseline</th><th scope="col" class="num">Length</th></tr></thead>
+        <tbody>{{BOTTOM_TABLE}}</tbody>
+      </table>
+    </div>
+
+    <div class="sheet">{{BOTTOM_FRAMES}}</div>
+
+    <div class="split" style="margin-top:40px">
+      <div class="quote-card">
+        <blockquote>“Dói saber que eu não terei mais o meu vlog infinito.”</blockquote>
+        <span class="translation">“It hurts to know I won't have my infinite vlog anymore.”</span>
+        <span class="attribution">@wagnerguilberth · on the last daily vlog</span>
+      </div>
+      <div class="quote-card">
+        <blockquote>“Ricardo, dei iniciativa de registrar meu dia-dia hoje, por total inspiração dos seus filmes.”</blockquote>
+        <span class="translation">“Ricardo, I started documenting my daily life today, entirely inspired by your films.”</span>
+        <span class="attribution">@kaiquenda · on a daily film</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 IDENTITY -->
+  <section id="identity">
+    <div class="section-head">
+      <span class="num">08</span>
+      <div>
+        <h2>The line that must not move</h2>
+        <p class="standfirst">The identity is not the problem. It is the asset. The change is in the frame around the film, not in the film.</p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="stack">
+        <div class="quote-card">
+          <blockquote>“Eu tô nessa para documentar minha vida e não para criar conteúdo.”</blockquote>
+          <span class="translation">“I'm in this to document my life, not to create content.”</span>
+        </div>
+        <div class="quote-card">
+          <blockquote>“Eu não preciso competir com ninguém.”</blockquote>
+          <span class="translation">“I don't need to compete with anyone.”</span>
+        </div>
+        <div class="quote-card">
+          <blockquote>“A prioridade é continuar fazendo os filmes que a gente gosta de fazer e não só os filmes para atrair tantas pessoas.”</blockquote>
+          <span class="translation">“The priority is to keep making the films we like to make, not just the films that attract the most people.”</span>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <p class="aside-note"><strong>Two phrases worth keeping on the wall.</strong> “Eu viro uma câmera.” — <em>I become a camera.</em> “Cena conforto.” — <em>comfort scene.</em> They describe a way of looking, not a content strategy. Any recommendation that requires him to stop looking that way is the wrong recommendation.</p>
+          <p class="aside-note" style="margin-top:16px"><strong>The sign-off.</strong> “Eu sou Ricardo Franzen, muito obrigado, voltem sempre, voltem amanhã porque amanhã tem mais.” It is a ritual of return. The next cut should not replace it; it should give the viewer one more reason to accept it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="keep-change">
+      <div class="kc">
+        <h3>Keep</h3>
+        <ul>
+          <li>The daily film<span>500 is a discipline, not a stunt. The frequency is the practice.</span></li>
+          <li>The first person<span>He is the camera, not a presenter. The films are diaries, not episodes.</span></li>
+          <li>The warmth<span>Coffee, kitchens, friends, light, the walk home. The texture is the identity.</span></li>
+          <li>The sign-off<span>“Voltem amanhã” is the relationship. It stays.</span></li>
+          <li>The refusal to compete<span>No trend for trend's sake. No copying the current thumbnail grammar just because it works.</span></li>
+          <li>The LEI workshop<span>The craft series is the floor of the practice. It is allowed to be small.</span></li>
+        </ul>
+      </div>
+      <div class="kc change">
+        <h3>Change</h3>
+        <ul>
+          <li>The frame<span>Title, thumbnail, cold open, ending. These are decisions about how a stranger meets the film.</span></li>
+          <li>The release shape<span>One flagship a week, replacing a daily slot. Not adding work; changing which day carries the door.</span></li>
+          <li>The series<span>Give the archive a ladder: essays, object stories with a stake, LEI. Each film points to the next.</span></li>
+          <li>The measurement<span>Use the public proxies: views vs. rolling median, like rate, comment rate, new commenters.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 NEXT -->
+  <section id="next">
+    <div class="section-head">
+      <span class="num">09</span>
+      <div>
+        <h2>The next cut</h2>
+        <p class="standfirst">Five moves, one month, no change to the daily promise. A flagship replaces a slot; it does not add one.</p>
+      </div>
+    </div>
+
+    <div class="moves">
+      <div class="move">
+        <span class="n">01</span>
+        <h3>One flagship a week</h3>
+        <p>Replace one daily slot with a 10–20 minute film built around one idea. The other six days stay daily. The 500-video goal is untouched.</p>
+      </div>
+      <div class="move">
+        <span class="n">02</span>
+        <h3>Write the title before you shoot</h3>
+        <p>A claim, a question, or a stake. If the title is a label — a place, a mood, a number — the film has no door yet. Keep the poetic title as an on-screen chapter card.</p>
+      </div>
+      <div class="move">
+        <span class="n">03</span>
+        <h3>Shoot the poster</h3>
+        <p>One frame with a face, an object, and three words. The thumbnail is a poster for the film, not a frame grab. It does not need a reaction face; it needs a subject.</p>
+      </div>
+      <div class="move">
+        <span class="n">04</span>
+        <h3>Open at the stake</h3>
+        <p>The first twenty seconds state the question, the swap, the test, or the fear. After that, the film can breathe at the pace it already has.</p>
+      </div>
+      <div class="move">
+        <span class="n">05</span>
+        <h3>Build a ladder</h3>
+        <p>Three series: essays on documenting life, object stories with a real stake, and LEI. Each flagship ends on the next question, not only on the sign-off.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:42px 0 0;font-weight:500">A 30-day working plan · working titles, not scripts</h3>
+    <div class="plan">
+      <div class="week">
+        <span class="wk">Week 1</span>
+        <h3>“Como documentar a vida sem parar de viver”</h3>
+        <dl>
+          <dt>Promise</dt><dd>A method, not a manifesto: how to keep a record without turning life into content.</dd>
+          <dt>Poster</dt><dd>Face + camera + one printed photograph.</dd>
+          <dt>Cold open</dt><dd>The cost of not documenting — a memory that has no image.</dd>
+          <dt>Door</dt><dd>Ask viewers for one photograph; answer the best ones in week 2.</dd>
+        </dl>
+      </div>
+      <div class="week">
+        <span class="wk">Week 2</span>
+        <h3>“O objeto que mudou meu jeito de filmar”</h3>
+        <dl>
+          <dt>Promise</dt><dd>A gear story with a stake: what the object changed, and what it cost.</dd>
+          <dt>Poster</dt><dd>Face + the object + three words.</dd>
+          <dt>Cold open</dt><dd>The moment of doubt, not the unboxing.</dd>
+          <dt>Door</dt><dd>The next test for people who film every day.</dd>
+        </dl>
+      </div>
+      <div class="week">
+        <span class="wk">Week 3</span>
+        <h3>“300 vídeos depois: o que eu aprendi”</h3>
+        <dl>
+          <dt>Promise</dt><dd>Lessons from the archive, not a retrospective montage.</dd>
+          <dt>Poster</dt><dd>A wall of frames, or a contact sheet with one frame circled.</dd>
+          <dt>Cold open</dt><dd>The first film vs. today — one cut, no narration.</dd>
+          <dt>Door</dt><dd>The 500th film, promised and dated.</dd>
+        </dl>
+      </div>
+      <div class="week">
+        <span class="wk">Week 4</span>
+        <h3>“Um dia com…”</h3>
+        <dl>
+          <dt>Promise</dt><dd>Someone else's life through his lens; a collab with a real person, not a prop.</dd>
+          <dt>Poster</dt><dd>Two faces + one shared object.</dd>
+          <dt>Cold open</dt><dd>The other person's first line.</dd>
+          <dt>Door</dt><dd>The next collab, named at the end.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="guardrails">
+      <strong>Guardrails.</strong> Keep the daily upload and the sign-off. No trend audio, no reaction faces, no challenge format that is not already true. One flagship a week, not four. Measure with views ÷ rolling median, like rate, comment rate, and the number of new commenters; treat all four as signals, not verdicts. After 30 days, if a flagship underperforms, change the door first — not the identity.
+    </div>
+  </section>
+
+  <!-- 10 TIMELINE -->
+  <section id="timeline">
+    <div class="section-head">
+      <span class="num">10</span>
+      <div>
+        <h2>The year, in eight cuts</h2>
+        <p class="standfirst">The moments that explain the shape of the data — and the two doors that changed the audience.</p>
+      </div>
+    </div>
+    <ol class="timeline">{{TIMELINE}}</ol>
+  </section>
+
+  <!-- 11 LIMITS -->
+  <section id="limits">
+    <div class="section-head">
+      <span class="num">11</span>
+      <div>
+        <h2>What this data cannot prove</h2>
+        <p class="standfirst">The limits are part of the finding. Without Studio, the report can describe the surface and propose a hypothesis; it cannot adjudicate it.</p>
+      </div>
+    </div>
+    <div class="limits">
+      <div class="limit"><strong>No impressions or CTR</strong><p>We cannot tell whether a video was shown to more people, clicked more often, or both. A view is the end of a funnel we cannot see.</p></div>
+      <div class="limit"><strong>No watch time or retention</strong><p>We cannot see where viewers leave, whether the 60-minute film holds, or whether the short films are watched to the end.</p></div>
+      <div class="limit"><strong>No traffic sources</strong><p>The August shift is consistent with a product-led audience wave. It could also be a recommendation change or a seasonal effect. Public data cannot separate them.</p></div>
+      <div class="limit"><strong>No returning viewers</strong><p>The like-rate collapse suggests a less familiar audience, but it could also reflect a change in viewing context or in the videos themselves.</p></div>
+      <div class="limit"><strong>Cumulative views</strong><p>Views are a snapshot. Older videos have had more time. The rolling baseline controls for the previous 20 uploads, not for age perfectly.</p></div>
+      <div class="limit"><strong>A 40-film sample</strong><p>Comments, transcripts, and thumbnail review come from 40 of 414 videos. The sample is deliberately stratified, not random.</p></div>
+      <div class="limit"><strong>Top-sorted comments</strong><p>1,785 comments, sorted by top, not a representative poll. YouTube may hide spam and low-quality comments; the sample reflects what is visible.</p></div>
+      <div class="limit"><strong>58 transcripts</strong><p>Only 58 videos have a transcript in the corpus. The 66,965-view film has none. Its reading relies on title, thumbnail, metrics, and comments.</p></div>
+      <div class="limit"><strong>Approximate formats</strong><p>The classifier is keyword-based. “Other” is a residual, not a genre. Some essays are counted as other, and some gear films are counted as vlogs.</p></div>
+      <div class="limit"><strong>24 members-only videos</strong><p>They are excluded from the 414. They may contain some of the most engaged audience, and their absence may bias the engagement averages.</p></div>
+    </div>
+  </section>
+
+  <!-- 12 PARA -->
+  <section id="para">
+    <div class="para">
+      <div class="section-head">
+        <span class="num">12</span>
+        <div>
+          <h2>For Ricardo</h2>
+          <p class="standfirst">What the public numbers say — and what I would do in the next cut. Without changing who you are.</p>
+        </div>
+      </div>
+
+      <ol>
+        <li><strong>The daily vlog is not the problem. It is the floor.</strong> The films that built the most connection in 2026 were the ones that let life in. The comments prove it: people started recording their own day because of your films.</li>
+        <li><strong>The door is the package.</strong> Most videos are titled like a diary: “café”, “Cores em Movimento”, “VLOG 1019”, “287/365”. People who already follow you open them. People who don't keep scrolling.</li>
+        <li><strong>The 14 films that travelled furthest made a promise before they began:</strong> a thesis, a question, a test, a trade. It isn't clickbait; it's clarity. The title says what the film came to do.</li>
+        <li><strong>The essay is the format that best balances reach and bond.</strong> Before 25 August, essays had a median of 2,849 views and 14.4% likes; the daily vlog, 1,975 and 16.4%; gear, 3,696 and 11.0%. The essay reaches further without losing intimacy.</li>
+        <li><strong>The upper corner of the map is empty.</strong> No format combines, at the same time, more reach and more bond than the channel median. That space is the next film: an essay with the intimacy of a vlog.</li>
+        <li><strong>The August wave proved there is reach. It also showed the cost.</strong> The like rate fell from 15.6% to 6.0%, and comments from 47 to 26 per video. The new audience arrived; it doesn't know you yet. The task is to introduce yourself, not to chase the algorithm.</li>
+        <li><strong>One flagship film a week, in place of one daily video.</strong> Keep the 500. Don't add work; change the frame around one day. A 10–20 minute film, one idea, one promise.</li>
+        <li><strong>Write the title before you shoot.</strong> If the title is a label, the film doesn't have a door yet. Keep the poetic title for the opening card.</li>
+        <li><strong>The thumbnail is a poster:</strong> face + object + three words. It doesn't need a reaction face; it needs honesty. The object gives the face a subject.</li>
+        <li><strong>Open at the stake.</strong> In the first 20 seconds, say why this film exists. Then let the day breathe at the pace it already has.</li>
+        <li><strong>End with a door:</strong> a question the next film answers, a series the viewer can follow, a promise the opening made and the ending keeps.</li>
+        <li><strong>What doesn't change:</strong> the first person, the warmth, the sign-off, “come back tomorrow”, the refusal to copy trends, the LEI workshop. The frame changes, not the film.</li>
+      </ol>
+
+      <p class="closing">You already shoot every day. The next cut is giving the film that already exists <em>a door for someone who doesn't know you yet.</em></p>
+    </div>
+  </section>
+
+  <!-- 13 METHOD -->
+  <section id="method">
+    <div class="section-head">
+      <span class="num">13</span>
+      <div>
+        <h2>Method &amp; sources</h2>
+        <p class="standfirst">Enough detail to reproduce the numbers, and enough caveats to keep them honest.</p>
+      </div>
+    </div>
+    <div class="method-grid">
+      <div class="method-item">
+        <strong>Corpus</strong>
+        <p>Videos tab of <a href="https://www.youtube.com/@ricardofranzenart" target="_blank" rel="noopener">@ricardofranzenart</a>, filtered to 2026. 438 entries; 24 members-only excluded; 414 public videos published 1 January – 6 November 2026. Metadata snapshot: 6 November 2026.</p>
+      </div>
+      <div class="method-item">
+        <strong>Rolling baseline</strong>
+        <p><code>ratio = views ÷ median(views of the previous 20 uploads)</code>, computed per video at publish time. It controls for channel growth and for the fact that older videos have had more time to accumulate views. Top and bottom lists include only videos at least 14 days old.</p>
+      </div>
+      <div class="method-item">
+        <strong>Deep sample</strong>
+        <p>40 videos: 12 top rolling outliers, 12 bottom outliers, 8 median performers (one per month), and 8 recent uploads. Used for comments, thumbnails, and transcripts. The sample is stratified by design, not random.</p>
+      </div>
+      <div class="method-item">
+        <strong>Comments</strong>
+        <p>1,785 comments across 40/40 videos; 789 unique authors. Up to 60 parent comments and 20 replies per video, sorted by top. The top 10 commenters wrote 17.9% of the sample; one regular appeared on 38 of 40 videos. Ricardo replied 191 times.</p>
+      </div>
+      <div class="method-item">
+        <strong>Transcripts</strong>
+        <p>58 Portuguese auto-generated transcripts, fetched with <code>youtube-transcript-api</code>. Captions are machine-generated and contain errors. The 66,965-view film has no transcript in the corpus.</p>
+      </div>
+      <div class="method-item">
+        <strong>Thumbnails</strong>
+        <p>40 thumbnails downloaded at the highest available resolution and reviewed on labelled contact sheets. The “face / text / object” counts are a visual review of 24 images (12 top, 12 bottom), not a controlled test.</p>
+      </div>
+      <div class="method-item">
+        <strong>Format classifier</strong>
+        <p>Keyword priority: LEI → Q&amp;A → gear → essay → travel → photo → VLOG → other. It is a heuristic, not a manual coding of all 414 videos. “Other” absorbs diary films that do not match a keyword.</p>
+      </div>
+      <div class="method-item">
+        <strong>What is public</strong>
+        <p>Views, likes, comments, titles, descriptions, durations, publish dates, thumbnails, and visible comment text. No impressions, CTR, watch time, traffic sources, returning viewers, or subscriber sources.</p>
+      </div>
+    </div>
+    <p class="range-note" style="margin-top:18px">Data files: <code>data/ricardo/video_stats.json</code> · <code>data/ricardo/sample.json</code> · <code>data/ricardo/comments/</code> · <code>data/ricardo/thumbs/</code>. Built as a standalone local HTML report.</p>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>O Corte do Diretor · Ricardo Franzen 2026</span>
+  <span>Public data only · no Studio analytics</span>
+  <span>Prepared 6 November 2026</span>
+</footer>
+
+<div id="tip" hidden></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  var body = document.body;
+  var btn = document.getElementById('theme-toggle');
+  var media = window.matchMedia('(prefers-color-scheme: dark)');
+  var ui = {
+    table: body.getAttribute('data-ui-table') || 'Table',
+    hide: body.getAttribute('data-ui-hide') || 'Hide table',
+    dark: body.getAttribute('data-ui-dark') || 'Dark',
+    light: body.getAttribute('data-ui-light') || 'Light',
+    ariaDark: body.getAttribute('data-ui-aria-dark') || 'Switch to light theme',
+    ariaLight: body.getAttribute('data-ui-aria-light') || 'Switch to dark theme'
+  };
+
+  function current(){
+    return root.getAttribute('data-theme') || (media.matches ? 'dark' : 'light');
+  }
+  function paint(t){
+    btn.textContent = t === 'dark' ? ui.light : ui.dark;
+    btn.setAttribute('aria-label', t === 'dark' ? ui.ariaDark : ui.ariaLight);
+    updateFade();
+  }
+  function setTheme(t){
+    root.setAttribute('data-theme', t);
+    paint(t);
+    try { localStorage.setItem('rf-theme', t); } catch (e) {}
+  }
+
+  var stored = null;
+  try { stored = localStorage.getItem('rf-theme'); } catch (e) {}
+  if (stored === 'light' || stored === 'dark') { setTheme(stored); } else { paint(current()); }
+  btn.addEventListener('click', function(){
+    setTheme(current() === 'dark' ? 'light' : 'dark');
+  });
+
+  document.querySelectorAll('[data-table]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var el = document.getElementById(b.getAttribute('data-table'));
+      if (!el) return;
+      var showing = !el.hasAttribute('hidden');
+      if (showing) {
+        el.setAttribute('hidden', '');
+        b.textContent = ui.table;
+        b.setAttribute('aria-expanded', 'false');
+      } else {
+        el.removeAttribute('hidden');
+        b.textContent = ui.hide;
+        b.setAttribute('aria-expanded', 'true');
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        el.scrollIntoView({block: 'start', behavior: reduce ? 'auto' : 'smooth'});
+      }
+    });
+  });
+
+  // The language switch follows the section currently being read.
+  var lang = document.getElementById('lang-switch');
+  var allSections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
+
+  // Sticky nav: mark the section under the bar, keep it in view, and fade the edges.
+  var nav = document.querySelector('.top-nav');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.top-nav a'));
+  var sections = links.map(function(a){
+    return document.querySelector(a.getAttribute('href'));
+  });
+  var queued = false;
+  var lastIdx = -2;
+
+  function reduced(){
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+  function reveal(a){
+    if (!nav || !a) return;
+    var ar = a.getBoundingClientRect();
+    var nr = nav.getBoundingClientRect();
+    if (ar.left < nr.left + 6) {
+      nav.scrollBy({left: ar.left - nr.left - 18, behavior: reduced() ? 'auto' : 'smooth'});
+    } else if (ar.right > nr.right - 6) {
+      nav.scrollBy({left: ar.right - nr.right + 18, behavior: reduced() ? 'auto' : 'smooth'});
+    }
+  }
+  function updateFade(){
+    if (!nav) return;
+    var max = nav.scrollWidth - nav.clientWidth;
+    var f = [];
+    if (nav.scrollLeft > 2) f.push('left');
+    if (nav.scrollLeft < max - 2) f.push('right');
+    nav.setAttribute('data-fade', f.join(' '));
+  }
+  function spy(){
+    queued = false;
+    var y = window.scrollY + 110;
+    var idx = -1;
+    sections.forEach(function(s, i){
+      if (s && s.getBoundingClientRect().top + window.scrollY <= y) idx = i;
+    });
+    links.forEach(function(a, i){
+      var on = i === idx;
+      a.classList.toggle('is-active', on);
+      if (on) a.setAttribute('aria-current', 'location');
+      else a.removeAttribute('aria-current');
+    });
+    if (idx !== lastIdx) {
+      if (idx >= 0) reveal(links[idx]);
+      lastIdx = idx;
+    }
+    if (lang) {
+      var current = '';
+      allSections.forEach(function(s){
+        if (s.getBoundingClientRect().top + window.scrollY <= y) current = '#' + s.id;
+      });
+      lang.href = lang.getAttribute('data-lang-target') + current;
+    }
+  }
+  function queueSpy(){
+    if (!queued) { queued = true; window.requestAnimationFrame(spy); }
+  }
+  window.addEventListener('scroll', queueSpy, {passive: true});
+  window.addEventListener('resize', function(){ queueSpy(); updateFade(); });
+  window.addEventListener('load', spy);
+  if (nav) nav.addEventListener('scroll', updateFade, {passive: true});
+  updateFade();
+  spy();
+
+  // A deep link should land on its section after webfonts settle.
+  var initialHash = location.hash;
+  var userMoved = false;
+  ['wheel', 'touchmove', 'keydown'].forEach(function(ev){
+    window.addEventListener(ev, function(){ userMoved = true; }, {passive: true});
+  });
+  function realign(){
+    if (userMoved || location.hash !== initialHash) return;
+    var target = initialHash && document.getElementById(initialHash.slice(1));
+    if (target) target.scrollIntoView({block: 'start'});
+  }
+  window.addEventListener('load', function(){
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function(){ updateFade(); setTimeout(realign, 80); });
+    } else {
+      setTimeout(realign, 200);
+    }
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(el){
+    var text = el.getAttribute('data-tip');
+    if (!text) return;
+    tip.textContent = text;
+    tip.hidden = false;
+    var r = el.getBoundingClientRect();
+    var tr = tip.getBoundingClientRect();
+    var x = r.left + r.width / 2 - tr.width / 2;
+    var y = r.top - tr.height - 10;
+    x = Math.max(8, Math.min(x, window.innerWidth - tr.width - 8));
+    if (y < 8) y = r.bottom + 10;
+    tip.style.transform = 'translate(' + Math.round(x) + 'px,' + Math.round(y) + 'px)';
+  }
+  function hideTip(){ tip.hidden = true; }
+  document.querySelectorAll('[data-tip]').forEach(function(el){
+    el.addEventListener('mouseenter', function(){ showTip(el); });
+    el.addEventListener('focus', function(){ showTip(el); });
+    el.addEventListener('mouseleave', hideTip);
+    el.addEventListener('blur', hideTip);
+  });
+})();
+</script>
+</body>
+</html>

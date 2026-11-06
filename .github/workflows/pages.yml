@@ -23,9 +23,9 @@ jobs:
       - name: Assemble the site
         run: |
           mkdir -p _site
+          cp report/ricardo-franzen.html _site/index.html
           cp report/ricardo-franzen.html _site/
           cp report/ricardo-franzen-en.html _site/
-          cp site/index.html _site/
 
       - uses: actions/configure-pages@v5
 

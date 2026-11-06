@@ -1,0 +1,1297 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O Corte do Diretor · Ricardo Franzen 2026</title>
+<meta name="description" content="Um estudo de dados públicos dos vídeos de Ricardo Franzen em 2026: alcance, formatos, a virada de público em agosto e o próximo corte.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+<script>
+  try{var t=localStorage.getItem('rf-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}
+</script>
+<style>
+  :root{
+    color-scheme: light;
+    --paper:#F3EEE4;
+    --card:#FBF8F1;
+    --ink:#171512;
+    --muted:#6E6458;
+    --line:#D9D0C1;
+    --grid:#E4DCCD;
+    --axis:#C9BFAE;
+    --wash:#EDE4D2;
+    --accent:#B6471E;
+    --accent-bright:#E4612F;
+    --series-gear:#2a78d6;
+    --series-essay:#eb6834;
+    --series-lei:#1baf7a;
+    --series-vlog:#7D7568;
+    --good:#2F7D4F;
+    --bad:#B5482F;
+    --sans:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --serif:"Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    --mono:"IBM Plex Mono", "Cascadia Mono", Consolas, monospace;
+    --measure:68ch;
+    --radius:4px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --paper:#12100D;
+      --card:#1A1713;
+      --ink:#EFE7D9;
+      --muted:#A79B89;
+      --line:#332D25;
+      --grid:#2A251E;
+      --axis:#453C31;
+      --wash:#221D17;
+      --accent:#F08A5C;
+      --accent-bright:#F07A45;
+      --series-gear:#3987e5;
+      --series-essay:#d95926;
+      --series-lei:#199e70;
+      --series-vlog:#9A9183;
+      --good:#7FC79A;
+      --bad:#E3927C;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --paper:#12100D;
+    --card:#1A1713;
+    --ink:#EFE7D9;
+    --muted:#A79B89;
+    --line:#332D25;
+    --grid:#2A251E;
+    --axis:#453C31;
+    --wash:#221D17;
+    --accent:#F08A5C;
+    --accent-bright:#F07A45;
+    --series-gear:#3987e5;
+    --series-essay:#d95926;
+    --series-lei:#199e70;
+    --series-vlog:#9A9183;
+    --good:#7FC79A;
+    --bad:#E3927C;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0 0 auto 0;
+    height:3px;
+    background:var(--accent-bright);
+    z-index:20;
+    pointer-events:none;
+  }
+  ::selection{background:var(--ink);color:var(--paper)}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:currentColor}
+  a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  img{max-width:100%;display:block}
+  [hidden]{display:none!important}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;margin:0}
+  p{margin:0}
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding-left:max(20px, env(safe-area-inset-left, 0px));
+    padding-right:max(20px, env(safe-area-inset-right, 0px));
+  }
+
+  /* ---------- sticky topbar ---------- */
+  .topbar{
+    position:sticky;top:3px;z-index:40;
+    background:var(--paper);border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    display:flex;align-items:center;gap:20px;
+    min-height:44px;padding-block:7px;
+  }
+  .topbar .brand{
+    flex:none;font-family:var(--mono);font-size:10px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--accent);white-space:nowrap;
+  }
+  .top-nav{
+    display:flex;gap:16px;flex:1;min-width:0;
+    overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;
+    font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  }
+  .top-nav::-webkit-scrollbar{display:none}
+  .top-nav[data-fade~="right"]{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent 100%);mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent 100%)}
+  .top-nav[data-fade~="left"]{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px);mask-image:linear-gradient(90deg,transparent 0,#000 16px)}
+  .top-nav[data-fade~="left"][data-fade~="right"]{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 26px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 26px),transparent 100%)}
+  .top-nav a{
+    color:var(--muted);border-bottom:1px solid transparent;white-space:nowrap;
+    padding-block:3px;
+  }
+  .top-nav a:hover{color:var(--ink);border-bottom-color:currentColor}
+  .top-nav a.is-active{color:var(--ink);border-bottom-color:var(--accent-bright)}
+  .topbar-tools{display:flex;align-items:center;gap:8px;flex:none;margin-left:auto}
+  .lang-switch,.theme-toggle{
+    appearance:none;border:1px solid var(--line);background:var(--card);color:var(--ink);
+    font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+    padding:6px 10px;border-radius:999px;cursor:pointer;line-height:1.2;
+  }
+  .lang-switch{border-bottom:1px solid var(--line);text-decoration:none}
+  .lang-switch:hover,.theme-toggle:hover{border-color:var(--axis);color:var(--ink);border-bottom-color:var(--axis)}
+
+  /* ---------- masthead ---------- */
+  .masthead{padding-top:clamp(26px,4vw,42px)}
+  .kicker{
+    margin-top:clamp(38px,7vw,82px);
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);display:flex;gap:10px;align-items:center;
+  }
+  .kicker::before{content:"";width:34px;height:1px;background:var(--accent)}
+  h1{
+    font-size:clamp(54px,10.6vw,126px);
+    line-height:.92;
+    margin:18px 0 0;
+    letter-spacing:-.035em;
+  }
+  h1 em{font-style:italic;color:var(--accent-bright)}
+  .deck{
+    font-family:var(--serif);
+    font-size:clamp(20px,2.6vw,28px);
+    line-height:1.35;
+    max-width:34ch;
+    margin-top:26px;
+    letter-spacing:-.01em;
+  }
+  .dek-sub{
+    max-width:62ch;margin-top:18px;color:var(--muted);font-size:16px;line-height:1.6;
+  }
+  .byline{
+    display:flex;flex-wrap:wrap;gap:8px 22px;
+    margin-top:22px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .hero-strip{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:6px;
+    margin-top:clamp(34px,5vw,54px);
+    border-top:1px solid var(--line);padding-top:10px;
+  }
+  .hero-frame{aspect-ratio:16/9;overflow:hidden;background:var(--wash);border-radius:2px}
+  .hero-frame img{width:100%;height:100%;object-fit:cover}
+  .factbar{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:0;
+    margin:26px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .fact{padding:13px 14px 12px;border-right:1px solid var(--line);min-width:0}
+  .fact:last-child{border-right:0}
+  .fact dt{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .fact dd{margin:3px 0 0;font-size:13px;line-height:1.35;font-weight:500}
+  .fact dd span{display:block;font-weight:400;font-size:10px;color:var(--muted);font-family:var(--mono);margin-top:2px}
+
+  /* ---------- sections ---------- */
+  main{padding-bottom:20px}
+  section{padding-block:clamp(54px,8vw,92px);border-top:1px solid var(--line);scroll-margin-top:64px}
+  section > *{margin-left:94px}
+  section > .section-head{margin-left:0}
+  section#para > .para{margin-left:0}
+  .section-head{
+    display:grid;grid-template-columns:74px minmax(0,1fr);gap:20px;
+    margin-bottom:clamp(28px,4vw,44px);
+  }
+  .section-head .num{
+    font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--accent);
+    padding-top:12px;
+  }
+  h2{font-size:clamp(34px,5.2vw,54px);line-height:1.03;letter-spacing:-.03em;margin:0 0 14px}
+  .standfirst{font-size:17px;line-height:1.6;color:var(--muted);max-width:60ch}
+  .prose{max-width:var(--measure);font-size:16.5px;line-height:1.75}
+  .prose p + p{margin-top:1.05em}
+  .prose strong{font-weight:600}
+  .lead{
+    font-family:var(--serif);font-size:clamp(25px,3.3vw,34px);line-height:1.3;
+    letter-spacing:-.02em;max-width:28ch;margin-bottom:26px;
+  }
+  .lead em{font-style:italic;color:var(--accent-bright)}
+  .split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,64px);align-items:start}
+  .stack{display:grid;gap:22px}
+  .aside-note{
+    border-left:2px solid var(--accent-bright);padding:2px 0 2px 16px;
+    font-size:13.5px;line-height:1.6;color:var(--muted);max-width:42ch;
+  }
+  .aside-note strong{color:var(--ink);font-weight:600}
+
+  /* ---------- cards & charts ---------- */
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:clamp(18px,3vw,28px);min-width:0;
+  }
+  .chart-card{margin-top:34px}
+  .chart-head{
+    display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;
+    gap:14px;margin-bottom:20px;
+  }
+  .chart-head h3{font-size:21px;line-height:1.2;letter-spacing:-.015em}
+  .chart-head p{margin-top:4px;font-size:13px;color:var(--muted);max-width:58ch;line-height:1.5}
+  .ghost{
+    appearance:none;background:transparent;border:1px solid var(--line);border-radius:999px;
+    color:var(--muted);font-family:var(--mono);font-size:9px;letter-spacing:.08em;
+    text-transform:uppercase;padding:6px 10px;cursor:pointer;white-space:nowrap;
+  }
+  .ghost:hover{border-color:var(--axis);color:var(--ink)}
+  .chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,34px)}
+  .panel h4{
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 8px;font-weight:500;
+  }
+  .chart-svg{display:block;width:100%;height:auto;overflow:visible}
+  .chart-svg text{font-family:var(--mono)}
+  .chart-svg .tick{fill:var(--muted);font-size:9px}
+  .chart-svg .val{fill:var(--ink);font-size:9px}
+  .chart-svg .band-label{fill:var(--muted);font-size:8.5px}
+  .chart-svg .val-label{fill:var(--ink);font-family:var(--sans);font-size:10px}
+  .chart-svg .axis-title{fill:var(--muted);font-family:var(--sans);font-size:10px}
+  .chart-svg .gridline{stroke:var(--grid);stroke-width:1}
+  .chart-svg .gridline.quad{stroke:var(--axis);opacity:.9}
+  .chart-svg .gridline.faint{opacity:.55}
+  .chart-svg .axisline{stroke:var(--axis);stroke-width:1}
+  .chart-svg .wash{fill:var(--wash);opacity:.55}
+  .mark-gear{fill:var(--series-gear)}
+  .mark-essay{fill:var(--series-essay)}
+  .mark-lei{fill:var(--series-lei)}
+  .mark-vlog{fill:var(--series-vlog)}
+  .line-essay{fill:none;stroke:var(--series-essay);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+  .ring{stroke:var(--card);stroke-width:2}
+  .ring-thick{stroke:var(--card);stroke-width:2.5}
+  .hit{cursor:default}
+  .hit .hit-shape{fill:transparent;pointer-events:all}
+  .hit:hover .hit-shape,.hit:focus .hit-shape{stroke:var(--ink);stroke-width:1.5}
+  .hit:focus{outline:none}
+  figcaption{font-size:12px;line-height:1.5;color:var(--muted)}
+  .chart-caption{margin-top:16px;max-width:74ch;font-size:13px;line-height:1.6;color:var(--muted)}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:16px;font-size:12px;color:var(--muted)}
+  .key{display:inline-flex;align-items:center;gap:7px}
+  .key svg{width:14px;height:14px;flex:none}
+  .format-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(20px,4vw,44px);align-items:start}
+  .format-chart{min-width:0}
+  .range-note{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+  .scroll-hint{display:none;font-family:var(--mono);font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin:0 0 4px}
+
+  /* ---------- summary ---------- */
+  .summary-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,54px);align-items:start}
+  .summary-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-bottom:8px;border-bottom:1px solid var(--line);margin:0}
+  .summary-findings ol{list-style:none;counter-reset:find;margin:0;padding:0}
+  .summary-findings li{counter-increment:find;position:relative;padding:13px 0 13px 34px;border-bottom:1px solid var(--line);font-size:14.5px;line-height:1.6;color:var(--muted)}
+  .summary-findings li:last-child{border-bottom:0}
+  .summary-findings li::before{content:counter(find,decimal-leading-zero);position:absolute;left:0;top:15px;font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--accent)}
+  .summary-findings strong{color:var(--ink);font-weight:600}
+  .summary-map ul{list-style:none;margin:0;padding:0}
+  .summary-map li{display:grid;grid-template-columns:54px minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.5;color:var(--muted)}
+  .summary-map li:last-child{border-bottom:0}
+  .summary-map li span{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--accent);padding-top:2px}
+  .summary-thesis{margin-top:clamp(22px,3vw,34px);border-top:1px solid var(--line);padding-top:18px;font-family:var(--serif);font-size:clamp(20px,2.6vw,26px);line-height:1.35;letter-spacing:-.015em;max-width:64ch}
+  .summary-thesis em{font-style:italic;color:var(--accent)}
+  .summary-jump{margin-top:16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase}
+  .summary-jump a{border-bottom:1px solid currentColor}
+
+  /* ---------- KPIs ---------- */
+  .kpis{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);margin-top:30px;
+  }
+  .kpi{background:var(--card);padding:18px 16px 16px;min-width:0}
+  .kpi-label{font-family:var(--mono);font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  .kpi-values{display:flex;align-items:baseline;gap:7px;font-size:clamp(21px,2.6vw,28px);font-weight:600;letter-spacing:-.03em;line-height:1.1;margin-top:8px}
+  .kpi-values i{font-style:normal;color:var(--muted);font-size:15px;font-weight:400}
+  .kpi-delta{display:inline-block;margin-top:4px;font-family:var(--mono);font-size:10.5px;letter-spacing:.02em}
+  .kpi-delta.up{color:var(--good)}
+  .kpi-delta.down{color:var(--bad)}
+
+  /* ---------- tables ---------- */
+  .table-wrap{overflow-x:auto;margin-top:18px;border-top:1px solid var(--line);-webkit-overflow-scrolling:touch;scroll-margin-top:70px}
+  table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+  caption{text-align:left;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:9px 8px 8px}
+  th{
+    font-family:var(--mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--muted);font-weight:500;text-align:left;padding:9px 8px;
+    border-bottom:1px solid var(--line);white-space:nowrap;
+  }
+  td{padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th.num,td.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .tcell{min-width:250px}
+  .tcell strong{display:block;font-weight:500;line-height:1.35;font-size:13px}
+  .tcell a{color:inherit;border-bottom:0}
+  .tcell a:hover{color:var(--accent)}
+  .sub{display:block;margin-top:3px;font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.02em}
+  .tag{
+    display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:8.5px;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;
+  }
+  .tag i{width:6px;height:6px;border-radius:50%;display:inline-block;flex:none}
+  .tag-idea i{background:var(--series-essay)}
+  .tag-object i{background:var(--series-gear)}
+  .tag-collab i{background:var(--series-lei)}
+  .tag-label i{background:var(--series-vlog)}
+
+  /* ---------- frames ---------- */
+  .sheet{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+  .frame{margin:0;min-width:0}
+  .frame-img{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:3px;background:var(--wash)}
+  .frame-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .frame-img a:hover img{transform:scale(1.025)}
+  .frame-no{
+    position:absolute;top:6px;left:6px;z-index:2;
+    font-family:var(--mono);font-size:9px;letter-spacing:.06em;
+    background:rgba(16,13,10,.72);color:#fff;padding:2px 5px;border-radius:2px;
+  }
+  .frame figcaption{margin-top:8px;font-size:12px;line-height:1.4}
+  .frame figcaption strong{display:block;color:var(--ink);font-weight:500;font-size:12.5px;line-height:1.35}
+  .frame figcaption span{display:block;margin-top:3px;font-family:var(--mono);font-size:9px;color:var(--muted)}
+
+  /* ---------- quotes ---------- */
+  .quote-card{border-top:1px solid var(--line);padding-top:18px;margin-top:18px}
+  .quote-card:first-child{border-top:0;padding-top:0;margin-top:0}
+  .quote-card blockquote{margin:0;font-family:var(--serif);font-size:clamp(20px,2.4vw,26px);line-height:1.35;letter-spacing:-.01em}
+  .quote-card .translation{display:block;margin-top:9px;font-family:var(--sans);font-size:13px;line-height:1.6;color:var(--muted);letter-spacing:0}
+  .quote-card .attribution{display:block;margin-top:8px;font-family:var(--mono);font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+  .pullquote{margin:34px 0 0;padding:26px 0 0;border-top:1px solid var(--line)}
+  .pullquote blockquote{margin:0;font-family:var(--serif);font-size:clamp(27px,3.6vw,42px);line-height:1.22;letter-spacing:-.025em;max-width:24ch}
+  .pullquote blockquote em{font-style:italic;color:var(--accent-bright)}
+  .pullquote .translation{display:block;margin-top:12px;font-family:var(--sans);font-size:14px;line-height:1.6;color:var(--muted);max-width:52ch;letter-spacing:0}
+  .pullquote .attribution{display:block;margin-top:8px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+  /* ---------- timeline ---------- */
+  .timeline{list-style:none;margin:10px 0 0;padding:0;position:relative;max-width:820px}
+  .timeline::before{content:"";position:absolute;left:77px;top:10px;bottom:12px;width:1px;background:var(--line)}
+  .timeline li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:28px;padding:0 0 24px;position:relative}
+  .timeline li:last-child{padding-bottom:0}
+  .timeline li::before{content:"";position:absolute;left:73px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--accent-bright);box-shadow:0 0 0 4px var(--paper)}
+  .tl-date{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--muted);text-align:right;text-transform:uppercase;padding-top:2px}
+  .timeline strong{display:block;font-size:14px;font-weight:600;line-height:1.35}
+  .timeline p{margin-top:3px;font-size:13px;line-height:1.55;color:var(--muted);max-width:56ch}
+
+  /* ---------- lists / moves / plan ---------- */
+  .keep-change{display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,4vw,48px);margin-top:28px}
+  .kc h3{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .kc ul{list-style:none;margin:12px 0 0;padding:0}
+  .kc li{position:relative;padding-left:16px;margin-bottom:10px;font-size:14px;line-height:1.55}
+  .kc li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--accent-bright)}
+  .kc.change li::before{background:var(--series-gear)}
+  .kc li span{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+
+  .moves{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:30px}
+  .move{background:var(--card);border:1px solid var(--line);border-top:2px solid var(--accent-bright);padding:16px 14px 15px;min-width:0}
+  .move .n{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--accent)}
+  .move h3{font-size:17px;line-height:1.22;margin:7px 0 7px;letter-spacing:-.015em}
+  .move p{font-size:12.5px;line-height:1.55;color:var(--muted)}
+
+  .plan{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:28px}
+  .week{border-top:1px solid var(--line);padding-top:13px;min-width:0}
+  .week .wk{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+  .week h3{font-size:16px;line-height:1.25;margin:6px 0 10px;letter-spacing:-.01em}
+  .week dl{margin:0;font-size:12px;line-height:1.5;color:var(--muted)}
+  .week dt{font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-top:9px}
+  .week dt:first-child{margin-top:0}
+  .week dd{margin:2px 0 0}
+
+  .guardrails{margin-top:26px;padding:18px 20px;background:var(--wash);border-left:2px solid var(--accent-bright);font-size:13.5px;line-height:1.65;color:var(--muted);max-width:78ch}
+  .guardrails strong{color:var(--ink)}
+
+  /* ---------- limits / method ---------- */
+  .limits{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;margin-top:8px}
+  .limit{border-top:1px solid var(--line);padding:13px 0 14px;min-width:0}
+  .limit strong{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:500}
+  .limit p{font-size:13.5px;line-height:1.6;color:var(--muted)}
+  .method-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;margin-top:6px}
+  .method-item{border-top:1px solid var(--line);padding:13px 0 14px}
+  .method-item strong{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;font-weight:500}
+  .method-item p{font-size:13px;line-height:1.6;color:var(--muted)}
+  code{font-family:var(--mono);font-size:.9em;background:var(--wash);padding:2px 5px;border-radius:2px}
+
+  /* ---------- Portuguese ---------- */
+  .para{
+    background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent-bright);
+    padding:clamp(24px,4vw,46px);margin-top:8px;
+  }
+  .para .section-head{grid-template-columns:1fr;margin-bottom:26px}
+  .para h2{font-size:clamp(34px,5vw,50px)}
+  .para .standfirst{max-width:64ch}
+  .para ol{list-style:none;counter-reset:para;margin:0;padding:0;max-width:76ch}
+  .para li{counter-increment:para;position:relative;padding:16px 0 16px 44px;border-top:1px solid var(--line);font-size:15.5px;line-height:1.7}
+  .para li::before{
+    content:counter(para,decimal-leading-zero);position:absolute;left:0;top:17px;
+    font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.04em;
+  }
+  .para li strong{font-weight:600}
+  .para .closing{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--serif);font-size:clamp(22px,2.8vw,30px);line-height:1.35;letter-spacing:-.015em;max-width:30ch}
+  .para .closing em{font-style:italic;color:var(--accent-bright)}
+
+  footer{border-top:1px solid var(--line);padding:26px 0 40px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:space-between;text-transform:uppercase}
+
+  /* tooltip */
+  #tip{
+    position:fixed;top:0;left:0;z-index:60;pointer-events:none;
+    background:var(--ink);color:var(--card);font-family:var(--mono);font-size:10px;
+    line-height:1.4;padding:6px 8px;border-radius:3px;max-width:240px;
+    box-shadow:0 6px 18px rgba(0,0,0,.18);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .topbar .brand{display:none}
+    .topbar-inner{gap:14px}
+    .factbar{grid-template-columns:repeat(3,1fr)}
+    .fact:nth-child(3n){border-right:0}
+    .fact:nth-child(-n+3){border-bottom:1px solid var(--line)}
+    .moves{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .plan{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .format-layout{grid-template-columns:1fr}
+    .format-chart{overflow-x:auto;padding-bottom:4px;overscroll-behavior-x:contain}
+    .format-chart .chart-svg{min-width:500px}
+    .scroll-hint{display:block!important}
+    .chart-svg .tick,.chart-svg .val{font-size:10.5px}
+    .chart-svg .band-label{font-size:9.5px}
+    .chart-svg .val-label,.chart-svg .axis-title{font-size:11px}
+  }
+  @media (max-width:760px){
+    section > *{margin-left:0}
+    section{scroll-margin-top:60px}
+    .summary-grid{grid-template-columns:1fr}
+    .hero-strip{grid-template-columns:repeat(3,1fr)}
+    .split{grid-template-columns:1fr}
+    .chart-grid{grid-template-columns:1fr}
+    .sheet{grid-template-columns:repeat(2,1fr)}
+    .keep-change{grid-template-columns:1fr}
+    .limits,.method-grid{grid-template-columns:1fr}
+    .section-head{grid-template-columns:1fr;gap:8px}
+    .section-head .num{padding-top:0}
+    .timeline::before{left:63px}
+    .timeline li{grid-template-columns:58px minmax(0,1fr);gap:18px}
+    .timeline li::before{left:59px}
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .factbar{grid-template-columns:repeat(2,1fr)}
+    .fact:nth-child(3n){border-right:1px solid var(--line)}
+    .fact:nth-child(2n){border-right:0}
+    .fact:nth-child(-n+4){border-bottom:1px solid var(--line)}
+    .fact:nth-child(n+5){border-bottom:0}
+  }
+  @media (max-width:520px){
+    .sheet{grid-template-columns:1fr}
+    .moves,.plan{grid-template-columns:1fr}
+    .topbar-inner{gap:10px}
+    .top-nav{gap:12px}
+    .lang-switch,.theme-toggle{padding:5px 8px;position:relative}
+    .lang-switch::after,.theme-toggle::after{content:"";position:absolute;inset:-11px -4px}
+    .deck{max-width:none}
+    .prose{font-size:16px}
+    table{min-width:480px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{transition:none!important;animation:none!important}
+  }
+  @media print{
+    .topbar,.lang-switch,.theme-toggle,.top-nav,#tip{display:none!important}
+    section{scroll-margin-top:0}
+    body{background:#fff;color:#000}
+    section{padding-block:28px;break-inside:avoid}
+    .card{break-inside:avoid}
+  }
+</style>
+</head>
+<body data-ui-table="Tabela" data-ui-hide="Ocultar tabela" data-ui-dark="Escuro" data-ui-light="Claro" data-ui-aria-dark="Mudar para o tema claro" data-ui-aria-light="Mudar para o tema escuro">
+
+<div class="topbar">
+  <div class="topbar-inner wrap">
+    <span class="brand">Estudo do canal · 2026</span>
+    <nav class="top-nav" aria-label="Seções">
+      <a href="#summary">Resumo</a>
+      <a href="#thesis">Tese</a>
+      <a href="#year">Ano</a>
+      <a href="#august">Agosto</a>
+      <a href="#formats">Formatos</a>
+      <a href="#doors">Portas</a>
+      <a href="#next">Próximo corte</a>
+      <a href="#para">Para o Ricardo</a>
+    </nav>
+    <div class="topbar-tools">
+      <a class="lang-switch" id="lang-switch" href="ricardo-franzen-en.html" hreflang="en" lang="en" data-lang-target="ricardo-franzen-en.html" title="Read in English">EN</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Mudar o tema">Escuro</button>
+    </div>
+  </div>
+</div>
+
+<header class="masthead wrap">
+  <p class="kicker">Ricardo Franzen · @ricardofranzenart</p>
+  <h1>O Corte<br><em>do Diretor</em></h1>
+  <p class="deck">414 filmes públicos. Uma identidade. O vlog diário não é o problema — a porta é.</p>
+  <p class="dek-sub">Um estudo de dados públicos do trabalho de 2026: o que chegou a estranhos, o que aprofundou a relação, e o que pode mudar sem mudar quem ele é.</p>
+  <div class="byline">
+    <span>Preparado em 6 de novembro de 2026</span>
+    <span>Somente dados públicos</span>
+    <span>1 jan – 6 nov 2026</span>
+    <span>Sem acesso ao Estúdio</span>
+  </div>
+
+  <div class="hero-strip" aria-hidden="true">{{HERO_STRIP}}</div>
+
+  <dl class="factbar">
+    <div class="fact"><dt>Canal</dt><dd>Ricardo Franzen<span>cineasta · diário</span></dd></div>
+    <div class="fact"><dt>Inscritos</dt><dd>56.000<span>contagem pública</span></dd></div>
+    <div class="fact"><dt>Vídeos públicos</dt><dd>414<span>só 2026</span></dd></div>
+    <div class="fact"><dt>Views em 2026</dt><dd>1.380.696<span>cumulativas</span></dd></div>
+    <div class="fact"><dt>Vídeo mediano</dt><dd>2.406<span>views</span></dd></div>
+    <div class="fact"><dt>Amostra profunda</dt><dd>40 filmes<span>1.785 comentários</span></dd></div>
+  </dl>
+</header>
+
+<main class="wrap">
+
+  <!-- 00 SUMMARY -->
+  <section id="summary">
+    <div class="section-head">
+      <span class="num">00</span>
+      <div>
+        <h2>O argumento inteiro, em uma página</h2>
+        <p class="standfirst">O que os dados mostram, o que eu recomendo, e onde cada parte é defendida. Leia isto primeiro; o resto é a evidência.</p>
+      </div>
+    </div>
+
+    <div class="summary-grid">
+      <div class="summary-findings">
+        <p class="summary-label">Quatro achados</p>
+        <ol>
+          <li><strong>O filme diário é o vínculo.</strong> 414 filmes públicos em 310 dias. Antes de 25 de agosto, o vlog diário tinha taxa de like de 16,4% — acima da mediana de 15,6% do canal — com 1.975 views.</li>
+          <li><strong>A porta é o pacote.</strong> Nenhum dos 14 filmes mais vistos tem título de entrada de diário: sete são filmes de ideia, seis de objeto, um é collab.</li>
+          <li><strong>Agosto mudou o público.</strong> A mediana de views subiu 55% depois de 25 de agosto, enquanto a taxa de like caiu de 15,6% para 6,0%. O alcance chegou; a familiaridade não.</li>
+          <li><strong>O canto superior direito está vazio.</strong> Nenhum formato combina alcance acima da mediana com vínculo acima da mediana. O ensaio é o mais próximo: 2.849 views e 14,4% antes da virada.</li>
+        </ol>
+      </div>
+      <div class="summary-map">
+        <p class="summary-label">O caminho</p>
+        <ul>
+          <li><span>01–02</span>O diagnóstico e o ano em números</li>
+          <li><span>03–04</span>A virada de agosto e o mapa dos formatos</li>
+          <li><span>05–07</span>Os filmes que abriram portas, o padrão e os que não viajaram</li>
+          <li><span>08–09</span>A linha que não pode mudar e o próximo corte — com um plano de 30 dias</li>
+          <li><span>10–13</span>Linha do tempo, limites, método e a carta ao Ricardo</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="summary-thesis">A tese em uma linha: <em>o vlog diário é o relacionamento; o ensaio é a porta.</em> A mudança está na moldura — título, miniatura, abertura, final —, não no filme.</p>
+    <p class="summary-jump"><a href="#next">Ir direto para a recomendação →</a></p>
+  </section>
+
+  <!-- 01 THESIS -->
+  <section id="thesis">
+    <div class="section-head">
+      <span class="num">01</span>
+      <div>
+        <h2>O diário não é o problema</h2>
+        <p class="standfirst">Ele já filma todos os dias. O próximo passo é montar o filme — não para virar outra coisa, mas para virar algo em que um estranho consiga entrar.</p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="prose">
+        <p class="lead">O vlog é o relacionamento. <em>O ensaio é a porta.</em></p>
+        <p>O canal do Ricardo nasceu de uma promessa rara: um filme por dia, feito de uma vida real. O vlog diário não é um formato que ele escolheu porque performa. É a prática. Dá a ele o material, a disciplina e a relação com as pessoas que acompanham. Em 2026, foram 414 vídeos públicos em 310 dias — mais de um por dia, na média — e 1,38 milhão de views.</p>
+        <p>O problema não é a frequência. É a moldura. A maioria dos uploads tem título e miniatura de diário: <em>“café”</em>, <em>“Cores em Movimento”</em>, <em>“287/365”</em>, <em>“VLOG 1019”</em>. Uma entrada de diário só é um convite para quem já conhece o autor. Para um estranho, é uma porta fechada.</p>
+        <p>Os 14 filmes que mais longe chegaram em 2026 fizeram algo diferente. Fizeram uma promessa antes do filme começar: uma tese, uma pergunta, um teste, um risco. O filme por dentro continuava dele — quente, em primeira pessoa, sem pressa. A diferença era a porta.</p>
+        <p>A oportunidade não é virar outro cineasta. É dar uma porta ao filme diário: um título que promete, um cartaz que mostra um rosto e um objeto, primeiros vinte segundos que começam no risco. O ensaio já faz quase tudo isso. É a ponte entre o diário e o estranho.</p>
+      </div>
+      <aside class="stack">
+        <div class="card">
+          <p class="aside-note"><strong>O que este relatório é.</strong> Uma leitura da superfície pública do canal — títulos, miniaturas, durações, views, likes, comentários e 58 transcrições — focada só em 2026. É um diagnóstico da moldura, não um veredito sobre o trabalho.</p>
+          <p class="aside-note" style="margin-top:16px"><strong>O que ele não é.</strong> Um relatório do Estúdio. Impressões, taxa de cliques, tempo de exibição, fontes de tráfego e espectadores recorrentes não estão disponíveis. Toda afirmação causal aqui é uma hipótese, claramente marcada como tal.</p>
+        </div>
+        <div class="pullquote">
+          <blockquote>“Eu faço filmes sobre tudo aquilo que me inspira.”</blockquote>
+          <span class="attribution">Descrição do canal</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 02 YEAR -->
+  <section id="year">
+    <div class="section-head">
+      <span class="num">02</span>
+      <div>
+        <h2>O ano em um olhar</h2>
+        <p class="standfirst">Um platô na primavera, uma queda no verão, um salto em setembro. Depois, uma segunda história: a taxa de like cai pela metade.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>A mediana de views ficou entre 1.749 e 2.542 de fevereiro a agosto. Janeiro foi o ponto fora da curva, com 3.469, impulsionado pelo maior filme do ano. Setembro e outubro mais que dobraram a mediana do verão, com 3.491 e 3.614. Novembro está incompleto — 12 vídeos em seis dias, mediana de 2.762 — e deve ser lido como um número em andamento, não como um mês fechado.</p>
+      <p>O segundo painel é o alerta. A taxa de like mediana foi muito estável — entre 13,1% e 17,1% — nos primeiros oito meses. Em setembro, caiu para 6,1% e ficou perto de 5–6% em outubro e novembro. Mais views; uma fatia menor delas curtida. Em dados públicos, é assim que se parece um público maior e menos familiar.</p>
+    </div>
+
+    <figure class="chart-card card">
+      <div class="chart-head">
+        <div>
+          <h3>Medianas mensais, janeiro–novembro</h3>
+          <p>Cada ponto é o vídeo mediano do mês, não a média. Novembro cobre só os primeiros seis dias.</p>
+        </div>
+        <button class="ghost" type="button" data-table="tbl-year" aria-controls="tbl-year" aria-expanded="false">Tabela</button>
+      </div>
+      <div class="chart-grid">
+        <div class="panel">
+          <h4>Mediana de views por vídeo</h4>
+          {{CHART_MONTHLY_VIEWS}}
+        </div>
+        <div class="panel">
+          <h4>Taxa de like mediana</h4>
+          {{CHART_MONTHLY_LIKES}}
+        </div>
+      </div>
+      <figcaption class="chart-caption">Dois painéis, duas escalas — não um eixo duplo. A faixa sombreada marca setembro–novembro, os meses depois da mudança de público. Passe o mouse ou foque um ponto para ver a contagem e o valor do mês; a tabela traz todos os números.</figcaption>
+      <div class="table-wrap" id="tbl-year" hidden>
+        <table>
+          <caption>Medianas mensais, 2026</caption>
+          <thead><tr><th scope="col">Mês</th><th scope="col" class="num">Vídeos</th><th scope="col" class="num">Mediana de views</th><th scope="col" class="num">Taxa de like mediana</th><th scope="col" class="num">Fatia ≥ 5 mil</th></tr></thead>
+          <tbody>{{MONTHLY_TABLE}}</tbody>
+        </table>
+      </div>
+    </figure>
+  </section>
+
+  <!-- 03 AUGUST -->
+  <section id="august">
+    <div class="section-head">
+      <span class="num">03</span>
+      <div>
+        <h2>A virada de agosto</h2>
+        <p class="standfirst">O alcance dobrou. O vínculo não. O evento mais útil do ano é o que mostra o que acontece quando uma história de equipamento abre a porta.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>A ruptura não é o filme do MacBook em julho. A taxa de like mediana de julho ainda era 15,8%. A mudança começa com <em>“O QUE EU LEVO NA MOCHILA”</em>, de 25 de agosto (5.213 views, 5,9% de likes), e com <em>“Usei o MacBook Air M5 por 30 Dias”</em>, de 26 de agosto (19.771 views, 2,7%). A partir dali, o vídeo mediano do canal chegou a 3.416 views — 55% mais que a mediana de 2.208 anterior — enquanto a taxa de like mediana caiu de 15,6% para 6,0%, os comentários de 47 para 26, e a fatia de vídeos que passam de 5.000 views subiu de 7% para 26%.</p>
+      <p>Duas leituras são compatíveis com os dados públicos. Primeira: os filmes de equipamento trouxeram um público mais amplo, que ainda não tem relação com o Ricardo: assiste, mas não curte nem comenta no ritmo antigo. Segunda: o centro de gravidade do canal saiu do filme diário em direção ao filme de produto, e os filmes diários que vieram depois herdaram uma mistura diferente de público. As duas podem ser verdade. Sem dados de fontes de tráfego e de espectadores recorrentes, nenhuma pode ser provada.</p>
+      <p>O que está claro: <strong>há alcance disponível.</strong> A onda de agosto mostra que o canal consegue encontrar estranhos. A tarefa não é continuar perseguindo a onda; é converter os estranhos que a onda trouxe. Um filme de equipamento pode ser o primeiro filme que alguém vê. O próximo filme precisa fazer essa pessoa ficar.</p>
+    </div>
+
+    <div class="kpis">{{KPI_ROW}}</div>
+    <p class="range-note">Vídeo mediano · antes de 25/08 (n=315) vs. depois (n=99) · retrato de 6 nov 2026</p>
+
+    <div class="split" style="margin-top:38px">
+      <div class="prose">
+        <p>Os 14 filmes mais vistos não são todos de equipamento. Sete são filmes de ideia — manifestos, ensaios, argumentos. Seis são filmes de objeto. Um é uma collab. Equipamento não é a única porta; é a porta mais confiável na embalagem atual, porque um produto no título e um produto na miniatura dizem a um estranho exatamente o que o filme vai fazer.</p>
+        <p>O risco é a porta virar a casa. Um canal que só abre com produtos será lido como um canal de produtos, e o filme diário — aquilo que constrói a relação — vai parecer preenchimento para o novo público. O próximo movimento é uma ponte, não um pivô.</p>
+      </div>
+      <aside class="card">
+        <p class="aside-note"><strong>A ressalva honesta.</strong> A mudança de agosto também pode refletir uma mudança de recomendação, um efeito sazonal ou o transbordamento de um único vídeo. Os dados públicos não conseguem separar isso da história da embalagem. O padrão é compatível com um público mais amplo e mais frio; não prova que seja.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 04 FORMATS -->
+  <section id="formats">
+    <div class="section-head">
+      <span class="num">04</span>
+      <div>
+        <h2>O portfólio de formatos</h2>
+        <p class="standfirst">Quatro jeitos de fazer um filme. Cada um compra algo diferente. Nenhum ainda compra tudo.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Antes de 25 de agosto — para deixar a mudança de público fora da comparação — os quatro formatos se separavam com clareza. Equipamento chega mais longe (mediana de 3.696 views) e é o menos curtido (11,0%). O ensaio chega a 2.849 e sustenta 14,4% de likes, perto da mediana de 15,6% do canal antes de agosto. O vlog diário e os filmes de diário sem categoria, agrupados, chegam a 1.975 com 16,4% de likes. As LEI chegam menos longe (1.397) e são as mais curtidas (17,3%).</p>
+      <p>O quadrante superior direito — mais alcance e mais engajamento que a mediana do canal — está vazio. O ensaio é o mais próximo: supera a linha de alcance em 29% e fica só 1,2 ponto abaixo da linha de vínculo. Essa distância é o briefing criativo do próximo filme: <strong>um ensaio com a intimidade de um vlog.</strong></p>
+      <p>Depois de 25 de agosto, a mediana de equipamento subiu para 8.128 views em seis vídeos, com 4,1% de likes; os ensaios tiveram mediana de 3.342 em oito, com 6,1%. As amostras são pequenas, mas a direção combina com a história de agosto: equipamento escala alcance, não vínculo.</p>
+    </div>
+
+    <figure class="chart-card card">
+      <div class="chart-head">
+        <div>
+          <h3>Onde cada formato cai</h3>
+          <p>Mediana de views por taxa de like mediana, antes da mudança de público de agosto.</p>
+        </div>
+        <button class="ghost" type="button" data-table="tbl-format" aria-controls="tbl-format" aria-expanded="false">Tabela</button>
+      </div>
+      <p class="scroll-hint">Deslize o gráfico para ver os quatro formatos →</p>
+      <div class="format-layout">
+        <div class="format-chart">{{CHART_FORMAT}}</div>
+        <div>
+          <div class="legend" aria-label="Legenda dos formatos">{{FORMAT_LEGEND}}</div>
+          <p class="chart-caption" style="margin-top:18px">As linhas de quadrante marcam as medianas do canal antes de agosto (2.208 views, 15,6% de likes). O ponto cinza é o grupo vlog/outros (185 vídeos), não uma quarta série.</p>
+          <p class="range-note">n = 36 equipamento · 27 ensaio · 185 vlog/outros · 27 LEI</p>
+        </div>
+      </div>
+      <figcaption class="chart-caption">O quadrante superior direito está vazio. Nenhum formato do corpus de 2026 combina alcance acima da mediana com vínculo acima da mediana. O ensaio é o mais próximo: supera a linha de alcance e fica logo abaixo da linha de vínculo.</figcaption>
+      <div class="table-wrap" id="tbl-format" hidden>
+        <table>
+          <caption>Medianas por formato, 1 jan – 24 ago 2026</caption>
+          <thead><tr><th scope="col">Formato</th><th scope="col" class="num">Vídeos</th><th scope="col" class="num">Mediana de views</th><th scope="col" class="num">Taxa de like mediana</th></tr></thead>
+          <tbody>{{FORMAT_TABLE}}</tbody>
+        </table>
+      </div>
+    </figure>
+
+    <aside class="aside-note" style="margin-top:22px;max-width:74ch">As atribuições de formato são por palavras-chave e aproximadas. “Vlog diário / outros” combina títulos VLOG explícitos com filmes de diário que o classificador não conseguiu posicionar; é um agrupamento, não um gênero.</aside>
+  </section>
+
+  <!-- 05 DOORS -->
+  <section id="doors">
+    <div class="section-head">
+      <span class="num">05</span>
+      <div>
+        <h2>Os 14 filmes que abriram uma porta</h2>
+        <p class="standfirst">O trabalho mais visto do ano. Não é tudo equipamento, não é tudo ensaio — mas todos fazem uma promessa antes do filme começar.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Sete são filmes de ideia — manifestos, ensaios, argumentos. Seis são filmes de objeto — uma troca de laptop, uma comparação de câmeras, um teste de 30 dias. Um é uma collab. Nenhum tem título de entrada de diário.</p>
+      <p>Os títulos fazem o mesmo trabalho em dialetos diferentes. Fazem uma afirmação (<em>“PARE DE TENTAR CRIAR CONTEÚDO”</em>, <em>“A VIDA É UM FILME”</em>), fazem uma pergunta (<em>“e se?”</em>, <em>“DJI Pocket 4 ou Câmera Profissional?”</em>), encenam um teste (<em>“Usei o MacBook Air M5 por 30 Dias”</em>) ou nomeiam um risco (<em>“troquei meu MacBook PRO por um Air M5”</em>). Um estranho entende do que o filme trata antes de clicar.</p>
+      <p>As miniaturas repetem a promessa em imagens: um rosto, um objeto e, muitas vezes, três palavras. A folha de contatos abaixo mostra seis delas. O padrão não é uma fórmula; é um hábito de mostrar o que está em jogo.</p>
+      <p>A duração não é a alavanca. Os 14 mais vistos têm mediana de 16,2 minutos; os 12 últimos da amostra profunda, 4,3. Mas um dos filmes do topo tem 8,7 minutos e outro, 60,1. O que os separa não é a duração; é ter ou não uma forma na qual um estranho consiga entrar.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <caption>Os 14 vídeos públicos mais vistos de 2026</caption>
+        <thead><tr><th scope="col">Filme</th><th scope="col" class="num">Views</th><th scope="col" class="num">vs. base</th><th scope="col" class="num">Duração</th></tr></thead>
+        <tbody>{{TOP_TABLE}}</tbody>
+      </table>
+    </div>
+    <p class="range-note">vs. base = views ÷ a mediana de views dos 20 uploads anteriores no momento da publicação. 1,0× significa “como o normal recente do canal”.</p>
+
+    <div class="sheet">{{TOP_FRAMES}}</div>
+  </section>
+
+  <!-- 06 PATTERN -->
+  <section id="pattern">
+    <div class="section-head">
+      <span class="num">06</span>
+      <div>
+        <h2>O que abre uma porta</h2>
+        <p class="standfirst">Cinco padrões compartilhados pelos filmes que viajaram. São decisões de embalagem, não decisões de identidade.</p>
+      </div>
+    </div>
+
+    <div class="moves">
+      <div class="move">
+        <span class="n">01</span>
+        <h3>Uma promessa, não um rótulo</h3>
+        <p>Um rótulo responde “o que é?”. Uma promessa responde “por que eu deveria assistir?”. Os títulos de baixo nomeiam um clima ou uma posição na série: <em>“café”</em>, <em>“Cores em Movimento”</em>, <em>“287/365”</em>. Os títulos do topo nomeiam uma crença, uma pergunta ou um risco.</p>
+      </div>
+      <div class="move">
+        <span class="n">02</span>
+        <h3>Um rosto e um objeto</h3>
+        <p>Na amostra do topo, 10 de 12 miniaturas têm um rosto em destaque e 8 trazem texto. Na amostra de baixo, 5 têm rosto e 3 trazem texto. O objeto dá um assunto ao rosto: um MacBook, uma câmera, uma caneca. É uma observação de amostra, não um teste controlado.</p>
+      </div>
+      <div class="move">
+        <span class="n">03</span>
+        <h3>Comece no risco</h3>
+        <p>Os filmes mais fortes abrem na decisão, no teste ou na pergunta — não na rotina da manhã. O filme diário pode continuar respirando; os primeiros vinte segundos só precisam dizer a um estranho o que está em jogo.</p>
+      </div>
+      <div class="move">
+        <span class="n">04</span>
+        <h3>Três atos, não uma sequência</h3>
+        <p>Um filme precisa de uma virada: o motivo, o teste, o veredito; o antes, o dia, o depois; a crença, a dúvida, a prova. A cronologia do vlog é o material, não a estrutura.</p>
+      </div>
+      <div class="move">
+        <span class="n">05</span>
+        <h3>Uma porta no final</h3>
+        <p>A assinatura é um ritual de relação; não é um próximo passo. Uma porta pode ser uma pergunta respondida no próximo filme, uma série que o espectador pode seguir, ou uma promessa feita na abertura e cumprida no final. O arquivo vira uma escada, não um fluxo.</p>
+      </div>
+    </div>
+
+    <div class="split" style="margin-top:44px">
+      <div>
+        <div class="quote-card">
+          <blockquote>“O YouTube finalmente fez um bom trabalho, te recomendou pra mim, sua filosofia de documentação da vida me ajudou muito… você não imagina o tanto que fez por mim!”</blockquote>
+          <span class="attribution">@olimacDJ · 67 likes · em “PARE DE TENTAR CRIAR CONTEÚDO”</span>
+        </div>
+      </div>
+      <div>
+        <div class="quote-card">
+          <blockquote>“PORRA, FAÇAM ISSO MAIS E MAIS. Vídeos ensaios são essenciais hoje em dia…”</blockquote>
+          <span class="attribution">@israelsfreitas · 62 likes · no mesmo filme</span>
+        </div>
+      </div>
+    </div>
+    <p class="range-note">Comentários da amostra profunda de 40 filmes, ordenados por topo; 1.785 comentários em 40 vídeos. São evidência do que os espectadores mais engajados pedem, não uma pesquisa representativa.</p>
+  </section>
+
+  <!-- 07 BOTTOM -->
+  <section id="bottom">
+    <div class="section-head">
+      <span class="num">07</span>
+      <div>
+        <h2>Os filmes que não viajaram</h2>
+        <p class="standfirst">Os 12 últimos da amostra profunda não são filmes ruins. São portas que ninguém abriu.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Seus títulos são rótulos de clima (<em>“Cores em Movimento”</em>, <em>“traga-me o horizonte”</em>), rótulos de lugar (<em>“Caminhos de Outono”</em>), números de série (<em>“287/365”</em>, <em>“VLOG 1019”</em>) ou rótulos de equipamento (<em>“vlog com Ray-Ban Meta Gen 2”</em>). As miniaturas muitas vezes são paisagens, costas, atmosferas: bonitas, mas sem rosto ou risco. Um estranho não tem motivo para clicar; os já convertidos não precisam de motivo.</p>
+      <p>Os comentários mostram o que acontece quando alguém está dentro. <em>“Dói saber que eu não terei mais o meu vlog infinito.”</em> O público lamenta o fim do vlog diário. <em>“Ricardo, dei iniciativa de registrar meu dia-dia hoje, por total inspiração dos seus filmes.”</em> O trabalho chega. O problema é o limiar.</p>
+      <p>Esses filmes também são a prova da identidade: o canal seria mais pobre sem eles. A recomendação não é parar de fazê-los. É dar uma porta aos que importam — e manter os filmes de diário como o chão do dia, não como o edifício inteiro.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <caption>Os 12 últimos da amostra profunda</caption>
+        <thead><tr><th scope="col">Filme</th><th scope="col" class="num">Views</th><th scope="col" class="num">vs. base</th><th scope="col" class="num">Duração</th></tr></thead>
+        <tbody>{{BOTTOM_TABLE}}</tbody>
+      </table>
+    </div>
+
+    <div class="sheet">{{BOTTOM_FRAMES}}</div>
+
+    <div class="split" style="margin-top:40px">
+      <div class="quote-card">
+        <blockquote>“Dói saber que eu não terei mais o meu vlog infinito.”</blockquote>
+        <span class="attribution">@wagnerguilberth · no último vlog diário</span>
+      </div>
+      <div class="quote-card">
+        <blockquote>“Ricardo, dei iniciativa de registrar meu dia-dia hoje, por total inspiração dos seus filmes.”</blockquote>
+        <span class="attribution">@kaiquenda · em um filme diário</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 IDENTITY -->
+  <section id="identity">
+    <div class="section-head">
+      <span class="num">08</span>
+      <div>
+        <h2>A linha que não pode se mover</h2>
+        <p class="standfirst">A identidade não é o problema. É o ativo. A mudança está na moldura ao redor do filme, não no filme.</p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="stack">
+        <div class="quote-card">
+          <blockquote>“Eu tô nessa para documentar minha vida e não para criar conteúdo.”</blockquote>
+        </div>
+        <div class="quote-card">
+          <blockquote>“Eu não preciso competir com ninguém.”</blockquote>
+        </div>
+        <div class="quote-card">
+          <blockquote>“A prioridade é continuar fazendo os filmes que a gente gosta de fazer e não só os filmes para atrair tantas pessoas.”</blockquote>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <p class="aside-note"><strong>Duas frases para manter na parede.</strong> “Eu viro uma câmera.” “Cena conforto.” Descrevem um modo de olhar, não uma estratégia de conteúdo. Qualquer recomendação que exija que ele deixe de olhar assim é a recomendação errada.</p>
+          <p class="aside-note" style="margin-top:16px"><strong>A assinatura.</strong> “Eu sou Ricardo Franzen, muito obrigado, voltem sempre, voltem amanhã porque amanhã tem mais.” É um ritual de retorno. O próximo corte não deve substituí-lo; deve dar ao espectador mais um motivo para aceitá-lo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="keep-change">
+      <div class="kc">
+        <h3>Manter</h3>
+        <ul>
+          <li>O filme diário<span>500 é disciplina, não façanha. A frequência é a prática.</span></li>
+          <li>A primeira pessoa<span>Ele é a câmera, não um apresentador. Os filmes são diários, não episódios.</span></li>
+          <li>O calor<span>Café, cozinhas, amigos, luz, a volta para casa. A textura é a identidade.</span></li>
+          <li>A assinatura<span>“Voltem amanhã” é a relação. Fica.</span></li>
+          <li>A recusa a competir<span>Nenhuma tendência pela tendência. Nenhuma cópia da gramática atual de miniaturas só porque funciona.</span></li>
+          <li>A oficina das LEI<span>A série de ofício é o chão da prática. Pode ser pequena.</span></li>
+        </ul>
+      </div>
+      <div class="kc change">
+        <h3>Mudar</h3>
+        <ul>
+          <li>A moldura<span>Título, miniatura, abertura, final. São decisões sobre como um estranho encontra o filme.</span></li>
+          <li>A forma de lançar<span>Um filme principal por semana, no lugar de um vídeo diário. Não é adicionar trabalho; é mudar qual dia carrega a porta.</span></li>
+          <li>A série<span>Dê uma escada ao arquivo: ensaios, histórias de objeto com risco, LEI. Cada filme aponta para o próximo.</span></li>
+          <li>A medição<span>Use os substitutos públicos: views vs. mediana móvel, taxa de like, taxa de comentários, novos comentaristas.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 NEXT -->
+  <section id="next">
+    <div class="section-head">
+      <span class="num">09</span>
+      <div>
+        <h2>O próximo corte</h2>
+        <p class="standfirst">Cinco movimentos, um mês, nenhuma mudança na promessa diária. Um filme principal substitui um espaço; não acrescenta outro.</p>
+      </div>
+    </div>
+
+    <div class="moves">
+      <div class="move">
+        <span class="n">01</span>
+        <h3>Um filme principal por semana</h3>
+        <p>Substitua um espaço diário por um filme de 10–20 minutos construído em torno de uma ideia. Os outros seis dias continuam diários. A meta de 500 vídeos não muda.</p>
+      </div>
+      <div class="move">
+        <span class="n">02</span>
+        <h3>Escreva o título antes de gravar</h3>
+        <p>Uma afirmação, uma pergunta ou um risco. Se o título for um rótulo — um lugar, um clima, um número — o filme ainda não tem porta. Guarde o título poético para o cartão de capítulo na tela.</p>
+      </div>
+      <div class="move">
+        <span class="n">03</span>
+        <h3>Fotografe o cartaz</h3>
+        <p>Um quadro com um rosto, um objeto e três palavras. A miniatura é um cartaz do filme, não um frame extraído. Não precisa de careta; precisa de assunto.</p>
+      </div>
+      <div class="move">
+        <span class="n">04</span>
+        <h3>Abra no risco</h3>
+        <p>Os primeiros vinte segundos declaram a pergunta, a troca, o teste ou o medo. Depois disso, o filme pode respirar no ritmo que já tem.</p>
+      </div>
+      <div class="move">
+        <span class="n">05</span>
+        <h3>Construa uma escada</h3>
+        <p>Três séries: ensaios sobre documentar a vida, histórias de objeto com risco real e LEI. Cada filme principal termina na próxima pergunta, não só na assinatura.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:42px 0 0;font-weight:500">Um plano de trabalho de 30 dias · títulos de trabalho, não roteiros</h3>
+    <div class="plan">
+      <div class="week">
+        <span class="wk">Semana 1</span>
+        <h3>“Como documentar a vida sem parar de viver”</h3>
+        <dl>
+          <dt>Promessa</dt><dd>Um método, não um manifesto: como manter um registro sem transformar a vida em conteúdo.</dd>
+          <dt>Cartaz</dt><dd>Rosto + câmera + uma fotografia impressa.</dd>
+          <dt>Abertura</dt><dd>O custo de não documentar — uma memória que não tem imagem.</dd>
+          <dt>Porta</dt><dd>Peça uma fotografia aos espectadores; responda às melhores na semana 2.</dd>
+        </dl>
+      </div>
+      <div class="week">
+        <span class="wk">Semana 2</span>
+        <h3>“O objeto que mudou meu jeito de filmar”</h3>
+        <dl>
+          <dt>Promessa</dt><dd>Uma história de equipamento com risco: o que o objeto mudou e quanto custou.</dd>
+          <dt>Cartaz</dt><dd>Rosto + o objeto + três palavras.</dd>
+          <dt>Abertura</dt><dd>O momento da dúvida, não o unboxing.</dd>
+          <dt>Porta</dt><dd>O próximo teste para quem filma todos os dias.</dd>
+        </dl>
+      </div>
+      <div class="week">
+        <span class="wk">Semana 3</span>
+        <h3>“300 vídeos depois: o que eu aprendi”</h3>
+        <dl>
+          <dt>Promessa</dt><dd>Lições do arquivo, não uma montagem retrospectiva.</dd>
+          <dt>Cartaz</dt><dd>Uma parede de quadros, ou uma folha de contatos com um quadro circulado.</dd>
+          <dt>Abertura</dt><dd>O primeiro filme vs. hoje — um corte, sem narração.</dd>
+          <dt>Porta</dt><dd>O 500º filme, prometido e com data.</dd>
+        </dl>
+      </div>
+      <div class="week">
+        <span class="wk">Semana 4</span>
+        <h3>“Um dia com…”</h3>
+        <dl>
+          <dt>Promessa</dt><dd>A vida de outra pessoa pela lente dele; uma collab com uma pessoa real, não um adereço.</dd>
+          <dt>Cartaz</dt><dd>Dois rostos + um objeto compartilhado.</dd>
+          <dt>Abertura</dt><dd>A primeira fala da outra pessoa.</dd>
+          <dt>Porta</dt><dd>A próxima collab, nomeada no final.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="guardrails">
+      <strong>Balizas.</strong> Mantenha o upload diário e a assinatura. Sem áudio de tendência, sem caretas, sem formato de desafio que não seja já verdadeiro. Um filme principal por semana, não quatro. Meça com views ÷ mediana móvel, taxa de like, taxa de comentários e número de novos comentaristas; trate os quatro como sinais, não veredictos. Depois de 30 dias, se um filme principal performar abaixo, mude a porta primeiro — não a identidade.
+    </div>
+  </section>
+
+  <!-- 10 TIMELINE -->
+  <section id="timeline">
+    <div class="section-head">
+      <span class="num">10</span>
+      <div>
+        <h2>O ano, em oito cortes</h2>
+        <p class="standfirst">Os momentos que explicam a forma dos dados — e as duas portas que mudaram o público.</p>
+      </div>
+    </div>
+    <ol class="timeline">{{TIMELINE}}</ol>
+  </section>
+
+  <!-- 11 LIMITS -->
+  <section id="limits">
+    <div class="section-head">
+      <span class="num">11</span>
+      <div>
+        <h2>O que estes dados não podem provar</h2>
+        <p class="standfirst">Os limites fazem parte do achado. Sem o Estúdio, o relatório pode descrever a superfície e propor uma hipótese; não pode arbitrá-la.</p>
+      </div>
+    </div>
+    <div class="limits">
+      <div class="limit"><strong>Sem impressões ou CTR</strong><p>Não sabemos se um vídeo foi mostrado a mais gente, clicado mais vezes, ou as duas coisas. Uma view é o fim de um funil que não vemos.</p></div>
+      <div class="limit"><strong>Sem tempo de exibição ou retenção</strong><p>Não vemos onde os espectadores saem, se o filme de 60 minutos segura, ou se os filmes curtos são vistos até o fim.</p></div>
+      <div class="limit"><strong>Sem fontes de tráfego</strong><p>A mudança de agosto é compatível com uma onda de público puxada por produto. Também pode ser uma mudança de recomendação ou um efeito sazonal. Os dados públicos não separam.</p></div>
+      <div class="limit"><strong>Sem espectadores recorrentes</strong><p>O colapso da taxa de like sugere um público menos familiar, mas também pode refletir uma mudança no contexto de exibição ou nos próprios vídeos.</p></div>
+      <div class="limit"><strong>Views cumulativas</strong><p>Views são um retrato. Vídeos mais antigos tiveram mais tempo. A base móvel controla os 20 uploads anteriores, não a idade perfeitamente.</p></div>
+      <div class="limit"><strong>Uma amostra de 40 filmes</strong><p>Comentários, transcrições e revisão de miniaturas vêm de 40 de 414 vídeos. A amostra é deliberadamente estratificada, não aleatória.</p></div>
+      <div class="limit"><strong>Comentários ordenados por topo</strong><p>1.785 comentários, ordenados por topo, não uma pesquisa representativa. O YouTube pode esconder spam e comentários de baixa qualidade; a amostra reflete o que está visível.</p></div>
+      <div class="limit"><strong>58 transcrições</strong><p>Só 58 vídeos têm transcrição no corpus. O filme de 66.965 views não tem. Sua leitura depende de título, miniatura, métricas e comentários.</p></div>
+      <div class="limit"><strong>Formatos aproximados</strong><p>O classificador é por palavras-chave. “Outros” é um resíduo, não um gênero. Alguns ensaios são contados como outros, e alguns filmes de equipamento são contados como vlogs.</p></div>
+      <div class="limit"><strong>24 vídeos só para membros</strong><p>Eles ficam fora dos 414. Podem conter parte do público mais engajado, e a ausência pode enviesar as médias de engajamento.</p></div>
+    </div>
+  </section>
+
+  <!-- 12 PARA -->
+  <section id="para" lang="pt-BR">
+    <div class="para">
+      <div class="section-head">
+        <span class="num">12</span>
+        <div>
+          <h2>Para o Ricardo</h2>
+          <p class="standfirst">O que os números públicos dizem — e o que eu faria no próximo corte. Sem mudar quem você é.</p>
+        </div>
+      </div>
+
+      <ol>
+        <li><strong>O vlog diário não é o problema. É o chão.</strong> Os filmes que mais criaram vínculo em 2026 foram os que deixaram a vida entrar. Os comentários provam: tem gente que começou a registrar o próprio dia por causa dos seus filmes.</li>
+        <li><strong>A porta é o pacote.</strong> A maioria dos vídeos é intitulada como diário: “café”, “Cores em Movimento”, “VLOG 1019”, “287/365”. Quem já te acompanha abre. Quem não te conhece, passa.</li>
+        <li><strong>Os 14 filmes que mais viajaram fizeram uma promessa antes de começar:</strong> uma tese, uma pergunta, um teste, uma troca. Não é clickbait; é clareza. O título diz a que o filme veio.</li>
+        <li><strong>O ensaio é o formato que melhor equilibra alcance e vínculo.</strong> Antes de 25 de agosto, o ensaio tinha mediana de 2.849 views e 14,4% de likes; o vlog diário, 1.975 e 16,4%; o equipamento, 3.696 e 11,0%. O ensaio chega mais longe sem perder a intimidade.</li>
+        <li><strong>O canto superior do mapa está vazio.</strong> Nenhum formato combina, ao mesmo tempo, mais alcance e mais vínculo que a mediana do canal. Esse espaço é o próximo filme: um ensaio com a intimidade de um vlog.</li>
+        <li><strong>A onda de agosto provou que há alcance. Também mostrou o custo.</strong> A taxa de like caiu de 15,6% para 6,0%, e os comentários de 47 para 26 por vídeo. O novo público chegou; ele ainda não te conhece. A tarefa é se apresentar, não perseguir o algoritmo.</li>
+        <li><strong>Um filme principal por semana, no lugar de um vídeo diário.</strong> Mantenha os 500. Não acrescente trabalho; troque a moldura de um dia. Um filme de 10–20 minutos, uma ideia, uma promessa.</li>
+        <li><strong>Escreva o título antes de gravar.</strong> Se o título for um rótulo, o filme ainda não tem porta. Guarde o título poético para o cartão de abertura.</li>
+        <li><strong>A miniatura é um cartaz:</strong> rosto + objeto + três palavras. Não precisa ser careta; precisa ser honesta. O objeto dá um assunto ao rosto.</li>
+        <li><strong>Abra no risco.</strong> Nos primeiros 20 segundos, diga por que este filme existe. Depois deixe o dia respirar no ritmo que ele já tem.</li>
+        <li><strong>Termine com uma porta:</strong> uma pergunta que o próximo filme responde, uma série que o espectador pode seguir, uma promessa que a abertura fez e o final cumpre.</li>
+        <li><strong>O que não muda:</strong> a primeira pessoa, o calor, a assinatura, o “voltem amanhã”, a recusa a copiar tendência, a oficina das LEI. Muda a moldura, não o filme.</li>
+      </ol>
+
+      <p class="closing">Você já filma todos os dias. O próximo corte é dar ao filme que já existe <em>uma porta para quem ainda não te conhece.</em></p>
+    </div>
+  </section>
+
+  <!-- 13 METHOD -->
+  <section id="method">
+    <div class="section-head">
+      <span class="num">13</span>
+      <div>
+        <h2>Método e fontes</h2>
+        <p class="standfirst">Detalhe suficiente para reproduzir os números, e ressalvas suficientes para mantê-los honestos.</p>
+      </div>
+    </div>
+    <div class="method-grid">
+      <div class="method-item">
+        <strong>Corpus</strong>
+        <p>Aba Vídeos de <a href="https://www.youtube.com/@ricardofranzenart" target="_blank" rel="noopener">@ricardofranzenart</a>, filtrada para 2026. 438 entradas; 24 só para membros excluídas; 414 vídeos públicos publicados de 1º de janeiro a 6 de novembro de 2026. Retrato dos metadados: 6 de novembro de 2026.</p>
+      </div>
+      <div class="method-item">
+        <strong>Base móvel</strong>
+        <p><code>ratio = views ÷ mediana(views dos 20 uploads anteriores)</code>, calculada por vídeo no momento da publicação. Controla o crescimento do canal e o fato de vídeos mais antigos terem tido mais tempo para acumular views. As listas de topo e de baixo incluem só vídeos com pelo menos 14 dias.</p>
+      </div>
+      <div class="method-item">
+        <strong>Amostra profunda</strong>
+        <p>40 vídeos: 12 outliers móveis do topo, 12 de baixo, 8 de desempenho mediano (um por mês) e 8 uploads recentes. Usada para comentários, miniaturas e transcrições. A amostra é estratificada por desenho, não aleatória.</p>
+      </div>
+      <div class="method-item">
+        <strong>Comentários</strong>
+        <p>1.785 comentários em 40/40 vídeos; 789 autores únicos. Até 60 comentários principais e 20 respostas por vídeo, ordenados por topo. Os 10 comentaristas mais frequentes escreveram 17,9% da amostra; um frequente apareceu em 38 dos 40 vídeos. Ricardo respondeu 191 vezes.</p>
+      </div>
+      <div class="method-item">
+        <strong>Transcrições</strong>
+        <p>58 transcrições automáticas em português, obtidas com <code>youtube-transcript-api</code>. As legendas são geradas por máquina e contêm erros. O filme de 66.965 views não tem transcrição no corpus.</p>
+      </div>
+      <div class="method-item">
+        <strong>Miniaturas</strong>
+        <p>40 miniaturas baixadas na maior resolução disponível e revisadas em folhas de contatos rotuladas. As contagens de “rosto / texto / objeto” são uma revisão visual de 24 imagens (12 do topo, 12 de baixo), não um teste controlado.</p>
+      </div>
+      <div class="method-item">
+        <strong>Classificador de formato</strong>
+        <p>Prioridade por palavra-chave: LEI → Q&amp;A → equipamento → ensaio → viagem → foto → VLOG → outros. É uma heurística, não uma codificação manual dos 414 vídeos. “Outros” absorve filmes de diário que não batem com nenhuma palavra-chave.</p>
+      </div>
+      <div class="method-item">
+        <strong>O que é público</strong>
+        <p>Views, likes, comentários, títulos, descrições, durações, datas de publicação, miniaturas e texto visível dos comentários. Sem impressões, CTR, tempo de exibição, fontes de tráfego, espectadores recorrentes ou fontes de inscritos.</p>
+      </div>
+    </div>
+    <p class="range-note" style="margin-top:18px">Arquivos de dados: <code>data/ricardo/video_stats.json</code> · <code>data/ricardo/sample.json</code> · <code>data/ricardo/comments/</code> · <code>data/ricardo/thumbs/</code>. Construído como um relatório HTML local e autônomo.</p>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>O Corte do Diretor · Ricardo Franzen 2026</span>
+  <span>Somente dados públicos · sem análises do Estúdio</span>
+  <span>Preparado em 6 de novembro de 2026</span>
+</footer>
+
+
+<div id="tip" hidden></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  var body = document.body;
+  var btn = document.getElementById('theme-toggle');
+  var media = window.matchMedia('(prefers-color-scheme: dark)');
+  var ui = {
+    table: body.getAttribute('data-ui-table') || 'Table',
+    hide: body.getAttribute('data-ui-hide') || 'Hide table',
+    dark: body.getAttribute('data-ui-dark') || 'Dark',
+    light: body.getAttribute('data-ui-light') || 'Light',
+    ariaDark: body.getAttribute('data-ui-aria-dark') || 'Switch to light theme',
+    ariaLight: body.getAttribute('data-ui-aria-light') || 'Switch to dark theme'
+  };
+
+  function current(){
+    return root.getAttribute('data-theme') || (media.matches ? 'dark' : 'light');
+  }
+  function paint(t){
+    btn.textContent = t === 'dark' ? ui.light : ui.dark;
+    btn.setAttribute('aria-label', t === 'dark' ? ui.ariaDark : ui.ariaLight);
+    updateFade();
+  }
+  function setTheme(t){
+    root.setAttribute('data-theme', t);
+    paint(t);
+    try { localStorage.setItem('rf-theme', t); } catch (e) {}
+  }
+
+  var stored = null;
+  try { stored = localStorage.getItem('rf-theme'); } catch (e) {}
+  if (stored === 'light' || stored === 'dark') { setTheme(stored); } else { paint(current()); }
+  btn.addEventListener('click', function(){
+    setTheme(current() === 'dark' ? 'light' : 'dark');
+  });
+
+  document.querySelectorAll('[data-table]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var el = document.getElementById(b.getAttribute('data-table'));
+      if (!el) return;
+      var showing = !el.hasAttribute('hidden');
+      if (showing) {
+        el.setAttribute('hidden', '');
+        b.textContent = ui.table;
+        b.setAttribute('aria-expanded', 'false');
+      } else {
+        el.removeAttribute('hidden');
+        b.textContent = ui.hide;
+        b.setAttribute('aria-expanded', 'true');
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        el.scrollIntoView({block: 'start', behavior: reduce ? 'auto' : 'smooth'});
+      }
+    });
+  });
+
+  // The language switch follows the section currently being read.
+  var lang = document.getElementById('lang-switch');
+  var allSections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
+
+  // Sticky nav: mark the section under the bar, keep it in view, and fade the edges.
+  var nav = document.querySelector('.top-nav');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.top-nav a'));
+  var sections = links.map(function(a){
+    return document.querySelector(a.getAttribute('href'));
+  });
+  var queued = false;
+  var lastIdx = -2;
+
+  function reduced(){
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+  function reveal(a){
+    if (!nav || !a) return;
+    var ar = a.getBoundingClientRect();
+    var nr = nav.getBoundingClientRect();
+    if (ar.left < nr.left + 6) {
+      nav.scrollBy({left: ar.left - nr.left - 18, behavior: reduced() ? 'auto' : 'smooth'});
+    } else if (ar.right > nr.right - 6) {
+      nav.scrollBy({left: ar.right - nr.right + 18, behavior: reduced() ? 'auto' : 'smooth'});
+    }
+  }
+  function updateFade(){
+    if (!nav) return;
+    var max = nav.scrollWidth - nav.clientWidth;
+    var f = [];
+    if (nav.scrollLeft > 2) f.push('left');
+    if (nav.scrollLeft < max - 2) f.push('right');
+    nav.setAttribute('data-fade', f.join(' '));
+  }
+  function spy(){
+    queued = false;
+    var y = window.scrollY + 110;
+    var idx = -1;
+    sections.forEach(function(s, i){
+      if (s && s.getBoundingClientRect().top + window.scrollY <= y) idx = i;
+    });
+    links.forEach(function(a, i){
+      var on = i === idx;
+      a.classList.toggle('is-active', on);
+      if (on) a.setAttribute('aria-current', 'location');
+      else a.removeAttribute('aria-current');
+    });
+    if (idx !== lastIdx) {
+      if (idx >= 0) reveal(links[idx]);
+      lastIdx = idx;
+    }
+    if (lang) {
+      var current = '';
+      allSections.forEach(function(s){
+        if (s.getBoundingClientRect().top + window.scrollY <= y) current = '#' + s.id;
+      });
+      lang.href = lang.getAttribute('data-lang-target') + current;
+    }
+  }
+  function queueSpy(){
+    if (!queued) { queued = true; window.requestAnimationFrame(spy); }
+  }
+  window.addEventListener('scroll', queueSpy, {passive: true});
+  window.addEventListener('resize', function(){ queueSpy(); updateFade(); });
+  window.addEventListener('load', spy);
+  if (nav) nav.addEventListener('scroll', updateFade, {passive: true});
+  updateFade();
+  spy();
+
+  // A deep link should land on its section after webfonts settle.
+  var initialHash = location.hash;
+  var userMoved = false;
+  ['wheel', 'touchmove', 'keydown'].forEach(function(ev){
+    window.addEventListener(ev, function(){ userMoved = true; }, {passive: true});
+  });
+  function realign(){
+    if (userMoved || location.hash !== initialHash) return;
+    var target = initialHash && document.getElementById(initialHash.slice(1));
+    if (target) target.scrollIntoView({block: 'start'});
+  }
+  window.addEventListener('load', function(){
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function(){ updateFade(); setTimeout(realign, 80); });
+    } else {
+      setTimeout(realign, 200);
+    }
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(el){
+    var text = el.getAttribute('data-tip');
+    if (!text) return;
+    tip.textContent = text;
+    tip.hidden = false;
+    var r = el.getBoundingClientRect();
+    var tr = tip.getBoundingClientRect();
+    var x = r.left + r.width / 2 - tr.width / 2;
+    var y = r.top - tr.height - 10;
+    x = Math.max(8, Math.min(x, window.innerWidth - tr.width - 8));
+    if (y < 8) y = r.bottom + 10;
+    tip.style.transform = 'translate(' + Math.round(x) + 'px,' + Math.round(y) + 'px)';
+  }
+  function hideTip(){ tip.hidden = true; }
+  document.querySelectorAll('[data-tip]').forEach(function(el){
+    el.addEventListener('mouseenter', function(){ showTip(el); });
+    el.addEventListener('focus', function(){ showTip(el); });
+    el.addEventListener('mouseleave', hideTip);
+    el.addEventListener('blur', hideTip);
+  });
+})();
+</script>
+</body>
+</html>

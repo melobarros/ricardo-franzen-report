@@ -8,6 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+<script>
+  try{var t=localStorage.getItem('rf-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}
+</script>
 <style>
   :root{
     color-scheme: light;
@@ -19,7 +22,7 @@
     --grid:#E4DCCD;
     --axis:#C9BFAE;
     --wash:#EDE4D2;
-    --accent:#B94A20;
+    --accent:#B6471E;
     --accent-bright:#E4612F;
     --series-gear:#2a78d6;
     --series-essay:#eb6834;
@@ -95,7 +98,7 @@
     z-index:20;
     pointer-events:none;
   }
-  ::selection{background:var(--accent-bright);color:#fff}
+  ::selection{background:var(--ink);color:var(--paper)}
   a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
   a:hover{border-bottom-color:currentColor}
   a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
@@ -129,6 +132,9 @@
     font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
   }
   .top-nav::-webkit-scrollbar{display:none}
+  .top-nav[data-fade~="right"]{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent 100%);mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent 100%)}
+  .top-nav[data-fade~="left"]{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px);mask-image:linear-gradient(90deg,transparent 0,#000 16px)}
+  .top-nav[data-fade~="left"][data-fade~="right"]{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 26px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 26px),transparent 100%)}
   .top-nav a{
     color:var(--muted);border-bottom:1px solid transparent;white-space:nowrap;
     padding-block:3px;
@@ -293,7 +299,7 @@
   .summary-map li:last-child{border-bottom:0}
   .summary-map li span{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--accent);padding-top:2px}
   .summary-thesis{margin-top:clamp(22px,3vw,34px);border-top:1px solid var(--line);padding-top:18px;font-family:var(--serif);font-size:clamp(20px,2.6vw,26px);line-height:1.35;letter-spacing:-.015em;max-width:64ch}
-  .summary-thesis em{font-style:italic;color:var(--accent-bright)}
+  .summary-thesis em{font-style:italic;color:var(--accent)}
   .summary-jump{margin-top:16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase}
   .summary-jump a{border-bottom:1px solid currentColor}
 
@@ -311,7 +317,7 @@
   .kpi-delta.down{color:var(--bad)}
 
   /* ---------- tables ---------- */
-  .table-wrap{overflow-x:auto;margin-top:18px;border-top:1px solid var(--line);-webkit-overflow-scrolling:touch}
+  .table-wrap{overflow-x:auto;margin-top:18px;border-top:1px solid var(--line);-webkit-overflow-scrolling:touch;scroll-margin-top:70px}
   table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
   caption{text-align:left;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:9px 8px 8px}
   th{
@@ -452,6 +458,9 @@
     .format-chart{overflow-x:auto;padding-bottom:4px;overscroll-behavior-x:contain}
     .format-chart .chart-svg{min-width:500px}
     .scroll-hint{display:block!important}
+    .chart-svg .tick,.chart-svg .val{font-size:10.5px}
+    .chart-svg .band-label{font-size:9.5px}
+    .chart-svg .val-label,.chart-svg .axis-title{font-size:11px}
   }
   @media (max-width:760px){
     section > *{margin-left:0}
@@ -479,8 +488,9 @@
     .sheet{grid-template-columns:1fr}
     .moves,.plan{grid-template-columns:1fr}
     .topbar-inner{gap:10px}
-    .top-nav{gap:12px;font-size:9px}
-    .lang-switch,.theme-toggle{padding:5px 8px;font-size:9px}
+    .top-nav{gap:12px}
+    .lang-switch,.theme-toggle{padding:5px 8px;position:relative}
+    .lang-switch::after,.theme-toggle::after{content:"";position:absolute;inset:-11px -4px}
     .deck{max-width:none}
     .prose{font-size:16px}
     table{min-width:480px}
@@ -634,7 +644,7 @@
           <h3>Medianas mensais, janeiro–novembro</h3>
           <p>Cada ponto é o vídeo mediano do mês, não a média. Novembro cobre só os primeiros seis dias.</p>
         </div>
-        <button class="ghost" type="button" data-table="tbl-year" aria-expanded="false">Tabela</button>
+        <button class="ghost" type="button" data-table="tbl-year" aria-controls="tbl-year" aria-expanded="false">Tabela</button>
       </div>
       <div class="chart-grid">
         <div class="panel">
@@ -650,7 +660,7 @@
       <div class="table-wrap" id="tbl-year" hidden>
         <table>
           <caption>Medianas mensais, 2026</caption>
-          <thead><tr><th>Mês</th><th class="num">Vídeos</th><th class="num">Mediana de views</th><th class="num">Taxa de like mediana</th><th class="num">Fatia ≥ 5 mil</th></tr></thead>
+          <thead><tr><th scope="col">Mês</th><th scope="col" class="num">Vídeos</th><th scope="col" class="num">Mediana de views</th><th scope="col" class="num">Taxa de like mediana</th><th scope="col" class="num">Fatia ≥ 5 mil</th></tr></thead>
           <tbody><tr><td>Jan</td><td>44</td><td>3.469</td><td>15,5%</td><td>25%</td></tr><tr><td>Fev</td><td>63</td><td>1.848</td><td>17,1%</td><td>2%</td></tr><tr><td>Mar</td><td>34</td><td>2.542</td><td>15,0%</td><td>3%</td></tr><tr><td>Abr</td><td>37</td><td>2.321</td><td>14,4%</td><td>14%</td></tr><tr><td>Mai</td><td>33</td><td>2.347</td><td>16,5%</td><td>3%</td></tr><tr><td>Jun</td><td>39</td><td>1.749</td><td>16,8%</td><td>0%</td></tr><tr><td>Jul</td><td>34</td><td>1.848</td><td>15,8%</td><td>12%</td></tr><tr><td>Ago</td><td>42</td><td>1.986</td><td>13,1%</td><td>10%</td></tr><tr><td>Set</td><td>37</td><td>3.491</td><td>6,1%</td><td>30%</td></tr><tr><td>Out</td><td>39</td><td>3.614</td><td>5,4%</td><td>21%</td></tr><tr><td>Nov</td><td>12</td><td>2.762</td><td>6,1%</td><td>25%</td></tr></tbody>
         </table>
       </div>
@@ -709,7 +719,7 @@
           <h3>Onde cada formato cai</h3>
           <p>Mediana de views por taxa de like mediana, antes da mudança de público de agosto.</p>
         </div>
-        <button class="ghost" type="button" data-table="tbl-format" aria-expanded="false">Tabela</button>
+        <button class="ghost" type="button" data-table="tbl-format" aria-controls="tbl-format" aria-expanded="false">Tabela</button>
       </div>
       <p class="scroll-hint">Deslize o gráfico para ver os quatro formatos →</p>
       <div class="format-layout">
@@ -724,7 +734,7 @@
       <div class="table-wrap" id="tbl-format" hidden>
         <table>
           <caption>Medianas por formato, 1 jan – 24 ago 2026</caption>
-          <thead><tr><th>Formato</th><th class="num">Vídeos</th><th class="num">Mediana de views</th><th class="num">Taxa de like mediana</th></tr></thead>
+          <thead><tr><th scope="col">Formato</th><th scope="col" class="num">Vídeos</th><th scope="col" class="num">Mediana de views</th><th scope="col" class="num">Taxa de like mediana</th></tr></thead>
           <tbody><tr><td>Equipamento</td><td class='num'>36</td><td class='num'>3.696</td><td class='num'>11,0%</td></tr><tr><td>Ensaio / manifesto</td><td class='num'>27</td><td class='num'>2.849</td><td class='num'>14,4%</td></tr><tr><td>Vlog diário / outros</td><td class='num'>185</td><td class='num'>1.975</td><td class='num'>16,4%</td></tr><tr><td>Série LEI</td><td class='num'>27</td><td class='num'>1.397</td><td class='num'>17,3%</td></tr></tbody>
         </table>
       </div>
@@ -753,7 +763,7 @@
     <div class="table-wrap">
       <table>
         <caption>Os 14 vídeos públicos mais vistos de 2026</caption>
-        <thead><tr><th>Filme</th><th class="num">Views</th><th class="num">vs. base</th><th class="num">Duração</th></tr></thead>
+        <thead><tr><th scope="col">Filme</th><th scope="col" class="num">Views</th><th scope="col" class="num">vs. base</th><th scope="col" class="num">Duração</th></tr></thead>
         <tbody><tr><td class="tcell"><span class="tag tag-idea"><i></i>Manifesto</span><strong>PARE DE TENTAR CRIAR CONTEÚDO</strong><span class="sub">2026-01-03</span></td><td class="num">66.965</td><td class="num">10,0×</td><td class="num">9 min</td></tr><tr><td class="tcell"><span class="tag tag-object"><i></i>Equipamento</span><strong>troquei meu MacBook PRO por um Air M5</strong><span class="sub">2026-07-23</span></td><td class="num">32.789</td><td class="num">22,3×</td><td class="num">17 min</td></tr><tr><td class="tcell"><span class="tag tag-idea"><i></i>Ensaio</span><strong>o poder da insignificância</strong><span class="sub">2026-01-27</span></td><td class="num">28.697</td><td class="num">8,7×</td><td class="num">18 min</td></tr><tr><td class="tcell"><span class="tag tag-object"><i></i>Teste de equipamento</span><strong>TESTE DE IMAGEM - DJI Action 4 vs. DJI Action 5 Pro vs. DJI Action 6</strong><span class="sub">2026-04-21</span></td><td class="num">20.495</td><td class="num">7,8×</td><td class="num">36 min</td></tr><tr><td class="tcell"><span class="tag tag-object"><i></i>Equipamento</span><strong>Usei o MacBook Air M5 por 30 Dias e essa é minha opinião sincera</strong><span class="sub">2026-08-26</span></td><td class="num">19.771</td><td class="num">11,0×</td><td class="num">19 min</td></tr><tr><td class="tcell"><span class="tag tag-collab"><i></i>Colab</span><strong>cafés, fotos e amigos</strong><span class="sub">2026-04-15</span></td><td class="num">16.593</td><td class="num">6,2×</td><td class="num">10 min</td></tr><tr><td class="tcell"><span class="tag tag-idea"><i></i>Ensaio</span><strong>A VIDA É UM FILME</strong><span class="sub">2026-01-04</span></td><td class="num">15.739</td><td class="num">2,3×</td><td class="num">60 min</td></tr><tr><td class="tcell"><span class="tag tag-idea"><i></i>Manifesto</span><strong>2026 É O NOVO 2016 | Volte a Gravar Vídeos</strong><span class="sub">2026-01-17</span></td><td class="num">14.467</td><td class="num">3,5×</td><td class="num">11 min</td></tr><tr><td class="tcell"><span class="tag tag-idea"><i></i>Ensaio</span><strong>e se?</strong><span class="sub">2026-09-01</span></td><td class="num">13.151</td><td class="num">5,7×</td><td class="num">12 min</td></tr><tr><td class="tcell"><span class="tag tag-object"><i></i>Foto / equipamento</span><strong>FOTOGRAFIA DE RUA com Canon R50V + RF-S 14-30mm (lente do kit) | POV com DJI Action 6</strong><span class="sub">2026-01-10</span></td><td class="num">12.712</td><td class="num">2,9×</td><td class="num">49 min</td></tr><tr><td class="tcell"><span class="tag tag-idea"><i></i>Manifesto</span><strong>comece a FILMAR SUA VIDA por mais simples que ela seja</strong><span class="sub">2026-07-21</span></td><td class="num">12.700</td><td class="num">8,6×</td><td class="num">10 min</td></tr><tr><td class="tcell"><span class="tag tag-idea"><i></i>Ensaio</span><strong>não largue seu trabalho para viver da internet</strong><span class="sub">2026-10-13</span></td><td class="num">11.559</td><td class="num">3,5×</td><td class="num">17 min</td></tr><tr><td class="tcell"><span class="tag tag-object"><i></i>Equipamento</span><strong>MINHA CÂMERA É MAIS CARA QUE MEU CARRO</strong><span class="sub">2026-11-02</span></td><td class="num">11.035</td><td class="num">3,6×</td><td class="num">13 min</td></tr><tr><td class="tcell"><span class="tag tag-object"><i></i>Teste de equipamento</span><strong>DJI Pocket 4 ou Câmera Profissional + Gimbal? | TESTE PRÁTICO e OPINIÃO SINCERA sobre Scorp-C2</strong><span class="sub">2026-10-03</span></td><td class="num">10.495</td><td class="num">3,6×</td><td class="num">15 min</td></tr></tbody>
       </table>
     </div>
@@ -836,7 +846,7 @@
     <div class="table-wrap">
       <table>
         <caption>Os 12 últimos da amostra profunda</caption>
-        <thead><tr><th>Filme</th><th class="num">Views</th><th class="num">vs. base</th><th class="num">Duração</th></tr></thead>
+        <thead><tr><th scope="col">Filme</th><th scope="col" class="num">Views</th><th scope="col" class="num">vs. base</th><th scope="col" class="num">Duração</th></tr></thead>
         <tbody><tr><td class="tcell"><span class="tag tag-label"><i></i>Rótulo de clima</span><strong>EXISTE VIDA LA FORA mesmo com tudo congelado</strong><span class="sub">2026-01-05</span></td><td class="num">2.081</td><td class="num">0,31×</td><td class="num">10 min</td></tr><tr><td class="tcell"><span class="tag tag-label"><i></i>Rótulo de clima</span><strong>QUEBRA GELO</strong><span class="sub">2026-01-11</span></td><td class="num">1.611</td><td class="num">0,34×</td><td class="num">9 min</td></tr><tr><td class="tcell"><span class="tag tag-label"><i></i>Rótulo de clima</span><strong>Cores em Movimento</strong><span class="sub">2026-06-17</span></td><td class="num">748</td><td class="num">0,36×</td><td class="num">4 min</td></tr><tr><td class="tcell"><span class="tag tag-label"><i></i>Rótulo de clima</span><strong>café</strong><span class="sub">2026-06-11</span></td><td class="num">892</td><td class="num">0,40×</td><td class="num">3 min</td></tr><tr><td class="tcell"><span class="tag tag-label"><i></i>Rótulo de lugar</span><strong>Caminhos de Outono</strong><span class="sub">2026-09-23</span></td><td class="num">1.820</td><td class="num">0,41×</td><td class="num">4 min</td></tr><tr><td class="tcell"><span class="tag tag-label"><i></i>Rótulo de clima</span><strong>traga-me o horizonte</strong><span class="sub">2026-09-25</span></td><td class="num">1.824</td><td class="num">0,41×</td><td class="num">16 min</td></tr><tr><td class="tcell"><span class="tag tag-label"><i></i>Série</span><strong>LEI 15 | MÚSICA BOA NÃO SALVA VLOG RUIM</strong><span class="sub">2026-02-15</span></td><td class="num">880</td><td class="num">0,43×</td><td class="num">11 min</td></tr><tr><td class="tcell"><span class="tag tag-label"><i></i>Número de série</span><strong>VLOG 1019</strong><span class="sub">2026-10-15</span></td><td class="num">1.722</td><td class="num">0,43×</td><td class="num">2 min</td></tr><tr><td class="tcell"><span class="tag tag-label"><i></i>Experimento de equipamento</span><strong>vlog com Ray-Ban Meta Gen 2 | vlog vertical</strong><span class="sub">2026-05-20</span></td><td class="num">1.149</td><td class="num">0,45×</td><td class="num">12 min</td></tr><tr><td class="tcell"><span class="tag tag-label"><i></i>Número de série</span><strong>287/365</strong><span class="sub">2026-10-14</span></td><td class="num">1.843</td><td class="num">0,46×</td><td class="num">2 min</td></tr><tr><td class="tcell"><span class="tag tag-label"><i></i>Rótulo de clima</span><strong>Primícias de Verão</strong><span class="sub">2026-06-15</span></td><td class="num">1.050</td><td class="num">0,47×</td><td class="num">4 min</td></tr><tr><td class="tcell"><span class="tag tag-label"><i></i>Rótulo de clima</span><strong>a vida que enxergamos</strong><span class="sub">2026-09-24</span></td><td class="num">2.118</td><td class="num">0,48×</td><td class="num">4 min</td></tr></tbody>
       </table>
     </div>
@@ -1138,6 +1148,7 @@
   function paint(t){
     btn.textContent = t === 'dark' ? ui.light : ui.dark;
     btn.setAttribute('aria-label', t === 'dark' ? ui.ariaDark : ui.ariaLight);
+    updateFade();
   }
   function setTheme(t){
     root.setAttribute('data-theme', t);
@@ -1165,27 +1176,46 @@
         el.removeAttribute('hidden');
         b.textContent = ui.hide;
         b.setAttribute('aria-expanded', 'true');
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        el.scrollIntoView({block: 'start', behavior: reduce ? 'auto' : 'smooth'});
       }
     });
   });
 
-  // Language switch keeps the reader in the same section.
+  // The language switch follows the section currently being read.
   var lang = document.getElementById('lang-switch');
-  if (lang) {
-    lang.addEventListener('click', function(){
-      var h = location.hash;
-      if (/^#[A-Za-z0-9_-]+$/.test(h)) {
-        lang.href = lang.getAttribute('data-lang-target') + h;
-      }
-    });
-  }
+  var allSections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
 
-  // Sticky nav: mark the section currently under the bar.
+  // Sticky nav: mark the section under the bar, keep it in view, and fade the edges.
+  var nav = document.querySelector('.top-nav');
   var links = Array.prototype.slice.call(document.querySelectorAll('.top-nav a'));
   var sections = links.map(function(a){
     return document.querySelector(a.getAttribute('href'));
   });
   var queued = false;
+  var lastIdx = -2;
+
+  function reduced(){
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+  function reveal(a){
+    if (!nav || !a) return;
+    var ar = a.getBoundingClientRect();
+    var nr = nav.getBoundingClientRect();
+    if (ar.left < nr.left + 6) {
+      nav.scrollBy({left: ar.left - nr.left - 18, behavior: reduced() ? 'auto' : 'smooth'});
+    } else if (ar.right > nr.right - 6) {
+      nav.scrollBy({left: ar.right - nr.right + 18, behavior: reduced() ? 'auto' : 'smooth'});
+    }
+  }
+  function updateFade(){
+    if (!nav) return;
+    var max = nav.scrollWidth - nav.clientWidth;
+    var f = [];
+    if (nav.scrollLeft > 2) f.push('left');
+    if (nav.scrollLeft < max - 2) f.push('right');
+    nav.setAttribute('data-fade', f.join(' '));
+  }
   function spy(){
     queued = false;
     var y = window.scrollY + 110;
@@ -1199,13 +1229,26 @@
       if (on) a.setAttribute('aria-current', 'location');
       else a.removeAttribute('aria-current');
     });
+    if (idx !== lastIdx) {
+      if (idx >= 0) reveal(links[idx]);
+      lastIdx = idx;
+    }
+    if (lang) {
+      var current = '';
+      allSections.forEach(function(s){
+        if (s.getBoundingClientRect().top + window.scrollY <= y) current = '#' + s.id;
+      });
+      lang.href = lang.getAttribute('data-lang-target') + current;
+    }
   }
   function queueSpy(){
     if (!queued) { queued = true; window.requestAnimationFrame(spy); }
   }
   window.addEventListener('scroll', queueSpy, {passive: true});
-  window.addEventListener('resize', queueSpy);
+  window.addEventListener('resize', function(){ queueSpy(); updateFade(); });
   window.addEventListener('load', spy);
+  if (nav) nav.addEventListener('scroll', updateFade, {passive: true});
+  updateFade();
   spy();
 
   // A deep link should land on its section after webfonts settle.
@@ -1221,7 +1264,7 @@
   }
   window.addEventListener('load', function(){
     if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(function(){ setTimeout(realign, 80); });
+      document.fonts.ready.then(function(){ updateFade(); setTimeout(realign, 80); });
     } else {
       setTimeout(realign, 200);
     }
